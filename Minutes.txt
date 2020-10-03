@@ -8,10 +8,10 @@ MOM 3/10/20
 - Working on the vision document
 - Decided the layout of the quiz
 - For general audience
-- a person creating a a quiz with questions and predefined answers
+- a person creating a quiz with questions and predefined answers
 - a group with the same join in code can join the quiz
 - question limit 5-20
-- creater cannot take part in the quiz
+- creater of the quiz cannot take part in the quiz
 - sample app : https://www.youtube.com/watch?v=tDagLFJNXxw
 - Have a profile for each of the users
 - Login register screen
