@@ -1,0 +1,20 @@
+Quizigma - NAME
+
+MOM 3/10/20
+
+- Project name
+- Quiz, with separate subjects, categories with specific topics
+- multiple choice questions
+- Working on the vision document
+- Decided the layout of the quiz
+- For general audience
+- a person creating a a quiz with questions and predefined answers
+- a group with the same join in code can join the quiz
+- question limit 5-20
+- creater cannot take part in the quiz
+- sample app : https://www.youtube.com/watch?v=tDagLFJNXxw
+- Have a profile for each of the users
+- Login register screen
+- leaderboard 
+- https://github.com/fireship-io/flutter-firebase-quizapp-course
+
