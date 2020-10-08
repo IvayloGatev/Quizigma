@@ -18,3 +18,22 @@ MOM 3/10/20
 - leaderboard 
 - https://github.com/fireship-io/flutter-firebase-quizapp-course
 
+MOM 08/10/20
+
+- Dont stick only to the template 
+- add a section 2.3 - write what do you want to develop. what are the pecial featureswhich meakes quizigma unique 
+- describe more in detail
+- Vision should be big, in detail, 
+- first relaease
+- describe objectives in the first release , solid objectives for this projects. 
+- in addition, you can list other ideas which make your project amazing
+- makes it easier to plan the 15 weeks
+- make real objectives small and mention the other as optional Objectives.
+- Set it up in a huge solid project
+- first prototype - 20 questions but vision should contain the far objevctive / goal that you want to achieve
+- smaller targets and objectives right now but big objectives for the future
+- create a half page vision wherein you could go in detail with the example of the questions
+- several increments, what do you want to have ready in the first increment, second and so on. 
+- You could also mention future release
+- important thing is to bring the ideas on paper so they are not lost, however complex and advanced. 
+- Next thursday - Detail the vision doc today, start with the requirements, if questions, send a mail to prof. Meet @ next thursday 
