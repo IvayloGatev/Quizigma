@@ -18,7 +18,7 @@ MOM 3/10/20
 - leaderboard 
 - https://github.com/fireship-io/flutter-firebase-quizapp-course
 
-MOM 08/10/20
+MOM 08/10/20 - MEETING WITH BAER
 
 - Dont stick only to the template 
 - add a section 2.3 - write what do you want to develop. what are the pecial featureswhich meakes quizigma unique 
