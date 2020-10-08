@@ -1,6 +1,6 @@
 Quizigma - NAME
 
-MOM 3/10/20
+MOM 3/10/20 - 2 hrs
 
 - Project name
 - Quiz, with separate subjects, categories with specific topics
@@ -18,7 +18,7 @@ MOM 3/10/20
 - leaderboard 
 - https://github.com/fireship-io/flutter-firebase-quizapp-course
 
-MOM 08/10/20 - MEETING WITH BAER
+MOM 08/10/20 - MEETING WITH BAER - 30 mins
 
 - Dont stick only to the template 
 - add a section 2.3 - write what do you want to develop. what are the pecial featureswhich meakes quizigma unique 
@@ -37,3 +37,7 @@ MOM 08/10/20 - MEETING WITH BAER
 - You could also mention future release
 - important thing is to bring the ideas on paper so they are not lost, however complex and advanced. 
 - Next thursday - Detail the vision doc today, start with the requirements, if questions, send a mail to prof. Meet @ next thursday 
+
+MOM 08/10/20 - Evening Notes - 30 mins
+
+- Finalized the vision doc
