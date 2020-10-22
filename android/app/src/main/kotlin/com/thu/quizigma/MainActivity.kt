@@ -1,4 +1,4 @@
-package com.example.quizigma
+package com.thu.quizigma
 
 import io.flutter.embedding.android.FlutterActivity
 
