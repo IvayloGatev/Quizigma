@@ -2,7 +2,7 @@ import 'package:quizigma/models/question.dart';
 import 'package:quizigma/models/quiz.dart';
 
 abstract class IDatabase {
-  Future<void> addQuiz(Quiz quiz);
+  Future addQuiz(String category, String name);
 
   Quiz getQuiz(String id);
 

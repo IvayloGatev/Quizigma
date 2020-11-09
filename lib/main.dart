@@ -20,6 +20,7 @@ class Quizigma extends StatelessWidget {
     return StreamProvider<QuizigmaUser>.value(
         value: HomeController().user,
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           // List all of the app's supported locales here.
           supportedLocales: [Locale('en', 'US')],
           // These delegates make sure that the localization data for the proper language is loaded.

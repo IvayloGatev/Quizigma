@@ -17,4 +17,20 @@ class Question {
     _answers = answers;
     _correctAnswer = correctAnswer;
   }
+
+  String get id {
+    return _id;
+  }
+
+  String get text {
+    return _text;
+  }
+
+  List<String> get answers {
+    return _answers;
+  }
+
+  int get correctAnswer {
+    return _correctAnswer;
+  }
 }
