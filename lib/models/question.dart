@@ -2,13 +2,17 @@ class Question {
   final int _minAnswers = 2;
   final int _maxAnswers = 5;
 
-  String _id;
+  int _id;
   String _text;
-  List<String> _answers;
+  Map<int, String> _answers;
   int _correctAnswer;
 
-  Question(String id, String text, List<String> answers, int correctAnswer) {
+  // Constructor for the class Question.
+  Question(int id, String text, Map<int, String> answers, int correctAnswer) {
     if (answers.length < _minAnswers && answers.length > _maxAnswers) {
+      throw new Exception();
+    }
+    if (!_answers.containsKey(_correctAnswer)) {
       throw new Exception();
     }
 
@@ -18,7 +22,8 @@ class Question {
     _correctAnswer = correctAnswer;
   }
 
-  String get id {
+  // Getters for the properties.
+  int get id {
     return _id;
   }
 
@@ -26,7 +31,7 @@ class Question {
     return _text;
   }
 
-  List<String> get answers {
+  Map<int, String> get answers {
     return _answers;
   }
 

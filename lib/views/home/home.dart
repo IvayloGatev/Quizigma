@@ -41,8 +41,8 @@ class Home extends StatelessWidget {
                     //only for testing
                     //in the near future this will redirect you to a page that
                     //asks the user for the quiz name and category and add questions...
-                    FirestoreDatabase()
-                        .addQuiz('test_quizCategory', 'test_quizName');
+                    //   FirestoreDatabase()
+                    //       .addQuiz('test_quizCategory', 'test_quizName');
                   },
                 ),
                 SizedBox(width: 15),
@@ -57,7 +57,7 @@ class Home extends StatelessWidget {
                     //Quiz quiz1 = Quiz();
                     //quiz1.category = "hydgy";
                     //print(quiz1.category + quiz1.id);
-                    FirestoreDatabase().getQuizData('test_quizCategory');
+                    //FirestoreDatabase().getQuizData('test_quizCategory');
                   },
                 ),
               ]),
