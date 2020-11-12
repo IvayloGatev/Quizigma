@@ -1,0 +1,43 @@
+Quizigma - NAME
+
+MOM 3/10/20 - 2 hrs
+
+- Project name
+- Quiz, with separate subjects, categories with specific topics
+- multiple choice questions
+- Working on the vision document
+- Decided the layout of the quiz
+- For general audience
+- a person creating a quiz with questions and predefined answers
+- a group with the same join in code can join the quiz
+- question limit 5-20
+- creater of the quiz cannot take part in the quiz
+- sample app : https://www.youtube.com/watch?v=tDagLFJNXxw
+- Have a profile for each of the users
+- Login register screen
+- leaderboard 
+- https://github.com/fireship-io/flutter-firebase-quizapp-course
+
+MOM 08/10/20 - MEETING WITH BAER - 30 mins
+
+- Dont stick only to the template 
+- add a section 2.3 - write what do you want to develop. what are the pecial featureswhich meakes quizigma unique 
+- describe more in detail
+- Vision should be big, in detail, 
+- first relaease
+- describe objectives in the first release , solid objectives for this projects. 
+- in addition, you can list other ideas which make your project amazing
+- makes it easier to plan the 15 weeks
+- make real objectives small and mention the other as optional Objectives.
+- Set it up in a huge solid project
+- first prototype - 20 questions but vision should contain the far objevctive / goal that you want to achieve
+- smaller targets and objectives right now but big objectives for the future
+- create a half page vision wherein you could go in detail with the example of the questions
+- several increments, what do you want to have ready in the first increment, second and so on. 
+- You could also mention future release
+- important thing is to bring the ideas on paper so they are not lost, however complex and advanced. 
+- Next thursday - Detail the vision doc today, start with the requirements, if questions, send a mail to prof. Meet @ next thursday 
+
+MOM 08/10/20 - Evening Notes - 30 mins
+
+- Finalized the vision doc

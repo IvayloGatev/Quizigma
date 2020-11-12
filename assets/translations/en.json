@@ -1,0 +1,18 @@
+{
+    "welcome_title" : "WELCOME TO ",
+    "login": "LOGIN" ,
+    "register": "REGISTER",
+    "email_hint": "Your Email",
+    "password_hint": "Password",
+    "email_validation": "Enter an email",
+    "password_validation": "Enter a password 6+ chars long",
+    "login_error": "Could not sign in with those credentials",
+    "dont_have_account": "Don’t have an Account ? ",
+    "have_account": "Already have an Account ? ",
+    "sign_up": "Sign Up",
+    "sign_in": "Sign in",
+    "register_error" : "Please supply a valid email",
+
+    "home_title": "Welcome to ",
+    "logout_label": "Logout"
+}
