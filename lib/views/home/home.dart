@@ -29,50 +29,50 @@ class Home extends StatelessWidget {
               )
             ]),
         body: Center(
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FlatButton(
-                  height: 70.00,
-                  minWidth: 70.00,
-                  child: Text("Create Quiz", style: TextStyle(fontSize: 15)),
-                  color: Colors.brown[400],
-                  textColor: Colors.white,
-                  onPressed: () {
-                    print('create!');
-                    QuizController con = QuizController();
-                    List<String> answersList = [
-                      "_answer1",
-                      "_answer2",
-                      "_answer3",
-                      "_answer4",
-                      "_answer5"
-                    ];
-                    List<Question> questions = List();
-                    for (var i = 0; i < 10; i++) {
-                      questions
-                          .add(Question(i, 'what to ask?', answersList, 3));
-                    }
-                    Quiz quiz = Quiz('test_category', 'test_name', questions);
-                    con.addQuiz(quiz);
-                  },
-                ),
-                SizedBox(width: 15),
-                FlatButton(
-                  height: 70.00,
-                  minWidth: 100.00,
-                  child: Text("Participate in Quiz",
-                      style: TextStyle(fontSize: 15)),
-                  color: Colors.brown[400],
-                  textColor: Colors.white,
-                  onPressed: () async {
-                    print('participate!');
-                    QuizController con = QuizController();
-                    Quiz quiz = await con.getQuiz("dUFA4R3L");
-                    print(quiz.id + " " + quiz.questions.length.toString());
-                  },
-                ),
-              ]),
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: <
+              Widget>[
+            FlatButton(
+              height: 70.00,
+              minWidth: 70.00,
+              child: Text("Create Quiz", style: TextStyle(fontSize: 15)),
+              color: Colors.brown[400],
+              textColor: Colors.white,
+              onPressed: () {
+                print('create!');
+                QuizController con = QuizController();
+                List<String> answersList = [
+                  "_answer1",
+                  "_answer2",
+                  "_answer3",
+                  "_answer4",
+                  "_answer5"
+                ];
+                List<Question> questions = List();
+                for (var i = 0; i < 10; i++) {
+                  questions
+                      .add(Question(i, 'what to ask?', answersList, 3, 15));
+                }
+                Quiz quiz =
+                    Quiz('test_category', 'test_name', questions, null, null);
+                con.addQuiz(quiz);
+              },
+            ),
+            SizedBox(width: 15),
+            FlatButton(
+              height: 70.00,
+              minWidth: 100.00,
+              child:
+                  Text("Participate in Quiz", style: TextStyle(fontSize: 15)),
+              color: Colors.brown[400],
+              textColor: Colors.white,
+              onPressed: () async {
+                print('participate!');
+                QuizController con = QuizController();
+                Quiz quiz = await con.getQuiz("q11p73no");
+                print(quiz.id + " " + quiz.questions.length.toString());
+              },
+            ),
+          ]),
         ));
   }
 }

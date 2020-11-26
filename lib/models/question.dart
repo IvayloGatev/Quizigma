@@ -6,9 +6,11 @@ class Question {
   String _text;
   List<String> _answers;
   int _correctAnswer;
+  int _timeInSeconds;
 
   // Constructor for the class Question.
-  Question(int id, String text, List<String> answers, int correctAnswer) {
+  Question(int id, String text, List<String> answers, int correctAnswer,
+      int timeInSeconds) {
     if (answers.length < minAnswers && answers.length > maxAnswers) {
       throw new Exception();
     }
@@ -20,6 +22,7 @@ class Question {
     _text = text;
     _answers = answers;
     _correctAnswer = correctAnswer;
+    _timeInSeconds = timeInSeconds;
   }
 
   // Getters for the properties.
@@ -37,5 +40,13 @@ class Question {
 
   int get correctAnswer {
     return _correctAnswer;
+  }
+
+  int get timeInSeconds {
+    return _timeInSeconds;
+  }
+
+  set text(String text) {
+    _text = text;
   }
 }
