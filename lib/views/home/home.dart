@@ -5,6 +5,7 @@ import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/services/app_localization.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/models/question.dart';
+import 'package:quizigma/views/quiz/Participate/Participate.dart';
 
 class Home extends StatelessWidget {
   final _controller = HomeController();
@@ -12,11 +13,11 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.brown[50],
+        backgroundColor: Colors.purple[50],
         appBar: AppBar(
             title: Text(AppLocalizations.of(context).translate('home_title') +
                 'Quizigma'),
-            backgroundColor: Colors.brown[400],
+            backgroundColor: Colors.purple,
             elevation: 0.0,
             actions: <Widget>[
               FlatButton.icon(
@@ -35,7 +36,7 @@ class Home extends StatelessWidget {
               height: 70.00,
               minWidth: 70.00,
               child: Text("Create Quiz", style: TextStyle(fontSize: 15)),
-              color: Colors.brown[400],
+              color: Colors.purple,
               textColor: Colors.white,
               onPressed: () {
                 print('create!');
@@ -63,13 +64,17 @@ class Home extends StatelessWidget {
               minWidth: 100.00,
               child:
                   Text("Participate in Quiz", style: TextStyle(fontSize: 15)),
-              color: Colors.brown[400],
+              color: Colors.purple,
               textColor: Colors.white,
               onPressed: () async {
-                print('participate!');
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Participate()));
+
+                /*  print('participate!');
                 QuizController con = QuizController();
                 Quiz quiz = await con.getQuiz("q11p73no");
                 print(quiz.id + " " + quiz.questions.length.toString());
+              */
               },
             ),
           ]),

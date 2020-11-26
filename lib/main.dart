@@ -45,7 +45,7 @@ class Quizigma extends StatelessWidget {
             // If the locale of the device is not supported, use the first one from the list.
             return supportedLocales.first;
           },
-          home: CategoriesScreen(),
+          home: Wrapper(),
         ));
   }
 }
