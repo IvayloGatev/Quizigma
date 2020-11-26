@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:quizigma/controllers/home_controller.dart';
 import 'package:quizigma/models/quizigma_user.dart';
 import 'package:quizigma/services/app_localization.dart';
+import 'package:quizigma/views/home/welcome/categories_screen.dart';
 import 'package:quizigma/views/home/wrapper.dart';
 
 void main() async {
@@ -44,7 +45,7 @@ class Quizigma extends StatelessWidget {
             // If the locale of the device is not supported, use the first one from the list.
             return supportedLocales.first;
           },
-          home: Wrapper(),
+          home: CategoriesScreen(),
         ));
   }
 }
