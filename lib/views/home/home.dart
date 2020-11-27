@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:quizigma/controllers/home_controller.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
-import 'package:quizigma/services/app_localization.dart';
-import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/models/question.dart';
+import 'package:quizigma/models/quiz.dart';
+import 'package:quizigma/services/app_localization.dart';
 import 'package:quizigma/views/quiz/Participate/Participate.dart';
+import 'package:quizigma/views/quiz/creator.dart';
 
 class Home extends StatelessWidget {
   final _controller = HomeController();
@@ -39,7 +41,8 @@ class Home extends StatelessWidget {
               color: Colors.purple,
               textColor: Colors.white,
               onPressed: () {
-                print('create!');
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyApp()));
                 QuizController con = QuizController();
                 List<String> answersList = [
                   "_answer1",
@@ -69,12 +72,12 @@ class Home extends StatelessWidget {
               onPressed: () async {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Participate()));
-
-                /*  print('participate!');
+                    
+                print('participate!');
                 QuizController con = QuizController();
                 Quiz quiz = await con.getQuiz("q11p73no");
                 print(quiz.id + " " + quiz.questions.length.toString());
-              */
+              
               },
             ),
           ]),

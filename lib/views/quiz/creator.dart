@@ -44,7 +44,10 @@ class _MyFormState extends State<MyForm> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text('Create a quiz'),
-      ),
+        automaticallyImplyLeading: true,
+          leading: IconButton(icon:Icon(Icons.arrow_back),
+          onPressed:() => Navigator.pop(context, true),
+      )),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
