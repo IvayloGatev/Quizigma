@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/views/quiz/creator/question_list.dart';
 
-class MyApp extends StatelessWidget {
+class QuizCreator extends StatefulWidget {
+  @override
+  _QuizCreatorState createState() => _QuizCreatorState();
+}
+
+//Note to backend: You can retrieve the information from answersList of _MyFormState class.
+class _QuizCreatorState extends State<QuizCreator> {
   final _formKey = GlobalKey<FormState>();
 
   @override

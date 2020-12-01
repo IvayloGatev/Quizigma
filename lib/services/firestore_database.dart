@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/models/question.dart';
+import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/models/quizigma_user.dart';
 import 'package:quizigma/services/idatabase.dart';
 
