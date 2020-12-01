@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
+class Creator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Create a quiz',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyForm(),
-      debugShowCheckedModeBanner: false,
-    );
+    return Scaffold(
+        backgroundColor: Colors.purple[50],
+        appBar: AppBar(
+          backgroundColor: Colors.purple,
+          title: Text("Create a Quiz"),
+        ),
+        body: MyForm());
   }
 }
 
@@ -41,13 +39,7 @@ class _MyFormState extends State<MyForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        title: Text('Create a quiz'),
-        automaticallyImplyLeading: true,
-          leading: IconButton(icon:Icon(Icons.arrow_back),
-          onPressed:() => Navigator.pop(context, true),
-      )),
+      backgroundColor: Colors.purple[50],
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //import 'package:quizigma/views/quiz/Participate/Join.dart';
-import 'package:quizigma/views/quiz/Participate/Form.dart';
+import 'package:quizigma/views/quiz/Participate/Categories.dart';
 
 class Participate extends StatelessWidget {
   @override
@@ -10,11 +10,11 @@ class Participate extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.purple,
           title: Text("Participate in a Quiz"),
-          automaticallyImplyLeading: true,
-          leading: IconButton(icon:Icon(Icons.arrow_back),
-          onPressed:() => Navigator.pop(context, true),
-
-      )
+          /*automaticallyImplyLeading: true,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () => Navigator.pop(context, true),
+            )*/
         ),
         body: Center(
             child: Row(
@@ -25,7 +25,7 @@ class Participate extends StatelessWidget {
               RaisedButton(
                   onPressed: () async {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyApp()));
+                        MaterialPageRoute(builder: (context) => Categories()));
                   },
                   textColor: Colors.white,
                   padding: const EdgeInsets.all(0.0),
@@ -54,4 +54,3 @@ class Participate extends StatelessWidget {
     //);
   }
 }
-
