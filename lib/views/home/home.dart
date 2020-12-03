@@ -8,7 +8,6 @@ import 'package:quizigma/models/question.dart';
 import 'package:quizigma/views/quiz/creator/creator.dart';
 import 'package:quizigma/views/quiz/Participate/Categories.dart';
 
-
 class Home extends StatelessWidget {
   final _controller = HomeController();
 
@@ -32,22 +31,22 @@ class Home extends StatelessWidget {
               )
             ]),
         body: Center(
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: <
-              Widget>[
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
                 SizedBox(width: 15),
-            FlatButton(
-              height: 70.00,
-              minWidth: 100.00,
-              child:
-                  Text("Create a Quiz", style: TextStyle(fontSize: 15)),
-              color: Colors.purple,
-              textColor: Colors.white,
-              onPressed: () async {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Creator()));
-              },
-            ),
-            /* FlatButton(
+                FlatButton(
+                  height: 70.00,
+                  minWidth: 100.00,
+                  child: Text("Create a Quiz", style: TextStyle(fontSize: 15)),
+                  color: Colors.purple,
+                  textColor: Colors.white,
+                  onPressed: () async {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Creator()));
+                  },
+                ),
+                /* FlatButton(
               height: 70.00,
               minWidth: 70.00,
               child: Text("Create a Quiz", style: TextStyle(fontSize: 15)),
@@ -62,20 +61,20 @@ class Home extends StatelessWidget {
                 
               },
             ), */
-            SizedBox(width: 15),
-            FlatButton(
-              height: 70.00,
-              minWidth: 100.00,
-              child:
-                  Text("Participate in a Quiz", style: TextStyle(fontSize: 15)),
-              color: Colors.purple,
-              textColor: Colors.white,
-              onPressed: () async {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Categories()));
-              },
-            ),
-          ]),
+                SizedBox(width: 15),
+                FlatButton(
+                  height: 70.00,
+                  minWidth: 100.00,
+                  child: Text("Participate in a Quiz",
+                      style: TextStyle(fontSize: 15)),
+                  color: Colors.purple,
+                  textColor: Colors.white,
+                  onPressed: () async {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Categories()));
+                  },
+                ),
+              ]),
         ));
   }
 }

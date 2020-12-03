@@ -45,8 +45,4 @@ class Question {
   int get timeInSeconds {
     return _timeInSeconds;
   }
-
-  set text(String text) {
-    _text = text;
-  }
 }

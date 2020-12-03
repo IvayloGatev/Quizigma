@@ -25,7 +25,19 @@ class _BodyState extends State<Body> {
 
   String email = '';
   String password = '';
-  String error = '';
+  String error;
+
+  void submit() async {
+    if (_formKey.currentState.validate()) {
+      dynamic result =
+          await _controller.registerWithEmailAndPassword(email, password);
+      if (result == null) {
+        setState(() {
+          error = AppLocalizations.of(context).translate('register_error');
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +60,36 @@ class _BodyState extends State<Body> {
               ),
               RoundedInputField(
                 hintText: AppLocalizations.of(context).translate('email_hint'),
+                // added validator
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'E-mail is required';
+                  }
+                  if (!RegExp(
+                          r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+                      .hasMatch(value)) {
+                    return 'Please enter a valid email Address';
+                  }
+                  return null;
+                },
                 onChanged: (value) {
                   email = value;
                 },
               ),
               RoundedPasswordField(
+                // added validator
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Password is required';
+                  }
+                  if (value.length < 6) {
+                    return 'Password must be at least 6 characters';
+                  }
+                  if (value.length > 25) {
+                    return 'Password must be less than 25 characters';
+                  }
+                  return null;
+                },
                 onChanged: (value) {
                   password = value;
                 },
@@ -60,18 +97,11 @@ class _BodyState extends State<Body> {
               RoundedButton(
                 text: AppLocalizations.of(context).translate('register'),
                 press: () async {
-                  if (_formKey.currentState.validate()) {
-                    dynamic result = await _controller
-                        .registerWithEmailAndPassword(email, password);
-                    if (result == null) {
-                      setState(() {
-                        error = AppLocalizations.of(context)
-                            .translate('register_error');
-                      });
-                    }
-                  }
+                  submit();
                 },
               ),
+              SizedBox(height: size.height * 0.03), // added
+              showAlert(),
               SizedBox(height: size.height * 0.03),
               AlreadyHaveAnAccountCheck(
                 login: false,
@@ -102,5 +132,48 @@ class _BodyState extends State<Body> {
         ),
       ),
     );
+  }
+
+  Widget showAlert() {
+    if (error != null) {
+      return Container(
+        color: Colors.amberAccent,
+        width: double.infinity,
+        padding: EdgeInsets.all(8.0),
+        child: Row(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Icon(Icons.error_outline),
+            ),
+            Expanded(
+              child: Text(
+                error,
+                style: TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  setState(() {
+                    error = null;
+                  });
+                },
+              ),
+            )
+          ],
+        ),
+      );
+    } else {
+      return SizedBox(
+        height: 0,
+      );
+    }
   }
 }
