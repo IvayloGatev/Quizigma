@@ -25,4 +25,3 @@ class QuizController extends ControllerMVC {
   Future<Quiz> getQuiz(String quizId) async {
     return await database.getQuiz(quizId);
   }
-}
