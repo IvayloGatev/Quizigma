@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quizigma/controllers/home_controller.dart';
@@ -18,15 +19,27 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  String email = '';
+  String password = '';
+  String error;
+
+  final _controller = HomeController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  void submit() async {
+    if (_formKey.currentState.validate()) {
+      dynamic result =
+          await _controller.signInWithEmailAndPassword(email, password);
+      if (result == null) {
+        setState(() {
+          error = AppLocalizations.of(context).translate('login_error');
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final _controller = HomeController();
-    final _formKey = GlobalKey<FormState>();
-
-    String email = '';
-    String password = '';
-    String error = '';
-
     Size size = MediaQuery.of(context).size;
     return Background(
       child: SingleChildScrollView(
@@ -39,6 +52,7 @@ class _BodyState extends State<Body> {
               AppLocalizations.of(context).translate('login'),
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
+
             SizedBox(height: size.height * 0.03),
             SvgPicture.asset(
               "assets/icons/login.svg",
@@ -47,29 +61,37 @@ class _BodyState extends State<Body> {
             SizedBox(height: size.height * 0.03),
             RoundedInputField(
               hintText: AppLocalizations.of(context).translate('email_hint'),
+              // added validator
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'E-mail required';
+                }
+                return null;
+              },
               onChanged: (value) {
                 email = value;
               },
             ),
             RoundedPasswordField(
+              // added validator
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Password required';
+                }
+                return null;
+              },
               onChanged: (value) {
                 password = value;
               },
             ),
+
             RoundedButton(
                 text: AppLocalizations.of(context).translate('login'),
                 press: () async {
-                  if (_formKey.currentState.validate()) {
-                    dynamic result = await _controller
-                        .signInWithEmailAndPassword(email, password);
-                    if (result == null) {
-                      setState(() {
-                        error = AppLocalizations.of(context)
-                            .translate('login_error');
-                      });
-                    }
-                  }
+                  submit();
                 }),
+            SizedBox(height: size.height * 0.03), // added
+            showAlert(),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(
               press: () {
@@ -80,5 +102,48 @@ class _BodyState extends State<Body> {
         ),
       )),
     );
+  }
+
+  Widget showAlert() {
+    if (error != null) {
+      return Container(
+        color: Colors.amberAccent,
+        width: double.infinity,
+        padding: EdgeInsets.all(8.0),
+        child: Row(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Icon(Icons.error_outline),
+            ),
+            Expanded(
+              child: Text(
+                error,
+                style: TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  setState(() {
+                    error = null;
+                  });
+                },
+              ),
+            )
+          ],
+        ),
+      );
+    } else {
+      return SizedBox(
+        height: 0,
+      );
+    }
   }
 }
