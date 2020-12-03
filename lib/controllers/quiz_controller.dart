@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/services/firestore_database.dart';
@@ -21,7 +22,16 @@ class QuizController extends ControllerMVC {
     return await database.addQuiz(quiz);
   }
 
-  // A method which retrieves a quiz grom the database.
+  // A method which retrieves a quiz from the database.
   Future<Quiz> getQuiz(String quizId) async {
     return await database.getQuiz(quizId);
   }
+<<<<<<< HEAD
+=======
+
+  //A method which retrieves all the quizes from the same category.
+  Future<List<String>> getQuizesFromCategory(String category) async {
+    return await database.getQuizesFromCategory(category);
+  }
+}
+>>>>>>> 9e5aa28037a4eb568e2d21a8b75d657af1327ba3

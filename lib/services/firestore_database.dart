@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:quizigma/models/question.dart';
 import 'package:quizigma/models/quiz.dart';
+import 'package:quizigma/models/question.dart';
 import 'package:quizigma/models/quizigma_user.dart';
 import 'package:quizigma/services/idatabase.dart';
 
@@ -39,8 +39,6 @@ class FirestoreDatabase implements IDatabase {
     return quiz;
   }
 
-  // A method which adds a list of questions,
-  // assosiated with a certain quiz, to the database.
   Future<void> _addQuestions(Quiz quiz) async {
     final CollectionReference questionsCollection =
         firestore.collection('Quizes').doc(quiz.id).collection('Questions');
@@ -56,8 +54,6 @@ class FirestoreDatabase implements IDatabase {
     });
   }
 
-  // A method which retrieves a list of questions,
-  // assosiated with a certain quiz, from the database.
   Future<List<Question>> _getQuestions(quizId) async {
     final CollectionReference questionsCollection =
         firestore.collection('Quizes').doc(quizId).collection('Questions');
@@ -104,5 +100,18 @@ class FirestoreDatabase implements IDatabase {
     });
 
     return user;
+  }
+
+  @override
+  Future<List<String>> getQuizesFromCategory(String category) async {
+    final CollectionReference quizesCollection = firestore.collection('Quizes');
+    List<String> quizesIdFromCategory = List<String>();
+
+    await quizesCollection.doc(category).get().then((snapshot) async {
+      String quizId = snapshot.data()['id'];
+      quizesIdFromCategory.add(quizId);
+    });
+
+    return quizesIdFromCategory;
   }
 }
