@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:quizigma/controllers/home_controller.dart';
 import 'package:quizigma/models/quizigma_user.dart';
 import 'package:quizigma/services/app_localization.dart';
+import 'package:quizigma/views/home/welcome/categories_screen.dart';
 import 'package:quizigma/views/home/wrapper.dart';
 
 void main() async {

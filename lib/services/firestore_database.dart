@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/models/question.dart';
+import 'package:quizigma/models/quizigma_user.dart';
 import 'package:quizigma/services/idatabase.dart';
 
 class FirestoreDatabase implements IDatabase {
@@ -11,9 +12,10 @@ class FirestoreDatabase implements IDatabase {
     final CollectionReference quizesCollection = firestore.collection('Quizes');
 
     await quizesCollection.doc(quiz.id).set({
-      'id': quiz.id,
       'category': quiz.category,
       'name': quiz.name,
+      'startDate': quiz.startDate,
+      'endDate': quiz.endDate
     });
     quiz.questions.forEach((question) async {
       await _addQuestions(quiz);
@@ -26,18 +28,17 @@ class FirestoreDatabase implements IDatabase {
     Quiz quiz;
 
     await quizesCollection.doc(quizId).get().then((snapshot) async {
-      String id = snapshot.data()['id'];
       String category = snapshot.data()['category'];
       String name = snapshot.data()['name'];
+      DateTime startDate = snapshot.data()['startDate'].toDate();
+      DateTime endDate = snapshot.data()['endDate'].toDate();
       List<Question> questions = await _getQuestions(quizId);
-      quiz = Quiz(category, name, questions, id);
+      quiz = Quiz(category, name, questions, startDate, endDate, quizId);
     });
 
     return quiz;
   }
 
-  // A method which adds a list of questions,
-  // assosiated with a certain quiz, to the database.
   Future<void> _addQuestions(Quiz quiz) async {
     final CollectionReference questionsCollection =
         firestore.collection('Quizes').doc(quiz.id).collection('Questions');
@@ -47,13 +48,12 @@ class FirestoreDatabase implements IDatabase {
         'id': question.id,
         'text': question.text,
         'answers': question.answers,
-        'correctAnswer': question.correctAnswer
+        'correctAnswer': question.correctAnswer,
+        'timeInSeconds': question.timeInSeconds
       });
     });
   }
 
-  // A method which retrieves a list of questions,
-  // assosiated with a certain quiz, from the database.
   Future<List<Question>> _getQuestions(quizId) async {
     final CollectionReference questionsCollection =
         firestore.collection('Quizes').doc(quizId).collection('Questions');
@@ -65,10 +65,53 @@ class FirestoreDatabase implements IDatabase {
         String text = question.data()['text'];
         List<String> answers = List<String>.from(question.data()['answers']);
         int correctAnswer = question.data()['correctAnswer'];
-        questions.add(Question(id, text, answers, correctAnswer));
+        int timeInSeconds = question.data()['timeInSeconds'];
+        questions
+            .add(Question(id, text, answers, correctAnswer, timeInSeconds));
       });
     });
 
     return questions;
+  }
+
+  @override
+  Future<void> updateUser(QuizigmaUser user) async {
+    final CollectionReference usersCollection = firestore.collection("Users");
+    await usersCollection.doc(user.uid).set({
+      'score': user.score,
+      'bronzeMedals': user.bronzeMedals,
+      'silverMedals': user.silverMedals,
+      'goldMedals': user.goldMedals
+    });
+  }
+
+  @override
+  Future<QuizigmaUser> getUser(String uid) async {
+    final CollectionReference usersCollection = firestore.collection("Users");
+    QuizigmaUser user;
+
+    await usersCollection.doc(uid).get().then((snapshot) async {
+      int score = snapshot.data()['score'];
+      int bronzeMedals = snapshot.data()['bronzeMedals'];
+      int silverMedals = snapshot.data()['silverMedals'];
+      int goldMedals = snapshot.data()['goldMedals'];
+      user = QuizigmaUser.fromDatabase(
+          uid, score, bronzeMedals, silverMedals, goldMedals);
+    });
+
+    return user;
+  }
+
+  @override
+  Future<List<String>> getQuizesFromCategory(String category) async {
+    final CollectionReference quizesCollection = firestore.collection('Quizes');
+    List<String> quizesIdFromCategory = List<String>();
+
+    await quizesCollection.doc(category).get().then((snapshot) async {
+      String quizId = snapshot.data()['id'];
+      quizesIdFromCategory.add(quizId);
+    });
+
+    return quizesIdFromCategory;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:quizigma/models/quizigma_user.dart';
+import 'package:quizigma/services/firestore_database.dart';
 
 class HomeController extends ControllerMVC {
   factory HomeController() {
@@ -12,12 +13,13 @@ class HomeController extends ControllerMVC {
 
   static HomeController _this;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final database = FirestoreDatabase();
 
   HomeController._();
 
   // Get a QuzigmaUser object based on the current user.
   QuizigmaUser _getQuizigmaUser(User user) {
-    return user != null ? QuizigmaUser(uid: user.uid) : null;
+    return user != null ? QuizigmaUser(user.uid) : null;
   }
 
   // Change the authentication state of the current stream.
@@ -56,6 +58,7 @@ class HomeController extends ControllerMVC {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
+      database.updateUser(QuizigmaUser(user.uid));
       return _getQuizigmaUser(user);
     } catch (e) {
       print(e.toString());
