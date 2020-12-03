@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/views/quiz/Participate/Join.dart';
 import 'package:quizigma/views/quiz/Participate/QuizID.dart';
+import 'package:quizigma/views/quiz/layoutMain.dart';
 
 class Categories extends StatelessWidget {
   @override
@@ -36,7 +37,7 @@ class Categories extends StatelessWidget {
                   textColor: Colors.black,
                   onPressed: () async {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Join()));
+                        MaterialPageRoute(builder: (context) => LayoutMain()));
                   },
                 ),
                 FlatButton(
@@ -47,7 +48,7 @@ class Categories extends StatelessWidget {
                   textColor: Colors.black,
                   onPressed: () async {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Join()));
+                        MaterialPageRoute(builder: (context) => LayoutMain()));
                   },
                 ),
                 FlatButton(
@@ -58,7 +59,7 @@ class Categories extends StatelessWidget {
                   textColor: Colors.black,
                   onPressed: () async {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Join()));
+                        MaterialPageRoute(builder: (context) => LayoutMain()));
                   },
                 ),
                 FlatButton(
@@ -69,7 +70,7 @@ class Categories extends StatelessWidget {
                   textColor: Colors.black,
                   onPressed: () async {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Join()));
+                        MaterialPageRoute(builder: (context) => LayoutMain()));
                   },
                 ),
                 FlatButton(
@@ -80,7 +81,7 @@ class Categories extends StatelessWidget {
                   textColor: Colors.black,
                   onPressed: () async {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Join()));
+                        MaterialPageRoute(builder: (context) => LayoutMain()));
                   },
                 ),
                 FlatButton(
@@ -92,7 +93,7 @@ class Categories extends StatelessWidget {
                   textColor: Colors.black,
                   onPressed: () async {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Join()));
+                        MaterialPageRoute(builder: (context) => LayoutMain()));
                   },
                 ),
                 FlatButton(
@@ -103,7 +104,7 @@ class Categories extends StatelessWidget {
                   textColor: Colors.black,
                   onPressed: () async {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Join()));
+                        MaterialPageRoute(builder: (context) => LayoutMain()));
                   },
                 ),
                 FlatButton(
@@ -114,7 +115,7 @@ class Categories extends StatelessWidget {
                   textColor: Colors.black,
                   onPressed: () async {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Join()));
+                        MaterialPageRoute(builder: (context) => LayoutMain()));
                   },
                 ),
               ],
