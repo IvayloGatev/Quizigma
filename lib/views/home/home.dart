@@ -43,7 +43,7 @@ class Home extends StatelessWidget {
                   textColor: Colors.white,
                   onPressed: () async {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Creator()));
+                        MaterialPageRoute(builder: (context) => QuizCreator()));
                   },
                 ),
                 /* FlatButton(

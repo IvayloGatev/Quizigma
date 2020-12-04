@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-//import './quiz_controller';
-
-class Join extends StatelessWidget {
-   //final _controller = QuizController();
-=======
 import 'package:quizigma/controllers/quiz_controller.dart';
 
 class Join extends StatelessWidget {
   final QuizController _controller = QuizController();
 
->>>>>>> 342f1c4e4a84bbc76ca8aa5bc751bad652bde448
   @override
   Widget build(BuildContext context) {
     return Scaffold(
