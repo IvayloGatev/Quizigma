@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/question_text_editor.dart';
 import 'package:quizigma/models/quiz.dart';
-import 'package:quizigma/views/quiz/creator/answer_list.dart';
 import 'package:quizigma/views/quiz/creator/question_tile.dart';
 
 class QuestionList extends StatefulWidget {

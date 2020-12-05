@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizigma/views/quiz/Participate/Join.dart';
 import 'package:quizigma/views/quiz/Participate/QuizID.dart';
 
 class Categories extends StatelessWidget {
