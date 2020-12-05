@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quizigma/controllers/quiz_controller.dart';
+import 'package:quizigma/models/question.dart';
+import 'package:quizigma/models/question_text_editor.dart';
+import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/creator/question_list.dart';
 
 class QuizCreator extends StatefulWidget {
@@ -9,6 +13,11 @@ class QuizCreator extends StatefulWidget {
 //Note to backend: You can retrieve the information from answersList of _MyFormState class.
 class _QuizCreatorState extends State<QuizCreator> {
   final _formKey = GlobalKey<FormState>();
+  final _controller = QuizController();
+
+  List<QuestionTextEditor> editors = List<QuestionTextEditor>();
+  TextEditingController nameEditingController = TextEditingController();
+  TextEditingController categoryEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +34,57 @@ class _QuizCreatorState extends State<QuizCreator> {
         body: Form(
             key: _formKey,
             child: Column(children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 32.0),
+                child: TextFormField(
+                  controller: nameEditingController,
+                  decoration: InputDecoration(hintText: 'Enter quiz name'),
+                  validator: (v) {
+                    if (v.trim().isEmpty) return 'Please enter something';
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 32.0),
+                child: TextFormField(
+                  controller: categoryEditingController,
+                  decoration: InputDecoration(hintText: 'Enter quiz category'),
+                  validator: (v) {
+                    if (v.trim().isEmpty) return 'Please enter something';
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
               Expanded(
-                child: QuestionList(),
+                child: QuestionList(editors: editors),
               ),
               FlatButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    _formKey.currentState.save();
+                    String name = nameEditingController.text;
+                    String category = categoryEditingController.text;
+                    List<Question> questions = List<Question>();
+
+                    for (var editor in editors) {
+                      String questionText = editor.questionTextController.text;
+                      List<String> answers = List<String>();
+                      for (var answerTextController
+                          in editor.asnwerTextControllers) {
+                        answers.add(answerTextController.text);
+                      }
+                      questions.add(Question(
+                          questions.length + 1, questionText, answers, 0, 15));
+                    }
+
+                    Quiz quiz = Quiz(category, name, questions);
+                    _controller.addQuiz(quiz);
                   }
                 },
                 child: Text('Submit'),

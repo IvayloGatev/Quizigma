@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
-import 'package:quizigma/controllers/home_controller.dart';
 import 'package:quizigma/services/app_localization.dart';
 import 'package:quizigma/shared/components/text_field_container.dart';
 import 'package:quizigma/shared/constants.dart';

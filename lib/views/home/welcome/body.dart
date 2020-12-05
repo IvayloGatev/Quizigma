@@ -5,9 +5,9 @@ import 'package:quizigma/services/app_localization.dart';
 import 'package:quizigma/shared/components/rounded_button.dart';
 import 'package:quizigma/shared/constants.dart';
 import 'package:quizigma/views/home/welcome/background.dart';
-import 'package:quizigma/views/home/login.dart';
+import 'package:quizigma/views/home/login/login.dart';
 
-import '../register.dart';
+import '../register/register.dart';
 
 class Body extends StatefulWidget {
   @override

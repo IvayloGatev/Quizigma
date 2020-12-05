@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizigma/controllers/home_controller.dart';
-import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/services/app_localization.dart';
-import 'package:quizigma/models/quiz.dart';
-import 'package:quizigma/models/question.dart';
 import 'package:quizigma/views/quiz/creator/creator.dart';
 import 'package:quizigma/views/quiz/Participate/Categories.dart';
 
@@ -43,7 +40,7 @@ class Home extends StatelessWidget {
                   textColor: Colors.white,
                   onPressed: () async {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Creator()));
+                        MaterialPageRoute(builder: (context) => QuizCreator()));
                   },
                 ),
                 /* FlatButton(

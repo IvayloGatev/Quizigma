@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quizigma/views/quiz/Participate/Join.dart';
 import 'package:quizigma/views/quiz/Participate/QuizID.dart';
 import 'package:quizigma/views/quiz/layoutMain.dart';
 

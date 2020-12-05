@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quizigma/models/quizigma_user.dart';
 import 'package:quizigma/views/home/home.dart';
-import 'package:quizigma/views/home/welcome.dart';
+import 'package:quizigma/views/home/welcome/welcome.dart';
 
 class Wrapper extends StatelessWidget {
   @override

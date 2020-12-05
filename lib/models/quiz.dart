@@ -13,8 +13,7 @@ class Quiz {
 
   // Constructors for the class Quiz.
   Quiz(String category, String name, List<Question> questions,
-      DateTime startDate, DateTime endDate,
-      [String id]) {
+      [DateTime startDate, DateTime endDate, String id]) {
     if (questions.length < minQuestions) {
       throw new Exception();
     }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/views/quiz/Participate/Join.dart';
-import 'package:quizigma/views/quiz/Participate/Categories.dart';
 
 class QuizID extends StatelessWidget {
   @override

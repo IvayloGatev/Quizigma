@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 //import './quiz_controller';
 
 class Join extends StatelessWidget {
-   //final _controller = QuizController();
-=======
-import 'package:quizigma/controllers/quiz_controller.dart';
-
-class Join extends StatelessWidget {
-  final QuizController _controller = QuizController();
-
->>>>>>> 342f1c4e4a84bbc76ca8aa5bc751bad652bde448
+  //final _controller = QuizController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +17,7 @@ class Join extends StatelessWidget {
     );
   }
 }
+
 /// This is the stateful widget that the main application instantiates.
 class MyStatefulWidget extends StatefulWidget {
   MyStatefulWidget({Key key}) : super(key: key);
@@ -62,4 +55,5 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         );
       }).toList(),
     );
-  }}
+  }
+}

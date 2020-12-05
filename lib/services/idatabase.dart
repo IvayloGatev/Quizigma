@@ -1,4 +1,3 @@
-import 'package:quizigma/models/category.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/models/quizigma_user.dart';
 
