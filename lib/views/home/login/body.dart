@@ -7,6 +7,8 @@ import 'package:quizigma/shared/components/rounded_button.dart';
 import 'package:quizigma/shared/components/rounded_input_field.dart';
 import 'package:quizigma/shared/components/rounded_password_field.dart';
 import 'package:quizigma/views/home/login/background.dart';
+import 'email_field_validator.dart';
+import 'password_field_validator.dart';
 
 class Body extends StatefulWidget {
   final Function setStatus;
@@ -61,24 +63,14 @@ class _BodyState extends State<Body> {
             RoundedInputField(
               hintText: AppLocalizations.of(context).translate('email_hint'),
               // added validator
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'E-mail required';
-                }
-                return null;
-              },
+              validator: EmailFieldValidator.validate,
               onChanged: (value) {
                 email = value;
               },
             ),
             RoundedPasswordField(
               // added validator
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Password required';
-                }
-                return null;
-              },
+              validator: PasswordFieldValidator.validate,
               onChanged: (value) {
                 password = value;
               },

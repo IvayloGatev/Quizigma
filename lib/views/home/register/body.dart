@@ -9,6 +9,8 @@ import 'package:quizigma/shared/components/rounded_password_field.dart';
 import 'package:quizigma/views/home/register/background.dart';
 import 'package:quizigma/views/home/register/or_divider.dart';
 import 'package:quizigma/views/home/register/social_icon.dart';
+import 'package:quizigma/views/home/login/email_field_validator.dart';
+import 'password_field_validator.dart';
 
 class Body extends StatefulWidget {
   final Function setStatus;
@@ -61,35 +63,14 @@ class _BodyState extends State<Body> {
               RoundedInputField(
                 hintText: AppLocalizations.of(context).translate('email_hint'),
                 // added validator
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'E-mail is required';
-                  }
-                  if (!RegExp(
-                          r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-                      .hasMatch(value)) {
-                    return 'Please enter a valid email Address';
-                  }
-                  return null;
-                },
+                validator: EmailFieldValidator.validate,
                 onChanged: (value) {
                   email = value;
                 },
               ),
               RoundedPasswordField(
                 // added validator
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Password is required';
-                  }
-                  if (value.length < 6) {
-                    return 'Password must be at least 6 characters';
-                  }
-                  if (value.length > 25) {
-                    return 'Password must be less than 25 characters';
-                  }
-                  return null;
-                },
+                validator: PasswordFieldValidator.validate,
                 onChanged: (value) {
                   password = value;
                 },
