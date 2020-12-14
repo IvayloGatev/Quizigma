@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'quiz_tile.dart';
+import 'package:quizigma/services/firestore_database.dart';
 
 class QuizList extends StatefulWidget {
   @override
@@ -21,7 +22,9 @@ class _QuizListState extends State<QuizList> {
       future: _quizController.getQuizesFromCategory(category),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return QuizTile(quiz: quiz);
+          return Text(
+              _quizController.getQuizesFromCategory('Literature').toString());
+          //QuizTile(quiz: quiz);
         } else {
           return Center(
             child: CircularProgressIndicator(),
@@ -31,7 +34,8 @@ class _QuizListState extends State<QuizList> {
     );
   }
 
-  /*
+  /* andrei
+
   Widget build(BuildContext context) {
     //print(quizes.docs);
     var quizes = _quizController.quizes;
@@ -45,4 +49,5 @@ class _QuizListState extends State<QuizList> {
             },
           );
   }*/
+
 }
