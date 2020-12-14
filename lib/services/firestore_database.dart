@@ -103,25 +103,40 @@ class FirestoreDatabase implements IDatabase {
     return user;
   }
 
+
   @override
   Future<List<String>> getQuizesFromCategory(String category) async {
     final CollectionReference quizesCollection = firestore.collection('Quizes');
     final List<String> quizesIdFromCategory = List<String>();
 
-    /* await quizesCollection.doc(category).get().then((snapshot) async {
-      String quizId = snapshot.data()['id'];
-      quizesIdFromCategory.add(quizId);
-    });*/
     await quizesCollection.get().then((snapshot) {
       snapshot.docs.forEach((doc) {
         if (doc.data()['category'] == category) {
-          print(doc.id);
           quizesIdFromCategory.add(doc.id);
-          print(doc.data()['name']);
+          print(quizesIdFromCategory);
         }
       });
     });
 
     return quizesIdFromCategory;
   }
+
+  /*svd
+
+  final CollectionReference quizesTryCollection =
+      FirebaseFirestore.instance.collection('Quizes');
+
+  Stream<QuerySnapshot> get quizler {
+    return quizesTryCollection.snapshots();
+  }
+  List<Quiz> _quizListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      return Quiz(
+        category: doc.data()['category'] ?? '',
+        name: doc.data()['name'] ?? '',
+        questions: doc.data()['questions'] ?? ''
+      );
+    }).toList();
+  }*/
+
 }
