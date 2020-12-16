@@ -104,39 +104,41 @@ class FirestoreDatabase implements IDatabase {
   }
 
 
-  @override
-  Future<List<String>> getQuizesFromCategory(String category) async {
+   @override
+  Future<List<Quiz>> getQuizesFromCategory(String category) async {
     final CollectionReference quizesCollection = firestore.collection('Quizes');
-    final List<String> quizesIdFromCategory = List<String>();
+    final List<Quiz> quizesIdFromCategory = List<Quiz>();
+    int a = 0;
 
     await quizesCollection.get().then((snapshot) {
-      snapshot.docs.forEach((doc) {
+      snapshot.docs.forEach((doc) async {
         if (doc.data()['category'] == category) {
-          quizesIdFromCategory.add(doc.id);
-          print(quizesIdFromCategory);
+          Quiz quiz = await getQuiz(doc.id);
+          quizesIdFromCategory.add(quiz);
+          //print(quizesIdFromCategory[a].name);
+          a++;
         }
       });
     });
-
     return quizesIdFromCategory;
   }
 
-  /*svd
-
   final CollectionReference quizesTryCollection =
       FirebaseFirestore.instance.collection('Quizes');
+  // get brews stream
 
-  Stream<QuerySnapshot> get quizler {
-    return quizesTryCollection.snapshots();
-  }
+  // brew list from snapshot
   List<Quiz> _quizListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
-      return Quiz(
-        category: doc.data()['category'] ?? '',
-        name: doc.data()['name'] ?? '',
-        questions: doc.data()['questions'] ?? ''
-      );
+      //print(doc.data);
+      return Quiz.namedconstructor(
+          id: doc.id ?? 0,
+          category: doc.data()['category'] ?? '',
+          name: doc.data()['name'] ?? '');
     }).toList();
-  }*/
+  }
 
+  Stream<List<Quiz>> get quizes {
+    return quizesTryCollection.snapshots().map(_quizListFromSnapshot);
+  }
 }
