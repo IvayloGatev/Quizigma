@@ -103,8 +103,7 @@ class FirestoreDatabase implements IDatabase {
     return user;
   }
 
-
-   @override
+  @override
   Future<List<Quiz>> getQuizesFromCategory(String category) async {
     final CollectionReference quizesCollection = firestore.collection('Quizes');
     final List<Quiz> quizesIdFromCategory = List<Quiz>();
@@ -130,20 +129,9 @@ class FirestoreDatabase implements IDatabase {
   // brew list from snapshot
   List<Quiz> _quizListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
-<<<<<<< HEAD
-      Quiz quiz;
-      String category = doc.data()['category'] ?? "";
-      String name = doc.data()['name'] ?? "";
-      // quiz = Quiz(
-      //   category,
-      //   name,
-      // );
-      return quiz;
-=======
       //print(doc.data);
       return Quiz.namedconstructor(
-doc.id ?? 0, doc.data()['category'] ?? '', doc.data()['name'] ?? '');
->>>>>>> b1b58e7c2e8789a19d1d5e3a415f7bb8f2ec2a6f
+          doc.id ?? 0, doc.data()['category'] ?? '', doc.data()['name'] ?? '');
     }).toList();
   }
 

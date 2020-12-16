@@ -2,7 +2,7 @@ import 'package:quizigma/models/question.dart';
 import 'package:random_string/random_string.dart';
 
 class Quiz {
-  static final int minQuestions = 5;
+  static final int minQuestions = 1;
 
   String _id;
   String _category;
@@ -11,6 +11,11 @@ class Quiz {
   DateTime _startDate;
   DateTime _endDate;
 
+  Quiz.namedconstructor(String id, String category, String name) {
+    _id = id;
+    _category = category;
+    _name = name;
+  }
   // Constructors for the class Quiz.
   Quiz(String category, String name, List<Question> questions,
       [DateTime startDate, DateTime endDate, String id]) {

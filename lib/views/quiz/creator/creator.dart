@@ -17,8 +17,53 @@ class _QuizCreatorState extends State<QuizCreator> {
 
   List<QuestionTextEditor> editors = List<QuestionTextEditor>();
   TextEditingController nameEditingController = TextEditingController();
-  String category;
 
+  String category = 'Literature';
+  int dropdownValue = 15;
+
+  List<int> dropDownValues = [
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45
+  ];
+  List<String> categories = [
+    'Literature',
+    'History',
+    'Physics',
+    'Chemistry',
+    'Biology',
+    'General Knowledge',
+    'Polictics',
+    'Nature'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,20 +94,60 @@ class _QuizCreatorState extends State<QuizCreator> {
                 height: 20,
               ),
               Padding(
-                  padding: const EdgeInsets.only(right: 32.0),
-                  child: DropdownButton<String>(
-                    items: <String>['Politics', 'Literature', 'Science']
-                        .map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    onChanged: (String value) {
+                padding: const EdgeInsets.only(right: 32.0),
+                child: DropdownButtonFormField<String>(
+                  value: category,
+                  icon: Icon(Icons.arrow_downward),
+                  iconSize: 16,
+                  elevation: 16,
+                  decoration: InputDecoration(
+                    labelText: 'Select category',
+                    labelStyle: TextStyle(
+                      fontSize: 22,
+                    ),
+                  ),
+                  onChanged: (String value) {
+                    setState(() {
                       category = value;
-                      print(category);
-                    },
-                  )),
+                    });
+                  },
+                  items: categories.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 32.0),
+                child: DropdownButtonFormField<int>(
+                  value: dropdownValue,
+                  icon: Icon(Icons.arrow_downward),
+                  iconSize: 16,
+                  elevation: 16,
+                  decoration: InputDecoration(
+                    labelText: 'Select question timer',
+                    labelStyle: TextStyle(
+                      fontSize: 22,
+                    ),
+                  ),
+                  onChanged: (int newValue) {
+                    setState(() {
+                      dropdownValue = newValue;
+                    });
+                  },
+                  items: dropDownValues.map<DropdownMenuItem<int>>((int value) {
+                    return DropdownMenuItem<int>(
+                      value: value,
+                      child: Text(value.toString()),
+                    );
+                  }).toList(),
+                ),
+              ),
               SizedBox(
                 height: 20,
               ),
@@ -74,7 +159,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                   if (_formKey.currentState.validate()) {
                     String name = nameEditingController.text;
                     List<Question> questions = List<Question>();
-
+                    int value = dropdownValue;
                     for (var editor in editors) {
                       String questionText = editor.questionTextController.text;
                       List<String> answers = List<String>();
@@ -83,7 +168,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                         answers.add(answerTextController.text);
                       }
                       questions.add(Question(questions.length + 1, questionText,
-                          answers, editor.correctAnswer, 15));
+                          answers, editor.correctAnswer, value));
                     }
 
                     Quiz quiz = Quiz(category, name, questions);
