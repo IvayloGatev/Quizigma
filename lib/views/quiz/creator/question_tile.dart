@@ -4,9 +4,9 @@ import 'package:quizigma/models/question_text_editor.dart';
 import 'package:quizigma/views/quiz/creator/answer_list.dart';
 
 class QuestionTile extends StatefulWidget {
-  final QuestionTextEditor questionTextEditor;
+  final QuestionTextEditor editor;
 
-  QuestionTile({this.questionTextEditor});
+  QuestionTile({this.editor});
 
   @override
   _QuestionTileState createState() => _QuestionTileState();
@@ -19,7 +19,7 @@ class _QuestionTileState extends State<QuestionTile> {
       Padding(
           padding: const EdgeInsets.only(right: 32.0),
           child: TextFormField(
-            controller: widget.questionTextEditor.questionTextController,
+            controller: widget.editor.questionTextController,
             decoration: InputDecoration(hintText: 'Enter the question'),
             validator: (v) {
               if (v.trim().isEmpty) return 'Please enter the question';
@@ -27,10 +27,8 @@ class _QuestionTileState extends State<QuestionTile> {
             },
           )),
       SizedBox(
-        height: 500,
-        child: AnswerList(
-            answerEditingControllers:
-                widget.questionTextEditor.asnwerTextControllers),
+        height: 400,
+        child: AnswerList(editor: widget.editor),
       ),
     ]);
   }

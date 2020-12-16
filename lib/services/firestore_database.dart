@@ -124,10 +124,10 @@ class FirestoreDatabase implements IDatabase {
       Quiz quiz;
       String category = doc.data()['category'] ?? "";
       String name = doc.data()['name'] ?? "";
-      quiz = Quiz(
-        category,
-        name,
-      );
+      // quiz = Quiz(
+      //   category,
+      //   name,
+      // );
       return quiz;
     }).toList();
   }

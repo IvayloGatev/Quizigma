@@ -17,7 +17,7 @@ class _QuizCreatorState extends State<QuizCreator> {
 
   List<QuestionTextEditor> editors = List<QuestionTextEditor>();
   TextEditingController nameEditingController = TextEditingController();
-  TextEditingController categoryEditingController = TextEditingController();
+  String category;
 
   @override
   Widget build(BuildContext context) {
@@ -49,16 +49,20 @@ class _QuizCreatorState extends State<QuizCreator> {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 32.0),
-                child: TextFormField(
-                  controller: categoryEditingController,
-                  decoration: InputDecoration(hintText: 'Enter quiz category'),
-                  validator: (v) {
-                    if (v.trim().isEmpty) return 'Please enter something';
-                    return null;
-                  },
-                ),
-              ),
+                  padding: const EdgeInsets.only(right: 32.0),
+                  child: DropdownButton<String>(
+                    items: <String>['Politics', 'Literature', 'Science']
+                        .map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (String value) {
+                      category = value;
+                      print(category);
+                    },
+                  )),
               SizedBox(
                 height: 20,
               ),
@@ -69,18 +73,17 @@ class _QuizCreatorState extends State<QuizCreator> {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     String name = nameEditingController.text;
-                    String category = categoryEditingController.text;
                     List<Question> questions = List<Question>();
 
                     for (var editor in editors) {
                       String questionText = editor.questionTextController.text;
                       List<String> answers = List<String>();
                       for (var answerTextController
-                          in editor.asnwerTextControllers) {
+                          in editor.answerTextControllers) {
                         answers.add(answerTextController.text);
                       }
-                      questions.add(Question(
-                          questions.length + 1, questionText, answers, 0, 15));
+                      questions.add(Question(questions.length + 1, questionText,
+                          answers, editor.correctAnswer, 15));
                     }
 
                     Quiz quiz = Quiz(category, name, questions);

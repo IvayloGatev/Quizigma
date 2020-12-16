@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/question.dart';
+import 'package:quizigma/models/question_text_editor.dart';
 import 'package:quizigma/views/quiz/creator/answer_tile.dart';
 
 class AnswerList extends StatefulWidget {
-  final List<TextEditingController> answerEditingControllers;
+  final QuestionTextEditor editor;
 
-  AnswerList({this.answerEditingControllers});
+  AnswerList({this.editor});
 
   @override
   _AnswerListState createState() => _AnswerListState();
@@ -13,18 +14,15 @@ class AnswerList extends StatefulWidget {
 
 class _AnswerListState extends State<AnswerList> {
   List<AnswerTile> answerTiles;
-  List<TextEditingController> _answerEditingControllers;
 
   @override
   void initState() {
     super.initState();
 
     answerTiles = List<AnswerTile>();
-    _answerEditingControllers = widget.answerEditingControllers;
 
     for (int i = 0; i < Question.minAnswers; i++) {
-      answerTiles.add(
-          AnswerTile(answerEditingController: _answerEditingControllers[i]));
+      answerTiles.add(AnswerTile(editor: widget.editor, index: i));
     }
   }
 
@@ -42,14 +40,22 @@ class _AnswerListState extends State<AnswerList> {
               height: 20,
             ),
             Row(children: [
+              Radio(
+                  groupValue: widget.editor.correctAnswer,
+                  value: i,
+                  onChanged: (int value) {
+                    setState(() {
+                      widget.editor.correctAnswer = value;
+                    });
+                  }),
               Expanded(child: answerTiles[i]),
               answerTiles.length <= Question.minAnswers
                   ? Container()
                   : InkWell(
                       onTap: () {
                         setState(() {
+                          widget.editor.answerTextControllers.removeAt(i);
                           answerTiles.removeAt(i);
-                          _answerEditingControllers.removeAt(i);
                         });
                       },
                       child: Container(
@@ -74,9 +80,13 @@ class _AnswerListState extends State<AnswerList> {
           : InkWell(
               onTap: () {
                 setState(() {
-                  _answerEditingControllers.add(TextEditingController());
+                  int index = widget.editor.answerTextControllers.length;
+                  widget.editor.answerTextControllers
+                      .add(TextEditingController());
                   answerTiles.add(AnswerTile(
-                      answerEditingController: _answerEditingControllers.last));
+                    editor: widget.editor,
+                    index: index,
+                  ));
                 });
               },
               child: Container(

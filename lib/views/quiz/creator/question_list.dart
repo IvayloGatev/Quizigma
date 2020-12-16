@@ -26,7 +26,7 @@ class _QuestionListState extends State<QuestionList> {
 
       for (int i = 0; i < Quiz.minQuestions; i++) {
         _editors.add(QuestionTextEditor());
-        questionTiles.add(QuestionTile(questionTextEditor: _editors[i]));
+        questionTiles.add(QuestionTile(editor: _editors[i]));
       }
     });
   }
@@ -49,8 +49,8 @@ class _QuestionListState extends State<QuestionList> {
                   : InkWell(
                       onTap: () {
                         setState(() {
-                          questionTiles.removeAt(i);
                           _editors.removeAt(i);
+                          questionTiles.removeAt(i);
                         });
                       },
                       child: Container(
@@ -74,7 +74,7 @@ class _QuestionListState extends State<QuestionList> {
         onTap: () {
           setState(() {
             _editors.add(QuestionTextEditor());
-            questionTiles.add(QuestionTile(questionTextEditor: _editors.last));
+            questionTiles.add(QuestionTile(editor: _editors.last));
           });
         },
         child: Container(
