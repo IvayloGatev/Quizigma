@@ -142,9 +142,7 @@ class FirestoreDatabase implements IDatabase {
 =======
       //print(doc.data);
       return Quiz.namedconstructor(
-          id: doc.id ?? 0,
-          category: doc.data()['category'] ?? '',
-          name: doc.data()['name'] ?? '');
+doc.id ?? 0, doc.data()['category'] ?? '', doc.data()['name'] ?? '');
 >>>>>>> b1b58e7c2e8789a19d1d5e3a415f7bb8f2ec2a6f
     }).toList();
   }
