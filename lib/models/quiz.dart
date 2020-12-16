@@ -10,6 +10,12 @@ class Quiz {
   List<Question> _questions;
   DateTime _startDate;
   DateTime _endDate;
+  
+   Quiz.namedconstructor(String id, String category, String name) {
+    id = _id;
+    category = _category;
+    name = _name;
+  }
 
   // Constructors for the class Quiz.
   Quiz(String category, String name, List<Question> questions,
