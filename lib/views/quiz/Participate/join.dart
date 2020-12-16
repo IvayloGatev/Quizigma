@@ -15,7 +15,7 @@ class Join extends StatelessWidget {
         backgroundColor: Colors.purple,
         title: Text("Welcome to your Quiz"),
       ),
-      body: BrewList(),
+      body: QuizList(),
     );
   }*/
 
