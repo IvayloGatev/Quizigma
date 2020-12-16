@@ -18,5 +18,5 @@ abstract class IDatabase {
   //A method which retrieves all the quizes from the same category.
   //Future<List<String>> getQuizesFromCategory(String category);
 
-  Stream<List<Quiz>> get quizes;
+  Future<List<Quiz>> getQuizesFromCategory(String category);
 }

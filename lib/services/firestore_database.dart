@@ -103,24 +103,34 @@ class FirestoreDatabase implements IDatabase {
     return user;
   }
 
-  /*
-  @override
-  Future<List<String>> getQuizesFromCategory(String category) async {
+
+   @override
+  Future<List<Quiz>> getQuizesFromCategory(String category) async {
     final CollectionReference quizesCollection = firestore.collection('Quizes');
-    List<String> quizesIdFromCategory = List<String>();
+    final List<Quiz> quizesIdFromCategory = List<Quiz>();
+    int a = 0;
 
-    await quizesCollection.doc(category).get().then((snapshot) async {
-      String quizId = snapshot.data()['id'];
-      quizesIdFromCategory.add(quizId);
+    await quizesCollection.get().then((snapshot) {
+      snapshot.docs.forEach((doc) async {
+        if (doc.data()['category'] == category) {
+          Quiz quiz = await getQuiz(doc.id);
+          quizesIdFromCategory.add(quiz);
+          //print(quizesIdFromCategory[a].name);
+          a++;
+        }
+      });
     });
-
     return quizesIdFromCategory;
   }
-  */
 
-  // get Quizes list from Snapshot
-  List<Quiz> getQuizListFromSnapshot(QuerySnapshot snapshot) {
+  final CollectionReference quizesTryCollection =
+      FirebaseFirestore.instance.collection('Quizes');
+  // get brews stream
+
+  // brew list from snapshot
+  List<Quiz> _quizListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
+<<<<<<< HEAD
       Quiz quiz;
       String category = doc.data()['category'] ?? "";
       String name = doc.data()['name'] ?? "";
@@ -129,12 +139,17 @@ class FirestoreDatabase implements IDatabase {
       //   name,
       // );
       return quiz;
+=======
+      //print(doc.data);
+      return Quiz.namedconstructor(
+          id: doc.id ?? 0,
+          category: doc.data()['category'] ?? '',
+          name: doc.data()['name'] ?? '');
+>>>>>>> b1b58e7c2e8789a19d1d5e3a415f7bb8f2ec2a6f
     }).toList();
   }
 
-  @override
   Stream<List<Quiz>> get quizes {
-    final CollectionReference quizesCollection = firestore.collection('Quizes');
-    return quizesCollection.snapshots().map(getQuizListFromSnapshot);
+    return quizesTryCollection.snapshots().map(_quizListFromSnapshot);
   }
 }

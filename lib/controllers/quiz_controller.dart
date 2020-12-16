@@ -33,7 +33,7 @@ class QuizController extends ControllerMVC {
   }*/
 
   // A method which retrieves a stream of quizes from database.
-  Stream<List<Quiz>> get quizes {
-    return database.quizes;
+  Future<List<Quiz>> getQuizesFromCategory(String category) {
+    return database.getQuizesFromCategory(category);
   }
 }
