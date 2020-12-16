@@ -18,12 +18,23 @@ class _QuizListState extends State<QuizList> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<String>>(
+    final quizes = Provider.of<List<Quiz>>(context);
+    return quizes == null
+        ? Center(child: CircularProgressIndicator())
+        : ListView.builder(
+            itemCount: quizes.length,
+            itemBuilder: (context, index) {
+              return QuizTile(quiz: quizes[index]);
+            },
+          );
+  }
+}
+/* Widget build(BuildContext context) {
+    return FutureBuilder<List<Quiz>>(
       future: _quizController.getQuizesFromCategory(category),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Text(
-              _quizController.getQuizesFromCategory('Literature').toString());
+          return Text(_quizController.getQuizesFromCategory('g').toString());
           //QuizTile(quiz: quiz);
         } else {
           return Center(
@@ -34,7 +45,7 @@ class _QuizListState extends State<QuizList> {
     );
   }
 
-  /* andrei
+   andrei
 
   Widget build(BuildContext context) {
     //print(quizes.docs);
@@ -49,5 +60,3 @@ class _QuizListState extends State<QuizList> {
             },
           );
   }*/
-
-}
