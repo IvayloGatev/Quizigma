@@ -4,6 +4,7 @@ import 'package:quizigma/controllers/home_controller.dart';
 import 'package:quizigma/services/app_localization.dart';
 import 'package:quizigma/views/quiz/creator/creator.dart';
 import 'package:quizigma/views/quiz/Participate/Categories.dart';
+import 'package:quizigma/views/quiz/results/results.dart';
 
 class Home extends StatelessWidget {
   final _controller = HomeController();
@@ -69,6 +70,19 @@ class Home extends StatelessWidget {
                   onPressed: () async {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Categories()));
+                  },
+                ),
+                SizedBox(width: 15),
+                FlatButton(
+                  height: 70.00,
+                  minWidth: 90.00,
+                  child: Text("Testing Results Page",
+                      style: TextStyle(fontSize: 15)),
+                  color: Colors.purple,
+                  textColor: Colors.white,
+                  onPressed: () async {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Results()));
                   },
                 ),
               ]),
