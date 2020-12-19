@@ -12,9 +12,9 @@ class Quiz {
   DateTime _endDate;
 
   Quiz.namedconstructor(String id, String category, String name) {
-    id = _id;
-    category = _category;
-    name = _name;
+    _id = id;
+    _category = category;
+    _name = name;
   }
 
   // Constructors for the class Quiz.
