@@ -17,7 +17,6 @@ class Quiz {
     _name = name;
   }
 
-  // Constructors for the class Quiz.
   Quiz(String category, String name, List<Question> questions,
       [DateTime startDate, DateTime endDate, String id]) {
     if (questions.length < minQuestions) {
@@ -47,7 +46,7 @@ class Quiz {
     _questions = questions;
   }
 
-  // Getters for the properties.
+  
   String get id {
     return _id;
   }
