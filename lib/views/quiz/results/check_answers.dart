@@ -15,8 +15,6 @@ class CheckAnswersPage extends StatelessWidget {
 
   bool correct;
   Widget _buildItem(BuildContext context, int index) {
-    //Question question = questions[index];
-    //bool correct = question.correctAnswer == answers[index];
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
