@@ -5,7 +5,6 @@ import 'package:quizigma/services/app_localization.dart';
 import 'package:quizigma/views/quiz/creator/creator.dart';
 import 'package:quizigma/views/quiz/participate/categories_screen.dart';
 import 'package:quizigma/views/quiz/results/results.dart';
-import 'package:quizigma/views/legacy_files_to_be_deleted/categories.dart';
 
 class Home extends StatelessWidget {
   final _controller = HomeController();
