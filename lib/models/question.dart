@@ -14,7 +14,6 @@ class Question {
     _answers = answers;
   }
 
-  // Constructor for the class Question.
   Question(int id, String text, List<String> answers, int correctAnswer,
       int timeInSeconds) {
     if (answers.length < minAnswers && answers.length > maxAnswers) {
@@ -31,7 +30,6 @@ class Question {
     _timeInSeconds = timeInSeconds;
   }
 
-  // Getters for the properties.
   int get id {
     return _id;
   }
