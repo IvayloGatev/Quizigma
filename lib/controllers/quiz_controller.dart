@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/services/firestore_database.dart';
