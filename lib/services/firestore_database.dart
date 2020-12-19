@@ -124,9 +124,7 @@ class FirestoreDatabase implements IDatabase {
 
   final CollectionReference quizesTryCollection =
       FirebaseFirestore.instance.collection('Quizes');
-  // get brews stream
 
-  // brew list from snapshot
   List<Quiz> _quizListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       //print(doc.data);
@@ -137,5 +135,21 @@ class FirestoreDatabase implements IDatabase {
 
   Stream<List<Quiz>> get quizes {
     return quizesTryCollection.snapshots().map(_quizListFromSnapshot);
+  }
+  
+   final CollectionReference questionsCollection = FirebaseFirestore.instance
+      .collection('Quizes')
+      .doc('66972145')
+      .collection('Questions');
+
+  List<Question> _questionListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      return Question.namedconstructor(doc.data()['id'], doc.data()['text'],
+          List<String>.from(doc.data()['answers']));
+    }).toList();
+  }
+
+  Stream<List<Question>> get questions {
+    return questionsCollection.snapshots().map(_questionListFromSnapshot);
   }
 }
