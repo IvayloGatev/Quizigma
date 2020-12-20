@@ -36,21 +36,21 @@ Widget build(BuildContext context) {
 			resultPhrase, 
 			style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold), 
 			textAlign: TextAlign.center, 
-		), //Text 
+		), 
 		Text( 
 			'Score ' '$resultScore', 
 			style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold), 
 			textAlign: TextAlign.center, 
-		), //Text 
+		), 
 		FlatButton( 
 			child: Text( 
 			'Restart Quiz!', 
-			), //Text 
+			),  
 			textColor: Colors.blue,
 			onPressed: resetHandler, 
-		), //FlatButton 
-		], //<Widget>[] 
-	), //Column 
-	); //Center 
+		), 
+		], 
+	), 
+	); 
 } 
 } 
