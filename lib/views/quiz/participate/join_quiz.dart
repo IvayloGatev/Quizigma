@@ -6,6 +6,9 @@ import 'package:quizigma/views/quiz/participate/quiz_list.dart';
 import 'package:quizigma/views/quiz/participate/join_questions.dart';
 
 class JoinQuiz extends StatelessWidget {
+  final String title; //
+
+  const JoinQuiz({this.title}); //
   @override
   Widget build(BuildContext context) {
     return FlatButton(
@@ -19,7 +22,7 @@ class JoinQuiz extends StatelessWidget {
             backgroundColor: Colors.purple[200],
             elevation: 0.0,
           ),
-          body: QuizList(),
+          body: QuizList(title: title),
         ),
       ),
       onPressed: () async {

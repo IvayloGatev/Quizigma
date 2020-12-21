@@ -4,7 +4,7 @@ import './category.dart';
 const DUMMY_CATEGORIES = const [
   Category(
     id: 'c1',
-    title: 'Science',
+    title: 'Literature',
     color: Colors.purple,
   ),
   Category(
@@ -14,17 +14,17 @@ const DUMMY_CATEGORIES = const [
   ),
   Category(
     id: 'c3',
-    title: 'Geography',
+    title: 'Politics',
     color: Colors.orange,
   ),
   Category(
     id: 'c4',
-    title: 'General Knwledge',
+    title: 'General Knowledge',
     color: Colors.amber,
   ),
   Category(
     id: 'c5',
-    title: 'Math',
+    title: 'Physics',
     color: Colors.blue,
   ),
   Category(
@@ -39,7 +39,7 @@ const DUMMY_CATEGORIES = const [
   ),
   Category(
     id: 'c8',
-    title: 'Food',
+    title: 'Nature',
     color: Colors.lightGreen,
   ),
   Category(

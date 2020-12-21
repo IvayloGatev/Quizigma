@@ -17,8 +17,8 @@ class CategoryItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       onPressed: () async {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => JoinQuiz()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => JoinQuiz(title: title)));
       },
     );
   }

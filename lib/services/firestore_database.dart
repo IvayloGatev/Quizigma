@@ -136,7 +136,7 @@ class FirestoreDatabase implements IDatabase {
 
   final CollectionReference questionsCollection = FirebaseFirestore.instance
       .collection('Quizes')
-      .doc('66972145')
+      .doc('LEC4MJXQ')
       .collection('Questions');
 
   List<Question> _questionListFromSnapshot(QuerySnapshot snapshot) {

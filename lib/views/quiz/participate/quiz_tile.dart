@@ -3,8 +3,8 @@ import 'package:quizigma/models/quiz.dart';
 
 class QuizTile extends StatelessWidget {
   final Quiz quiz;
-
-  QuizTile({this.quiz});
+  final String title;
+  QuizTile({this.quiz, this.title});
 
   @override
   Widget build(BuildContext context) {
