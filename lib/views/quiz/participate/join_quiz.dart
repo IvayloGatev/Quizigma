@@ -6,12 +6,12 @@ import 'package:quizigma/views/quiz/participate/quiz_list.dart';
 import 'package:quizigma/views/quiz/participate/join_questions.dart';
 
 class JoinQuiz extends StatelessWidget {
-  final String title; //
+  final String title;
+  const JoinQuiz({this.title});
 
-  const JoinQuiz({this.title}); //
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return Padding(
       padding: const EdgeInsets.all(15),
       child: StreamProvider<List<Quiz>>.value(
         value: QuizController().database.quizes,
@@ -25,10 +25,6 @@ class JoinQuiz extends StatelessWidget {
           body: QuizList(title: title),
         ),
       ),
-      onPressed: () async {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => JoinQuestions()));
-      },
     );
   }
 }

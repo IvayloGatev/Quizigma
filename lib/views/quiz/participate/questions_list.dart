@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/question.dart';
-import 'package:quizigma/models/quiz.dart';
 import 'questions_tile.dart';
+import 'package:quizigma/services/firestore_database.dart';
 
 class QuestionList extends StatefulWidget {
   @override
@@ -10,7 +11,6 @@ class QuestionList extends StatefulWidget {
 }
 
 class _QuestionListState extends State<QuestionList> {
-  Quiz quiz;
   String category;
   Question question;
 
