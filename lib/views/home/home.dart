@@ -12,17 +12,20 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.purple[50],
+        //backgroundColor: Colors.purple[50],
         appBar: AppBar(
             title: Text(AppLocalizations.of(context).translate('home_title') +
                 'Quizigma'),
-            backgroundColor: Colors.purple,
+            backgroundColor: Colors.deepPurple,
             elevation: 0.0,
             actions: <Widget>[
               FlatButton.icon(
                 icon: Icon(Icons.person),
+                //color: Colors.white,
+
                 label: Text(
-                    AppLocalizations.of(context).translate('logout_label')),
+                  AppLocalizations.of(context).translate('logout_label'),
+                ),
                 onPressed: () async {
                   await _controller.signOut();
                 },
@@ -37,7 +40,7 @@ class Home extends StatelessWidget {
                   height: 70.00,
                   minWidth: 100.00,
                   child: Text("Create a Quiz", style: TextStyle(fontSize: 15)),
-                  color: Colors.purple,
+                  color: Colors.deepPurple,
                   textColor: Colors.white,
                   onPressed: () async {
                     Navigator.push(context,
@@ -50,7 +53,7 @@ class Home extends StatelessWidget {
                   minWidth: 100.00,
                   child: Text("Participate in a Quiz",
                       style: TextStyle(fontSize: 15)),
-                  color: Colors.purple,
+                  color: Colors.deepPurple,
                   textColor: Colors.white,
                   onPressed: () async {
                     Navigator.push(
@@ -65,7 +68,7 @@ class Home extends StatelessWidget {
                   minWidth: 90.00,
                   child: Text("Testing Results Page",
                       style: TextStyle(fontSize: 15)),
-                  color: Colors.purple,
+                  color: Colors.deepPurple,
                   textColor: Colors.white,
                   onPressed: () async {
                     Navigator.push(context,

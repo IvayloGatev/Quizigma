@@ -69,6 +69,7 @@ class _QuizCreatorState extends State<QuizCreator> {
     return Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
+          backgroundColor: Colors.deepPurple,
           title: Text('Create a quiz'),
           automaticallyImplyLeading: true,
           leading: IconButton(
@@ -176,7 +177,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                   }
                 },
                 child: Text('Submit'),
-                color: Colors.purple,
+                color: Colors.deepPurple,
               ),
             ])));
   }

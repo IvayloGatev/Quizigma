@@ -5,25 +5,24 @@ class Results extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextStyle titleStyle = TextStyle(
-        color: Colors.black87, fontSize: 16.0, fontWeight: FontWeight.w500);
+        color: Colors.deepPurple, fontSize: 16.0, fontWeight: FontWeight.bold);
     final TextStyle trailingStyle = TextStyle(
-        color: Theme.of(context).primaryColor,
-        fontSize: 20.0,
-        fontWeight: FontWeight.bold);
+        color: Colors.purple, fontSize: 20.0, fontWeight: FontWeight.bold);
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Quiz Result'),
         elevation: 0,
+        backgroundColor: Colors.deepPurple,
       ),
       body: Container(
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Theme.of(context).primaryColor,
-          Theme.of(context).accentColor
-        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+            gradient: LinearGradient(
+                colors: [Colors.deepPurple[50], Colors.white],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter)),
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -81,8 +80,9 @@ class Results extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    color: Theme.of(context).accentColor.withOpacity(0.8),
+                    color: Colors.deepPurple,
                     child: Text("Goto Home"),
+                    textColor: Colors.white,
                     onPressed: () => Navigator.pop(context),
                   ),
                   RaisedButton(
@@ -91,8 +91,9 @@ class Results extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    color: Theme.of(context).primaryColor,
+                    color: Colors.deepPurple,
                     child: Text("Check Answers"),
+                    textColor: Colors.white,
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (_) => CheckAnswersPage()));

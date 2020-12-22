@@ -13,7 +13,7 @@ class JoinQuestions extends StatelessWidget {
         backgroundColor: Colors.purple[50],
         appBar: AppBar(
           title: Text('Welcome to your Quiz'),
-          backgroundColor: Colors.purple[200],
+          backgroundColor: Colors.deepPurple[200],
           elevation: 0.0,
         ),
         body: QuestionList(),

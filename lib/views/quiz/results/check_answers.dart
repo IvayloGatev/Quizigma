@@ -5,6 +5,7 @@ class CheckAnswersPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Check Answers'),
+        backgroundColor: Colors.deepPurple,
         elevation: 0,
       ),
       body: Stack(
