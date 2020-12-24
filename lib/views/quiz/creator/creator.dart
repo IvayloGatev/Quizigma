@@ -3,6 +3,7 @@ import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:quizigma/models/question_text_editor.dart';
 import 'package:quizigma/models/quiz.dart';
+import 'package:quizigma/views/quiz/creator/creator_alert.dart';
 import 'package:quizigma/views/quiz/creator/question_list.dart';
 
 class QuizCreator extends StatefulWidget {
@@ -174,6 +175,7 @@ class _QuizCreatorState extends State<QuizCreator> {
 
                     Quiz quiz = Quiz(category, name, questions);
                     _controller.addQuiz(quiz);
+                    _showCreatorAlert();
                   }
                 },
                 padding: const EdgeInsets.symmetric(
@@ -185,5 +187,13 @@ class _QuizCreatorState extends State<QuizCreator> {
                 color: Colors.deepPurple,
               ),
             ])));
+  }
+
+  void _showCreatorAlert() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CreatorAlert();
+        });
   }
 }

@@ -24,6 +24,12 @@ class QuestionTextEditor {
     return _answerTextControllers;
   }
 
+  void removeAnswerTextController(int index) {
+    if (index >= 0 && index < _answerTextControllers.length) {
+      _answerTextControllers.removeAt(index);
+    }
+  }
+
   int get correctAnswer {
     return _correctAnswer;
   }
