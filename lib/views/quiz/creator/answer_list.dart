@@ -13,16 +13,21 @@ class AnswerList extends StatefulWidget {
 }
 
 class _AnswerListState extends State<AnswerList> {
-  List<AnswerTile> answerTiles;
+  List<AnswerTile> _answerTiles;
+  QuestionTextEditor _editor;
 
   @override
   void initState() {
     super.initState();
 
-    answerTiles = List<AnswerTile>();
+    _editor = widget.editor;
+    _answerTiles = List<AnswerTile>();
 
     for (int i = 0; i < Question.minAnswers; i++) {
-      answerTiles.add(AnswerTile(editor: widget.editor, index: i));
+      _answerTiles.add(AnswerTile(
+        key: ObjectKey(i),
+        answerEditingController: _editor.answerTextControllers[i],
+      ));
     }
   }
 
@@ -31,7 +36,7 @@ class _AnswerListState extends State<AnswerList> {
     return Column(children: [
       Expanded(
           child: ListView.builder(
-        itemCount: answerTiles.length,
+        itemCount: _answerTiles.length,
         shrinkWrap: true,
         physics: ScrollPhysics(),
         itemBuilder: (context, i) {
@@ -41,21 +46,24 @@ class _AnswerListState extends State<AnswerList> {
             ),
             Row(children: [
               Radio(
-                  groupValue: widget.editor.correctAnswer,
+                  groupValue: _editor.correctAnswer,
                   value: i,
                   onChanged: (int value) {
                     setState(() {
-                      widget.editor.correctAnswer = value;
+                      _editor.correctAnswer = value;
                     });
                   }),
-              Expanded(child: answerTiles[i]),
-              answerTiles.length <= Question.minAnswers
+              Expanded(child: _answerTiles[i]),
+              _answerTiles.length <= Question.minAnswers
                   ? Container()
                   : InkWell(
                       onTap: () {
                         setState(() {
-                          widget.editor.answerTextControllers.removeAt(i);
-                          answerTiles.removeAt(i);
+                          _editor.removeAnswerTextController(i);
+                          _answerTiles.removeAt(i);
+                          if (_editor.correctAnswer >= _answerTiles.length) {
+                            _editor.correctAnswer--;
+                          }
                         });
                       },
                       child: Container(
@@ -75,17 +83,16 @@ class _AnswerListState extends State<AnswerList> {
           ]);
         },
       )),
-      answerTiles.length >= Question.maxAnswers
+      _answerTiles.length >= Question.maxAnswers
           ? Container()
           : InkWell(
               onTap: () {
                 setState(() {
-                  int index = widget.editor.answerTextControllers.length;
-                  widget.editor.answerTextControllers
-                      .add(TextEditingController());
-                  answerTiles.add(AnswerTile(
-                    editor: widget.editor,
-                    index: index,
+                  _editor.answerTextControllers.add(TextEditingController());
+                  _answerTiles.add(AnswerTile(
+                    key: ObjectKey(_answerTiles.length),
+                    answerEditingController: _editor.answerTextControllers[
+                        _editor.answerTextControllers.length - 1],
                   ));
                 });
               },

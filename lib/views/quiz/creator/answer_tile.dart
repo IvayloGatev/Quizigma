@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:quizigma/models/question_text_editor.dart';
 
 class AnswerTile extends StatefulWidget {
-  final QuestionTextEditor editor;
-  final int index;
+  final TextEditingController answerEditingController;
 
-  AnswerTile({this.editor, this.index});
+  AnswerTile({Key key, this.answerEditingController}) : super(key: key);
 
   @override
   _AnswerTileState createState() => _AnswerTileState();
 }
 
 class _AnswerTileState extends State<AnswerTile> {
+  TextEditingController _answerEditingController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _answerEditingController = widget.answerEditingController;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 32.0),
       child: TextFormField(
-        controller: widget.editor.answerTextControllers[widget.index],
+        controller: _answerEditingController,
         decoration:
             InputDecoration(hintText: 'Enter an answer and select if correct'),
         validator: (v) {

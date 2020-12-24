@@ -6,7 +6,7 @@ import 'package:quizigma/views/quiz/creator/answer_list.dart';
 class QuestionTile extends StatefulWidget {
   final QuestionTextEditor editor;
 
-  QuestionTile({this.editor});
+  QuestionTile({Key key, this.editor}) : super(key: key);
 
   @override
   _QuestionTileState createState() => _QuestionTileState();
