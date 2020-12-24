@@ -18,7 +18,7 @@ class JoinQuiz extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.purple[50],
           appBar: AppBar(
-            title: Text('Welcome to your Quiz'),
+            title: Text('Quizzes Listed For This Category'),
             backgroundColor: Colors.purple[200],
             elevation: 0.0,
           ),
