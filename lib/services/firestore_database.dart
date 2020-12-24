@@ -54,7 +54,7 @@ class FirestoreDatabase implements IDatabase {
     });
   }
 
-  Future<List<Question>> _getQuestions(quizId) async {
+  Future<List<Question>> _getQuestions(String quizId) async {
     final CollectionReference questionsCollection =
         firestore.collection('Quizes').doc(quizId).collection('Questions');
     List<Question> questions = List<Question>();
@@ -102,25 +102,7 @@ class FirestoreDatabase implements IDatabase {
     return user;
   }
 
-  @override
-  Future<List<Quiz>> getQuizesFromCategory(String category) async {
-    final CollectionReference quizesCollection = firestore.collection('Quizes');
-    final List<Quiz> quizesIdFromCategory = List<Quiz>();
-    int a = 0;
-
-    await quizesCollection.get().then((snapshot) {
-      snapshot.docs.forEach((doc) async {
-        if (doc.data()['category'] == category) {
-          Quiz quiz = await getQuiz(doc.id);
-          quizesIdFromCategory.add(quiz);
-          a++;
-        }
-      });
-    });
-    return quizesIdFromCategory;
-  }
-
-  final CollectionReference quizesTryCollection =
+  final CollectionReference quizesCollection =
       FirebaseFirestore.instance.collection('Quizes');
 
   List<Quiz> _quizListFromSnapshot(QuerySnapshot snapshot) {
@@ -131,13 +113,16 @@ class FirestoreDatabase implements IDatabase {
   }
 
   Stream<List<Quiz>> get quizes {
-    return quizesTryCollection.snapshots().map(_quizListFromSnapshot);
+    return quizesCollection.snapshots().map(_quizListFromSnapshot);
   }
 
-  final CollectionReference questionsCollection = FirebaseFirestore.instance
-      .collection('Quizes')
-      .doc('LEC4MJXQ')
-      .collection('Questions');
+  CollectionReference getQuizWithId(String quizId) {
+    final CollectionReference questionsCollection = FirebaseFirestore.instance
+        .collection('Quizes')
+        .doc(quizId)
+        .collection('Questions');
+    return questionsCollection;
+  }
 
   List<Question> _questionListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
@@ -146,7 +131,7 @@ class FirestoreDatabase implements IDatabase {
     }).toList();
   }
 
-  Stream<List<Question>> get questions {
-    return questionsCollection.snapshots().map(_questionListFromSnapshot);
+  Stream<List<Question>> getquestions(String quizId) {
+    return getQuizWithId(quizId).snapshots().map(_questionListFromSnapshot);
   }
 }

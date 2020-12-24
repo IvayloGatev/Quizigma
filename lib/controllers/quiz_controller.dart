@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:quizigma/models/question.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/services/firestore_database.dart';
 
@@ -26,8 +28,21 @@ class QuizController extends ControllerMVC {
     return await database.getQuiz(quizId);
   }
 
-  // A method which retrieves a stream of quizes from database.
-  Future<List<Quiz>> getQuizesFromCategory(String category) {
-    return database.getQuizesFromCategory(category);
+  // A method which retrieves a quiz from the database.
+  CollectionReference getQuizWithId(String quizId) {
+    return database.getQuizWithId(quizId);
+  }
+
+  // A method which retrieves the questions of a quiz from the database.
+  List<Question> _questionListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      return Question.namedconstructor(doc.data()['id'], doc.data()['text'],
+          List<String>.from(doc.data()['answers']));
+    }).toList();
+  }
+
+  // A method which retrieves the questions of a quiz from the database.
+  Stream<List<Question>> getquestions(String quizId) {
+    return getQuizWithId(quizId).snapshots().map(_questionListFromSnapshot);
   }
 }

@@ -70,6 +70,7 @@ class _QuizCreatorState extends State<QuizCreator> {
     return Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
+          backgroundColor: Colors.deepPurple,
           title: Text('Create a quiz'),
           automaticallyImplyLeading: true,
           leading: IconButton(
@@ -155,7 +156,7 @@ class _QuizCreatorState extends State<QuizCreator> {
               Expanded(
                 child: QuestionList(editors: editors),
               ),
-              FlatButton(
+              RaisedButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     String name = nameEditingController.text;
@@ -177,8 +178,13 @@ class _QuizCreatorState extends State<QuizCreator> {
                     _showCreatorAlert();
                   }
                 },
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 20.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
                 child: Text('Submit'),
-                color: Colors.purple,
+                color: Colors.deepPurple,
               ),
             ])));
   }

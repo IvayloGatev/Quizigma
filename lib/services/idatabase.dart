@@ -13,7 +13,4 @@ abstract class IDatabase {
 
   //A method which retrives a user from the database.
   Future<QuizigmaUser> getUser(String uid);
-
-  //A method which retrieves all the quizes from the same category.
-  Future<List<Quiz>> getQuizesFromCategory(String category);
 }

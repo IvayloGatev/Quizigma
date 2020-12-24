@@ -9,9 +9,14 @@ class CategoriesScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
         shadowColor: Colors.black,
-        title: const Text('Quizigma Categories'),
+        title: const Text('Categories'),
       ),
       body: GridView(
+        primary: false,
+        padding: const EdgeInsets.all(20),
+        //crossAxisSpacing: 10,
+        //mainAxisSpacing: 10,
+        //crossAxisCount: 2,
         children: DUMMY_CATEGORIES
             .map(
               (catData) => CategoryItem(
