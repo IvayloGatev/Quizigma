@@ -17,7 +17,7 @@ class _QuestionTileState extends State<QuestionTile> {
   Widget build(BuildContext context) {
     return Column(children: [
       Padding(
-          padding: const EdgeInsets.only(right: 32.0),
+          padding: const EdgeInsets.only(left: 10, right: 10.0),
           child: TextFormField(
             controller: widget.editor.questionTextController,
             decoration: InputDecoration(hintText: 'Enter the question'),

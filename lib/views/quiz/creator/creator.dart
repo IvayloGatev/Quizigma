@@ -192,9 +192,10 @@ class _QuizCreatorState extends State<QuizCreator> {
                   ),
                 ),
                 SizedBox(height: 10),
-                /*Expanded(
+                SizedBox(
+                  height: 200,
                   child: QuestionList(editors: editors),
-                ),  
+                ),
                 RaisedButton(
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
@@ -229,7 +230,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                   ),
                   child: Text('Submit'),
                   color: Colors.deepPurple,
-                ), */
+                ),
               ])),
         ])));
   }
