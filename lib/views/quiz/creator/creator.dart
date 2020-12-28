@@ -310,7 +310,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                     if (_formKey.currentState.validate()) {
                       String name = nameEditingController.text;
                       List<Question> questions = List<Question>();
-                      int value = dropdownValue;
+                      int value = _counter;
                       for (var editor in editors) {
                         String questionText =
                             editor.questionTextController.text;
