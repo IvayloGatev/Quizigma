@@ -209,7 +209,6 @@ class _QuizCreatorState extends State<QuizCreator> {
                 Padding(
                   padding: EdgeInsets.only(left: 10, right: 10),
                   child: Container(
-                      height: 2000,
                       decoration: BoxDecoration(
                           border: new BorderDirectional(
                               bottom: new BorderSide(
@@ -301,45 +300,46 @@ class _QuizCreatorState extends State<QuizCreator> {
                         ],
                       )),
                 ),
+                SizedBox(height: 10),
+                SizedBox(
+                  height: 200,
+                  child: QuestionList(editors: editors),
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    if (_formKey.currentState.validate()) {
+                      String name = nameEditingController.text;
+                      List<Question> questions = List<Question>();
+                      int value = dropdownValue;
+                      for (var editor in editors) {
+                        String questionText =
+                            editor.questionTextController.text;
+                        List<String> answers = List<String>();
+                        for (var answerTextController
+                            in editor.answerTextControllers) {
+                          answers.add(answerTextController.text);
+                        }
+                        questions.add(Question(
+                            questions.length + 1,
+                            questionText,
+                            answers,
+                            editor.correctAnswer,
+                            value));
+                      }
 
-                // Expanded(
-                //   child: QuestionList(editors: editors),
-                // ),
-                // RaisedButton(
-                //   onPressed: () {
-                //     if (_formKey.currentState.validate()) {
-                //       String name = nameEditingController.text;
-                //       List<Question> questions = List<Question>();
-                //       int value = dropdownValue;
-                //       for (var editor in editors) {
-                //         String questionText =
-                //             editor.questionTextController.text;
-                //         List<String> answers = List<String>();
-                //         for (var answerTextController
-                //             in editor.answerTextControllers) {
-                //           answers.add(answerTextController.text);
-                //         }
-                //         questions.add(Question(
-                //             questions.length + 1,
-                //             questionText,
-                //             answers,
-                //             editor.correctAnswer,
-                //             value));
-                //       }
-
-                //       Quiz quiz = Quiz(category, name, questions);
-                //       _controller.addQuiz(quiz);
-                //       _showCreatorAlert();
-                //     }
-                //   },
-                //   padding: const EdgeInsets.symmetric(
-                //       horizontal: 16.0, vertical: 20.0),
-                //   shape: RoundedRectangleBorder(
-                //     borderRadius: BorderRadius.circular(10.0),
-                //   ),
-                //   child: Text('Submit'),
-                //   color: Colors.deepPurple,
-                // ),
+                      Quiz quiz = Quiz(category, name, questions);
+                      _controller.addQuiz(quiz);
+                      _showCreatorAlert();
+                    }
+                  },
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 20.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Text('Submit'),
+                  color: Colors.deepPurple,
+                ),
               ])),
         ])));
   }
