@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:quizigma/models/question_text_editor.dart';
 import 'package:quizigma/models/quiz.dart';
+import 'package:quizigma/views/home/login/background.dart';
 import 'package:quizigma/views/quiz/creator/creator_alert.dart';
 import 'package:quizigma/views/quiz/creator/question_list.dart';
 
@@ -26,7 +28,7 @@ class _QuizCreatorState extends State<QuizCreator> {
   ];
 
   String category = 'Literature';
-  int dropdownValue = 15;
+  int dropdownValue = 30;
   List<int> dropDownValues = [
     15,
     16,
@@ -60,13 +62,25 @@ class _QuizCreatorState extends State<QuizCreator> {
     44,
     45
   ];
-
+  int _counter = 30;
   List<QuestionTextEditor> editors = List<QuestionTextEditor>();
   TextEditingController nameEditingController = TextEditingController();
   List<int> top = [];
 
   final _controller = QuizController();
   final _formKey = GlobalKey<FormState>();
+
+  void _increaseCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  void _decreaseCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
 
   void _showCreatorAlert() {
     showDialog(
@@ -91,10 +105,10 @@ class _QuizCreatorState extends State<QuizCreator> {
           ),
         ),
         body: SingleChildScrollView(
-            child: Column(children: [
+            child: Column(children: <Widget>[
           Form(
               key: _formKey,
-              child: Column(children: [
+              child: Column(children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   child: TextFormField(
@@ -136,7 +150,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                   ),
                 ),
                 SizedBox(height: 10),
-                Padding(
+                /*  Padding(
                   padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   child: DropdownButtonFormField<int>(
                     value: dropdownValue,
@@ -190,46 +204,142 @@ class _QuizCreatorState extends State<QuizCreator> {
                       );
                     }).toList(),
                   ),
-                ),
-                SizedBox(height: 10),
-                /*Expanded(
-                  child: QuestionList(editors: editors),
-                ),  
-                RaisedButton(
-                  onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      String name = nameEditingController.text;
-                      List<Question> questions = List<Question>();
-                      int value = dropdownValue;
-                      for (var editor in editors) {
-                        String questionText =
-                            editor.questionTextController.text;
-                        List<String> answers = List<String>();
-                        for (var answerTextController
-                            in editor.answerTextControllers) {
-                          answers.add(answerTextController.text);
-                        }
-                        questions.add(Question(
-                            questions.length + 1,
-                            questionText,
-                            answers,
-                            editor.correctAnswer,
-                            value));
-                      }
+                ),*/
 
-                      Quiz quiz = Quiz(category, name, questions);
-                      _controller.addQuiz(quiz);
-                      _showCreatorAlert();
-                    }
-                  },
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 20.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Text('Submit'),
-                  color: Colors.deepPurple,
-                ), */
+                Padding(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  child: Container(
+                      height: 2000,
+                      decoration: BoxDecoration(
+                          border: new BorderDirectional(
+                              bottom: new BorderSide(
+                        color: Colors.black.withOpacity(0.6),
+                      ))),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Select question timer',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black.withOpacity(0.6),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 160,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (_counter < 61) {
+                                      _increaseCounter();
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  width: 30,
+                                  height: 30,
+                                  decoration: BoxDecoration(
+                                    color: Colors.purple,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (_counter > 14) {
+                                      _decreaseCounter();
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  width: 30,
+                                  height: 30,
+                                  decoration: BoxDecoration(
+                                    color: Colors.purple,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Icon(
+                                    Icons.remove,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              (_counter >= 15 && _counter <= 60)
+                                  ? Text('$_counter',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                      ))
+                                  : Text(
+                                      'Timer must be between 15 and 60',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.red.withOpacity(0.9),
+                                        fontStyle: FontStyle.italic,
+                                      ),
+                                    ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                        ],
+                      )),
+                ),
+
+                // Expanded(
+                //   child: QuestionList(editors: editors),
+                // ),
+                // RaisedButton(
+                //   onPressed: () {
+                //     if (_formKey.currentState.validate()) {
+                //       String name = nameEditingController.text;
+                //       List<Question> questions = List<Question>();
+                //       int value = dropdownValue;
+                //       for (var editor in editors) {
+                //         String questionText =
+                //             editor.questionTextController.text;
+                //         List<String> answers = List<String>();
+                //         for (var answerTextController
+                //             in editor.answerTextControllers) {
+                //           answers.add(answerTextController.text);
+                //         }
+                //         questions.add(Question(
+                //             questions.length + 1,
+                //             questionText,
+                //             answers,
+                //             editor.correctAnswer,
+                //             value));
+                //       }
+
+                //       Quiz quiz = Quiz(category, name, questions);
+                //       _controller.addQuiz(quiz);
+                //       _showCreatorAlert();
+                //     }
+                //   },
+                //   padding: const EdgeInsets.symmetric(
+                //       horizontal: 16.0, vertical: 20.0),
+                //   shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.circular(10.0),
+                //   ),
+                //   child: Text('Submit'),
+                //   color: Colors.deepPurple,
+                // ),
               ])),
         ])));
   }
