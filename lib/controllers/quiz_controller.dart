@@ -36,11 +36,23 @@ class QuizController extends ControllerMVC {
   // A method which retrieves the questions of a quiz from the database.
   List<Question> _questionListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
-      return Question.namedconstructor(doc.data()['id'], doc.data()['text'],
-          List<String>.from(doc.data()['answers']));
+      return Question.namedconstructor(
+          doc.data()['id'],
+          doc.data()['text'],
+          List<String>.from(doc.data()['answers']),
+          doc.data()['correctAnswer'],
+          doc.data()['timeInSeconds']);
     }).toList();
   }
 
+//  // A method which retrieves the questions of a quiz from the database.
+//   List<Question> _questionListFromSnapshot(QuerySnapshot snapshot) {
+//     return snapshot.docs.map((doc) {
+//       return Question.namedconstructor(doc.data()['id'],
+//       doc.data()['text'],
+//           List<String>.from(doc.data()['answers']));
+//     }).toList();
+//   }
   // A method which retrieves the questions of a quiz from the database.
   Stream<List<Question>> getquestions(String quizId) {
     return getQuizWithId(quizId).snapshots().map(_questionListFromSnapshot);

@@ -337,7 +337,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  child: Text('Submit'),
+                  child: Text('Create Quiz'),
                   color: Colors.deepPurple,
                 ),
               ])),

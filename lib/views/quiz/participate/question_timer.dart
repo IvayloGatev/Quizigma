@@ -4,6 +4,9 @@ import 'categories_screen.dart';
 import 'dart:async';
 
 class QuestionTimer extends StatefulWidget {
+  final Question question;
+  QuestionTimer({this.question});
+
   @override
   _QuestionTimerState createState() => _QuestionTimerState();
 }
@@ -11,10 +14,9 @@ class QuestionTimer extends StatefulWidget {
 const TWO_PI = 3.14 * 2;
 
 class _QuestionTimerState extends State<QuestionTimer> {
-  @override
-  Question question = new Question(1321, 'name', ['1', '2'], 1, 5);
-  int _counter;
+  //Question question = new Question(1321, 'name', ['1', '2'], 1, 5);
 
+  int _counter;
   Timer _timer;
 
   /*Widget build(BuildContext context) {
@@ -54,76 +56,68 @@ class _QuestionTimerState extends State<QuestionTimer> {
     );
   }*/
 
+  @override
   Widget build(BuildContext context) {
     final size = 75.0;
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Example Timer'),
-          backgroundColor: Colors.pink,
-        ),
-        body: Container(
-          alignment: Alignment.topRight,
-          padding: EdgeInsets.all(16),
-          child: TweenAnimationBuilder(
-            tween: Tween(begin: 0.0, end: 1.0),
-            duration: Duration(seconds: _counter),
-            builder: (context, value, child) {
-              return Container(
-                width: size,
-                height: size,
-                child: Stack(
-                  children: [
-                    ShaderMask(
-                      shaderCallback: (rect) {
-                        return SweepGradient(
-                            startAngle: 0.0,
-                            endAngle: TWO_PI,
-                            stops: [value, value],
-                            // 0.0 , 0.5 , 0.5 , 1.0
-                            center: Alignment.center,
-                            colors: [
-                              Colors.purple[600],
-                              Colors.grey.withAlpha(55)
-                            ]).createShader(rect);
-                      },
-                      child: Container(
-                        width: size,
-                        height: size,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            // color: Colors.yellow,
-                            image: DecorationImage(
-                                image: Image.asset(
-                                        "assets/images/radial_scale.png")
-                                    .image)),
-                      ),
-                    ),
-                    Center(
-                      child: Container(
-                        width: size - 15,
-                        height: size - 15,
-                        decoration: BoxDecoration(
-                            color: Colors.white, shape: BoxShape.circle),
-                        child: Center(
-                            child: Text(
-                          "$_counter",
-                          style: TextStyle(fontSize: 28),
-                        )),
-                      ),
-                    )
-                  ],
+    return Container(
+      alignment: Alignment.topRight,
+      padding: EdgeInsets.all(16),
+      child: TweenAnimationBuilder(
+        tween: Tween(begin: 0.0, end: 1.0),
+        duration: Duration(seconds: widget.question.timeInSeconds),
+        builder: (context, value, child) {
+          return Container(
+            width: size,
+            height: size,
+            child: Stack(
+              children: [
+                ShaderMask(
+                  shaderCallback: (rect) {
+                    return SweepGradient(
+                        startAngle: 0.0,
+                        endAngle: TWO_PI,
+                        stops: [value, value],
+                        // 0.0 , 0.5 , 0.5 , 1.0
+                        center: Alignment.center,
+                        colors: [
+                          Colors.purple[600],
+                          Colors.grey.withAlpha(55)
+                        ]).createShader(rect);
+                  },
+                  child: Container(
+                    width: size,
+                    height: size,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        // color: Colors.yellow,
+                        image: DecorationImage(
+                            image: Image.asset("assets/images/radial_scale.png")
+                                .image)),
+                  ),
                 ),
-              );
-            },
-          ),
-        ), //add here
+                Center(
+                  child: Container(
+                    width: size - 15,
+                    height: size - 15,
+                    decoration: BoxDecoration(
+                        color: Colors.white, shape: BoxShape.circle),
+                    child: Center(
+                        child: Text(
+                      "$_counter",
+                      style: TextStyle(fontSize: 28),
+                    )),
+                  ),
+                )
+              ],
+            ),
+          );
+        },
       ),
     );
   }
 
-  void _startTimer() {
-    _counter = question.timeInSeconds;
+  void _startTimer(int timeInSeconds) {
+    _counter = timeInSeconds;
 
     if (_timer != null) {
       _timer.cancel();
@@ -134,10 +128,10 @@ class _QuestionTimerState extends State<QuestionTimer> {
           _counter--;
         } else {
           _timer.cancel();
-          _timer = new Timer(const Duration(seconds: 2), () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => CategoriesScreen()));
-          });
+          // _timer = new Timer(const Duration(seconds: 2), () {
+          //   Navigator.push(context,
+          //       MaterialPageRoute(builder: (context) => CategoriesScreen()));
+          // });
         }
       });
     });
@@ -145,6 +139,7 @@ class _QuestionTimerState extends State<QuestionTimer> {
 
   void initState() {
     super.initState();
-    _startTimer();
+    print(widget.question.timeInSeconds);
+    _startTimer(widget.question.timeInSeconds);
   }
 }

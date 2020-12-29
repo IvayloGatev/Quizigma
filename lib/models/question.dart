@@ -7,11 +7,19 @@ class Question {
   List<String> _answers;
   int _correctAnswer;
   int _timeInSeconds;
-  
-  Question.namedconstructor(int id, String text, List<String> answers) {
+
+  // Question.namedconstructor(int id, String text, List<String> answers) {
+  //   _id = id;
+  //   _text = text;
+  //   _answers = answers;
+  // }
+  Question.namedconstructor(int id, String text, List<String> answers,
+      int correctAnswer, int timeInseconds) {
     _id = id;
     _text = text;
     _answers = answers;
+    _correctAnswer = correctAnswer;
+    _timeInSeconds = timeInseconds;
   }
 
   Question(int id, String text, List<String> answers, int correctAnswer,
