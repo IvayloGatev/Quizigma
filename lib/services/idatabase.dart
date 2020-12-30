@@ -13,4 +13,7 @@ abstract class IDatabase {
 
   //A method which retrives a user from the database.
   Future<QuizigmaUser> getUser(String uid);
+
+  //A method which check if a quiz ID exists in the Database.
+  Future<bool> checkIfDocExists(String docId);
 }

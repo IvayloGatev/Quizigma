@@ -5,7 +5,11 @@ import 'package:quizigma/models/quizigma_user.dart';
 import 'package:quizigma/services/idatabase.dart';
 
 class FirestoreDatabase implements IDatabase {
+
   final firestore = FirebaseFirestore.instance;
+
+  final CollectionReference quizesCollection =
+  FirebaseFirestore.instance.collection('Quizes');
 
   @override
   Future<void> addQuiz(Quiz quiz) async {
@@ -102,8 +106,6 @@ class FirestoreDatabase implements IDatabase {
     return user;
   }
 
-  final CollectionReference quizesCollection =
-      FirebaseFirestore.instance.collection('Quizes');
 
   List<Quiz> _quizListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
@@ -135,13 +137,23 @@ class FirestoreDatabase implements IDatabase {
     }).toList();
   }
 
-// List<Question> _questionListFromSnapshot(QuerySnapshot snapshot) {
-//     return snapshot.docs.map((doc) {
-//       return Question.namedconstructor(doc.data()['id'], doc.data()['text'],
-//           List<String>.from(doc.data()['answers']));
-//     }).toList();
-//   }
   Stream<List<Question>> getquestions(String quizId) {
     return getQuizWithId(quizId).snapshots().map(_questionListFromSnapshot);
+  }
+
+  @override
+  Future<bool> checkIfDocExists(String docId) async {
+    try {
+
+      var doc = await quizesCollection.doc(docId).get();
+      if (doc.exists) {
+        return Future.value(true);
+      } else {
+        return Future.value(false);
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
   }
 }
