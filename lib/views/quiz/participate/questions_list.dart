@@ -15,6 +15,13 @@ class _QuestionListState extends State<QuestionList> {
   String category;
   Question question;
   int selectedRadio = -1;
+  int case2Value1 = 0;
+  int case2Value2 = 1;
+
+  int case3Value1 = 0;
+  int case3Value2 = 1;
+  int case3Value3 = 2;
+
   int questionCounter;
 
   setSelectedRadio(int val) {
@@ -80,6 +87,7 @@ class _QuestionListState extends State<QuestionList> {
     print('selected $selectedRadio');
     if (selectedRadio == x) {
       print("correct");
+
       return true;
     }
     print("false");
@@ -101,7 +109,7 @@ class _QuestionListState extends State<QuestionList> {
                   title: Text(
                     question.answers[0],
                   ),
-                  value: 0,
+                  value: case2Value1,
                   groupValue: selectedRadio,
                   activeColor: Colors.blue,
                   onChanged: (val) {
@@ -115,7 +123,7 @@ class _QuestionListState extends State<QuestionList> {
                   title: Text(
                     question.answers[1],
                   ),
-                  value: 1,
+                  value: case2Value2,
                   groupValue: selectedRadio,
                   activeColor: Colors.blue,
                   onChanged: (val) {
@@ -137,7 +145,7 @@ class _QuestionListState extends State<QuestionList> {
                   title: Text(
                     question.answers[0],
                   ),
-                  value: 0,
+                  value: case3Value1,
                   groupValue: selectedRadio,
                   activeColor: Colors.blue,
                   onChanged: (val) {
@@ -151,7 +159,7 @@ class _QuestionListState extends State<QuestionList> {
                   title: Text(
                     question.answers[1],
                   ),
-                  value: 1,
+                  value: case3Value2,
                   groupValue: selectedRadio,
                   activeColor: Colors.blue,
                   onChanged: (val) {
@@ -165,7 +173,7 @@ class _QuestionListState extends State<QuestionList> {
                   title: Text(
                     question.answers[2],
                   ),
-                  value: 2,
+                  value: case3Value3,
                   groupValue: selectedRadio,
                   activeColor: Colors.blue,
                   onChanged: (val) {
