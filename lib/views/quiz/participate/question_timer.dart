@@ -4,8 +4,9 @@ import 'categories_screen.dart';
 import 'dart:async';
 
 class QuestionTimer extends StatefulWidget {
-  final Question question;
-  QuestionTimer({this.question});
+  final int quizTime;
+
+  QuestionTimer({this.quizTime});
 
   @override
   _QuestionTimerState createState() => _QuestionTimerState();
@@ -58,13 +59,14 @@ class _QuestionTimerState extends State<QuestionTimer> {
 
   @override
   Widget build(BuildContext context) {
+    int seconds = widget.quizTime;
     final size = 75.0;
     return Container(
       alignment: Alignment.topRight,
       padding: EdgeInsets.all(16),
       child: TweenAnimationBuilder(
         tween: Tween(begin: 0.0, end: 1.0),
-        duration: Duration(seconds: widget.question.timeInSeconds),
+        duration: Duration(seconds: (seconds)),
         builder: (context, value, child) {
           return Container(
             width: size,
@@ -128,10 +130,10 @@ class _QuestionTimerState extends State<QuestionTimer> {
           _counter--;
         } else {
           _timer.cancel();
-          // _timer = new Timer(const Duration(seconds: 2), () {
-          //   Navigator.push(context,
-          //       MaterialPageRoute(builder: (context) => CategoriesScreen()));
-          // });
+          _timer = new Timer(const Duration(seconds: 2), () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CategoriesScreen()));
+          });
         }
       });
     });
@@ -139,7 +141,9 @@ class _QuestionTimerState extends State<QuestionTimer> {
 
   void initState() {
     super.initState();
-    print(widget.question.timeInSeconds);
-    _startTimer(widget.question.timeInSeconds);
+
+    int seconds = widget.quizTime;
+    print(seconds);
+    _startTimer(seconds);
   }
 }

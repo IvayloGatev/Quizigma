@@ -40,8 +40,7 @@ class QuizController extends ControllerMVC {
           doc.data()['id'],
           doc.data()['text'],
           List<String>.from(doc.data()['answers']),
-          doc.data()['correctAnswer'],
-          doc.data()['timeInSeconds']);
+          doc.data()['correctAnswer']);
     }).toList();
   }
 
@@ -51,9 +50,7 @@ class QuizController extends ControllerMVC {
   }
 
   //A method which check if a quiz ID exists in the Database.
-  Future<bool> checkIfDocExists(String docId){
+  Future<bool> checkIfDocExists(String docId) {
     return database.checkIfDocExists(docId);
   }
-
 }
-

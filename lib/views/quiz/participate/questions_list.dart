@@ -5,9 +5,13 @@ import 'package:quizigma/models/question.dart';
 import 'package:quizigma/views/quiz/participate/question_timer.dart';
 import 'questions_tile.dart';
 import 'package:quizigma/services/firestore_database.dart';
+import 'package:quizigma/models/quiz.dart';
 
 class QuestionList extends StatefulWidget {
   @override
+  final Quiz quiz;
+  QuestionList({this.quiz});
+
   _QuestionListState createState() => _QuestionListState();
 }
 
@@ -51,6 +55,7 @@ class _QuestionListState extends State<QuestionList> {
             itemCount: questions.length,
             itemBuilder: (context, index) {
               questionCounter = index + 1;
+
               return Container(
                   color: Colors.yellow,
                   child: Column(
@@ -63,7 +68,7 @@ class _QuestionListState extends State<QuestionList> {
                                 fontSize: 22,
                               )),
                           QuestionTimer(
-                            question: questions[index],
+                            quizTime: widget.quiz.timeInSeconds,
                           ),
                         ],
                       ),

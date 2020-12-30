@@ -5,8 +5,6 @@ class QuestionTile extends StatelessWidget {
   final Question question;
   QuestionTile({this.question});
 
-  int selectedRadio;
-
   @override
   Widget build(BuildContext context) {
     return Container(

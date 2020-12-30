@@ -6,6 +6,7 @@ class QuizTile extends StatelessWidget {
   final Quiz quiz;
   final String quizId;
   final String title;
+
   QuizTile({this.quiz, this.title, this.quizId});
 
   @override
@@ -21,7 +22,10 @@ class QuizTile extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => JoinQuestions(quizId: quiz.id)));
+                builder: (context) => JoinQuestions(
+                      quizId: quiz.id,
+                      quiz: quiz,
+                    )));
       },
     );
   }

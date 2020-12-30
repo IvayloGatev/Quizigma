@@ -5,11 +5,10 @@ import 'package:quizigma/models/quizigma_user.dart';
 import 'package:quizigma/services/idatabase.dart';
 
 class FirestoreDatabase implements IDatabase {
-
   final firestore = FirebaseFirestore.instance;
 
   final CollectionReference quizesCollection =
-  FirebaseFirestore.instance.collection('Quizes');
+      FirebaseFirestore.instance.collection('Quizes');
 
   @override
   Future<void> addQuiz(Quiz quiz) async {
@@ -18,8 +17,9 @@ class FirestoreDatabase implements IDatabase {
     await quizesCollection.doc(quiz.id).set({
       'category': quiz.category,
       'name': quiz.name,
+      'timeInSeconds': quiz.timeInSeconds,
       'startDate': quiz.startDate,
-      'endDate': quiz.endDate
+      'endDate': quiz.endDate,
     });
     quiz.questions.forEach((question) async {
       await _addQuestions(quiz);
@@ -37,7 +37,16 @@ class FirestoreDatabase implements IDatabase {
       DateTime startDate = snapshot.data()['startDate'].toDate();
       DateTime endDate = snapshot.data()['endDate'].toDate();
       List<Question> questions = await _getQuestions(quizId);
-      quiz = Quiz(category, name, questions, startDate, endDate, quizId);
+      int timeInSeconds = snapshot.data()['timeInSeconds'];
+      quiz = Quiz(
+        category,
+        name,
+        questions,
+        timeInSeconds,
+        startDate,
+        endDate,
+        quizId,
+      );
     });
 
     return quiz;
@@ -53,7 +62,6 @@ class FirestoreDatabase implements IDatabase {
         'text': question.text,
         'answers': question.answers,
         'correctAnswer': question.correctAnswer,
-        'timeInSeconds': question.timeInSeconds
       });
     });
   }
@@ -69,9 +77,8 @@ class FirestoreDatabase implements IDatabase {
         String text = question.data()['text'];
         List<String> answers = List<String>.from(question.data()['answers']);
         int correctAnswer = question.data()['correctAnswer'];
-        int timeInSeconds = question.data()['timeInSeconds'];
-        questions
-            .add(Question(id, text, answers, correctAnswer, timeInSeconds));
+
+        questions.add(Question(id, text, answers, correctAnswer));
       });
     });
 
@@ -106,11 +113,14 @@ class FirestoreDatabase implements IDatabase {
     return user;
   }
 
-
   List<Quiz> _quizListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return Quiz.namedconstructor(
-          doc.id ?? 0, doc.data()['category'] ?? '', doc.data()['name'] ?? '');
+        doc.id ?? 0,
+        doc.data()['category'] ?? '',
+        doc.data()['name'] ?? '',
+        doc.data()['timeInSeconds'] ?? 15,
+      );
     }).toList();
   }
 
@@ -129,11 +139,11 @@ class FirestoreDatabase implements IDatabase {
   List<Question> _questionListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return Question.namedconstructor(
-          doc.data()['id'],
-          doc.data()['text'],
-          List<String>.from(doc.data()['answers']),
-          doc.data()['correctAnswer'],
-          doc.data()['timeInSeconds']);
+        doc.data()['id'],
+        doc.data()['text'],
+        List<String>.from(doc.data()['answers']),
+        doc.data()['correctAnswer'],
+      );
     }).toList();
   }
 
@@ -144,7 +154,6 @@ class FirestoreDatabase implements IDatabase {
   @override
   Future<bool> checkIfDocExists(String docId) async {
     try {
-
       var doc = await quizesCollection.doc(docId).get();
       if (doc.exists) {
         return Future.value(true);

@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
+import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/participate/join_questions.dart';
 
 class QuizID extends StatelessWidget {
@@ -44,11 +46,27 @@ class _MyFormState extends State<MyForm> {
 
   assignToBool(bool val, String id) async {
     val = await _quizController.checkIfDocExists(id);
+
     setState(() {
       iDExists = val;
     });
   }
+  // assignToBool(bool val, String id) async {
+  //   val = await _quizController.checkIfDocExists(id);
+  //   Future.delayed(Duration(seconds: 2), () {
+  //     setState(() {
+  //       iDExists = val;
+  //     });
+  //   });
+  // }
 
+  Quiz getQuiz(String id) {
+    CollectionReference quiz = _quizController.getQuizWithId(id);
+
+    //quiz.get(quiz);
+
+    //return quiz;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,8 +86,6 @@ class _MyFormState extends State<MyForm> {
                             hintText: 'Enter your code here!',
                             hintStyle: TextStyle(fontSize: 20)),
                         validator: (String v) {
-                          print('i jump here');
-
                           if (v.trim().isEmpty) {
                             return ('Please enter your code!');
                           }
@@ -107,8 +123,9 @@ class _MyFormState extends State<MyForm> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                JoinQuestions(quizId: quizId)));
+                                            builder: (context) => JoinQuestions(
+                                                quizId: quizId,
+                                                quiz: getQuiz(quizId))));
                                   });
                                 },
                                 textColor: Colors.white,

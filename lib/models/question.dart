@@ -6,24 +6,26 @@ class Question {
   String _text;
   List<String> _answers;
   int _correctAnswer;
-  int _timeInSeconds;
 
   // Question.namedconstructor(int id, String text, List<String> answers) {
   //   _id = id;
   //   _text = text;
   //   _answers = answers;
   // }
-  Question.namedconstructor(int id, String text, List<String> answers,
-      int correctAnswer, int timeInseconds) {
+  Question.namedconstructor(
+      int id, String text, List<String> answers, int correctAnswer) {
     _id = id;
     _text = text;
     _answers = answers;
     _correctAnswer = correctAnswer;
-    _timeInSeconds = timeInseconds;
   }
 
-  Question(int id, String text, List<String> answers, int correctAnswer,
-      int timeInSeconds) {
+  Question(
+    int id,
+    String text,
+    List<String> answers,
+    int correctAnswer,
+  ) {
     if (answers.length < minAnswers && answers.length > maxAnswers) {
       throw new Exception();
     }
@@ -35,7 +37,6 @@ class Question {
     _text = text;
     _answers = answers;
     _correctAnswer = correctAnswer;
-    _timeInSeconds = timeInSeconds;
   }
 
   int get id {
@@ -52,9 +53,5 @@ class Question {
 
   int get correctAnswer {
     return _correctAnswer;
-  }
-
-  int get timeInSeconds {
-    return _timeInSeconds;
   }
 }

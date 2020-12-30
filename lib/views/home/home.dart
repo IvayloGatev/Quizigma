@@ -41,8 +41,8 @@ class Home extends StatelessWidget {
               child: RaisedButton(
                 //height: 70.00,
                 //minWidth: 100.00,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 20.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -61,8 +61,8 @@ class Home extends StatelessWidget {
               child: RaisedButton(
                 //height: 70.00,
                 //minWidth: 100.00,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 20.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -84,12 +84,13 @@ class Home extends StatelessWidget {
               child: RaisedButton(
                 //height: 70.00,
                 //minWidth: 100.00,
-                padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 20.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: Text("Join a Quiz using the ID", style: TextStyle(fontSize: 15)),
+                child: Text("Join a Quiz using the ID",
+                    style: TextStyle(fontSize: 15)),
                 color: Colors.deepPurple,
                 textColor: Colors.white,
                 onPressed: () async {

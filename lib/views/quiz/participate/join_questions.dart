@@ -7,7 +7,10 @@ import 'package:quizigma/views/quiz/Participate/questions_list.dart';
 
 class JoinQuestions extends StatelessWidget {
   final String quizId;
-  const JoinQuestions({this.quizId});
+  final Quiz quiz;
+  //final int timeInSeconds;
+
+  const JoinQuestions({this.quizId, this.quiz});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class JoinQuestions extends StatelessWidget {
           backgroundColor: Colors.deepPurple[200],
           elevation: 0.0,
         ),
-        body: QuestionList(),
+        body: QuestionList(quiz: quiz),
       ),
     );
   }

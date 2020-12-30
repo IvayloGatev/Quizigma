@@ -27,7 +27,9 @@ class _QuizListState extends State<QuizList> {
             itemCount: quizes.length,
             itemBuilder: (context, index) {
               if (quizes[index].category == title) {
-                return QuizTile(quiz: quizes[index]);
+                return QuizTile(
+                  quiz: quizes[index],
+                );
               } else
                 return Container();
             });

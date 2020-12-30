@@ -10,14 +10,18 @@ class Quiz {
   List<Question> _questions;
   DateTime _startDate;
   DateTime _endDate;
+  int _timeInSeconds;
 
-  Quiz.namedconstructor(String id, String category, String name) {
+  Quiz.namedconstructor(
+      String id, String category, String name, int timeInSeconds) {
     _id = id;
     _category = category;
     _name = name;
+    _timeInSeconds = timeInSeconds;
   }
 
-  Quiz(String category, String name, List<Question> questions,
+  Quiz(
+      String category, String name, List<Question> questions, int timeInSeconds,
       [DateTime startDate, DateTime endDate, String id]) {
     if (questions.length < minQuestions) {
       throw new Exception();
@@ -44,9 +48,9 @@ class Quiz {
     _category = category;
     _name = name;
     _questions = questions;
+    _timeInSeconds = timeInSeconds;
   }
 
-  
   String get id {
     return _id;
   }
@@ -69,5 +73,9 @@ class Quiz {
 
   DateTime get endDate {
     return _endDate;
+  }
+
+  int get timeInSeconds {
+    return _timeInSeconds;
   }
 }
