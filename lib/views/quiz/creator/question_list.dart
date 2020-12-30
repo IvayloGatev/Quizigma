@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/question_text_editor.dart';
 import 'package:quizigma/models/quiz.dart';
@@ -39,9 +40,6 @@ class _QuestionListState extends State<QuestionList> {
         itemCount: questionTiles.length,
         itemBuilder: (context, i) {
           return Column(children: [
-            SizedBox(
-              height: 20,
-            ),
             Row(children: [
               Expanded(child: questionTiles[i]),
               questionTiles.length <= Quiz.minQuestions
@@ -69,7 +67,8 @@ class _QuestionListState extends State<QuestionList> {
             ]),
           ]);
         },
-      )),
+      )),                          
+      SizedBox(height: 10),
       InkWell(
         onTap: () {
           setState(() {
@@ -81,7 +80,7 @@ class _QuestionListState extends State<QuestionList> {
         child: Container(
           width: 30,
           height: 30,
-          decoration: BoxDecoration(
+            decoration: BoxDecoration(
             color: Colors.blue,
             borderRadius: BorderRadius.circular(20),
           ),

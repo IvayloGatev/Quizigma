@@ -7,10 +7,17 @@ import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/home/login/background.dart';
 import 'package:quizigma/views/quiz/creator/creator_alert.dart';
 import 'package:quizigma/views/quiz/creator/question_list.dart';
+import 'package:quizigma/views/quiz/creator/answer_list.dart';
+
 
 class QuizCreator extends StatefulWidget {
+  final QuestionTextEditor editor;
+
+  QuizCreator({Key key, this.editor}) : super(key: key);
+
   @override
   _QuizCreatorState createState() => _QuizCreatorState();
+  
 }
 
 //Note to backend: You can retrieve the information from answersList of _MyFormState class.
@@ -301,10 +308,20 @@ class _QuizCreatorState extends State<QuizCreator> {
                       )),
                 ),
                 SizedBox(height: 10),
+                  _QuestionTileState createState() => _QuestionTileState(),
+
+               /*  Padding(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  child:Container(
+                    
+                  )
+                ), */
                 SizedBox(
-                  height: 200,
+                  height: 320,
                   child: QuestionList(editors: editors),
                 ),
+                SizedBox(height: 10),
+
                 RaisedButton(
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
@@ -342,5 +359,27 @@ class _QuizCreatorState extends State<QuizCreator> {
                 ),
               ])),
         ])));
+  }
+}
+
+class _QuestionTileState extends State<QuizCreator> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Padding(
+          padding: const EdgeInsets.only(left: 10, right: 10.0),
+          child: TextFormField(
+            controller: widget.editor.questionTextController,
+            decoration: InputDecoration(hintText: 'Enter the question'),
+            validator: (v) {
+              if (v.trim().isEmpty) return 'Please enter the question';
+              return null;
+            },
+          )),
+      SizedBox(
+        height: 200,
+        child: AnswerList(editor: widget.editor),
+      ),
+    ]);
   }
 }

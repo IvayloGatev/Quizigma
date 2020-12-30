@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/question_text_editor.dart';
@@ -27,7 +28,7 @@ class _QuestionTileState extends State<QuestionTile> {
             },
           )),
       SizedBox(
-        height: 400,
+        height: 200,
         child: AnswerList(editor: widget.editor),
       ),
     ]);
