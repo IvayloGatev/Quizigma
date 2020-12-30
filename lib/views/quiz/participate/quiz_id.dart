@@ -31,6 +31,7 @@ class _MyFormState extends State<MyForm> {
   bool iDExists = false;
   Future<String> id;
   String quizId;
+
   @override
   void initState() {
     super.initState();
@@ -41,6 +42,30 @@ class _MyFormState extends State<MyForm> {
   void dispose() {
     _nameController.dispose();
     super.dispose();
+  }
+
+  assignToBool(bool val, String id) async {
+    val = await checkIfDocExists(id);
+    setState(() {
+      iDExists = val;
+    });
+  }
+
+  Future<bool> checkIfDocExists(String docId) async {
+    try {
+      // Get reference to Firestore collection
+      var collectionRef = FirebaseFirestore.instance.collection('Quizes');
+
+      var doc = await collectionRef.doc(docId).get();
+      if (doc.exists) {
+        return Future.value(true);
+      } else {
+        return Future.value(false);
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
   }
 
   @override
@@ -61,16 +86,14 @@ class _MyFormState extends State<MyForm> {
                             hintText: 'Enter your code here!',
                             hintStyle: TextStyle(fontSize: 20)),
                         validator: (String v) {
+                          print('i jump here');
+
                           if (v.trim().isEmpty) {
                             return ('Please enter your code!');
                           }
                           if (v.length < 8) {
                             return 'Quiz ID must be at least 8 characters';
                           }
-
-                          setState(() {
-                            getDoc(v);
-                          });
 
                           if (iDExists == false) {
                             return 'Wrong ID';
@@ -85,33 +108,38 @@ class _MyFormState extends State<MyForm> {
                     ),
                     Padding(
                         padding: const EdgeInsets.only(right: 32.0),
-                        child: RaisedButton(
-                            onPressed: () async {
-                              print('status in pressmethod $iDExists');
-                              print(quizId);
+                        child: Column(
+                          children: [
+                            RaisedButton(
+                                onPressed: () async {
+                                  checkIfDocExists(quizId);
+                                  assignToBool(iDExists, quizId);
+                                  Future.delayed(
+                                      const Duration(milliseconds: 300), () {
+                                    if (!_formKey.currentState.validate()) {
+                                      return;
+                                    }
 
-                              if (!_formKey.currentState.validate()) {
-                                return;
-                              }
-
-                              _formKey.currentState.save();
-
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          JoinQuestions(quizId: quizId)));
-                            },
-                            textColor: Colors.white,
-                            padding: const EdgeInsets.all(0.0),
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                color: Colors.deepPurple,
-                              ),
-                              padding: const EdgeInsets.all(10.0),
-                              child: const Text('   Join!   ',
-                                  style: TextStyle(fontSize: 20)),
-                            ))),
+                                    _formKey.currentState.save();
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                JoinQuestions(quizId: quizId)));
+                                  });
+                                },
+                                textColor: Colors.white,
+                                padding: const EdgeInsets.all(0.0),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.deepPurple,
+                                  ),
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: const Text('   Join!   ',
+                                      style: TextStyle(fontSize: 20)),
+                                )),
+                          ],
+                        )),
                     SizedBox(
                       height: 20,
                     ),
@@ -121,67 +149,5 @@ class _MyFormState extends State<MyForm> {
                     )
                   ],
                 ))));
-  }
-
-  // Widget showAlert() {
-  //   if (iDExists != false) {
-  //     return Container(
-  //       color: Colors.amberAccent,
-  //       width: double.infinity,
-  //       padding: EdgeInsets.all(8.0),
-  //       child: Row(
-  //         children: <Widget>[
-  //           Padding(
-  //             padding: const EdgeInsets.only(right: 8.0),
-  //             child: Icon(Icons.error_outline),
-  //           ),
-  //           Expanded(
-  //             child: Text(
-  //               'incorrect ID',
-  //               style: TextStyle(
-  //                 fontSize: 14.0,
-  //                 fontWeight: FontWeight.bold,
-  //               ),
-  //               textAlign: TextAlign.center,
-  //             ),
-  //           ),
-  //           Padding(
-  //             padding: const EdgeInsets.only(left: 8.0),
-  //             child: IconButton(
-  //               icon: Icon(Icons.close),
-  //               onPressed: () {
-  //                 setState(() {
-  //                   iDExists = false;
-  //                   print('status $iDExists');
-  //                 });
-  //               },
-  //             ),
-  //           )
-  //         ],
-  //       ),
-  //     );
-  //   } else {
-  //     return SizedBox(
-  //       height: 0,
-  //     );
-  //   }
-  // }
-
-  void getDoc(String id) async {
-    var a = await FirebaseFirestore.instance.collection('Quizes').doc(id).get();
-    if (a.exists) {
-      print('hei' + a.data()['id'].toString());
-      setState(() {
-        iDExists = true;
-        print('status $iDExists');
-      });
-    }
-    if (!a.exists) {
-      print('nothing here');
-      setState(() {
-        iDExists = false;
-        print('status $iDExists');
-      });
-    }
   }
 }
