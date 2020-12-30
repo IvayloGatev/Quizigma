@@ -301,6 +301,13 @@ class _QuizCreatorState extends State<QuizCreator> {
                       )),
                 ),
                 SizedBox(height: 10),
+
+                /*  Padding(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  child:Container(
+                    
+                  )
+                ), */
                 SizedBox(
                   height: 200,
                   child: QuestionList(editors: editors),
