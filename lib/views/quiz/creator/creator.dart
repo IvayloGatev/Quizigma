@@ -308,7 +308,6 @@ class _QuizCreatorState extends State<QuizCreator> {
                       )),
                 ),
                 SizedBox(height: 10),
-                  _QuestionTileState createState() => _QuestionTileState(),
 
                /*  Padding(
                   padding: EdgeInsets.only(left: 10, right: 10),
