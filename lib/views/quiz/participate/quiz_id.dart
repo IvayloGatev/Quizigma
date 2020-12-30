@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/views/quiz/participate/join_questions.dart';
-import 'package:quizigma/views/quiz/participate/join_quiz.dart';
 
 class QuizID extends StatelessWidget {
   @override
@@ -45,28 +43,12 @@ class _MyFormState extends State<MyForm> {
   }
 
   assignToBool(bool val, String id) async {
-    val = await checkIfDocExists(id);
+    val = await _quizController.checkIfDocExists(id);
     setState(() {
       iDExists = val;
     });
   }
 
-  Future<bool> checkIfDocExists(String docId) async {
-    try {
-      // Get reference to Firestore collection
-      var collectionRef = FirebaseFirestore.instance.collection('Quizes');
-
-      var doc = await collectionRef.doc(docId).get();
-      if (doc.exists) {
-        return Future.value(true);
-      } else {
-        return Future.value(false);
-      }
-    } catch (e) {
-      print(e);
-      return false;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +94,8 @@ class _MyFormState extends State<MyForm> {
                           children: [
                             RaisedButton(
                                 onPressed: () async {
-                                  checkIfDocExists(quizId);
+                                  Center(child: CircularProgressIndicator());
+                                  _quizController.checkIfDocExists(quizId);
                                   assignToBool(iDExists, quizId);
                                   Future.delayed(
                                       const Duration(milliseconds: 300), () {
