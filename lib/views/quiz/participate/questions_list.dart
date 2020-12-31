@@ -52,37 +52,45 @@ class _QuestionListState extends State<QuestionList> {
     return questions == null
         ? Center(child: CircularProgressIndicator())
         : ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
             itemCount: questions.length,
             itemBuilder: (context, index) {
               questionCounter = index + 1;
-
-              return Container(
-                  color: Colors.yellow,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        children: [
-                          Text('Question $questionCounter',
-                              style: TextStyle(
-                                fontSize: 22,
-                              )),
-                          QuestionTimer(
-                            quizTime: widget.quiz.timeInSeconds,
-                          ),
-                        ],
-                      ),
-                      QuestionTile(question: questions[index]),
-                      _getAnswers(questions[index]),
-                      RaisedButton(
-                        onPressed: () {
-                          _checkAnswer(questions[index].correctAnswer);
-                        },
-                        child: Text('Submit'),
-                        color: Colors.deepPurple,
-                      )
-                    ],
-                  ));
+              return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    QuestionTile(question: questions[index]),
+                    SizedBox(height: 2),
+                    _getAnswers(questions[index]),
+                    SizedBox(height: 10),
+                  ]);
+              // return Container(
+              //     color: Colors.yellow,
+              //     child: Column(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: <Widget>[
+              //         Row(
+              //           children: [
+              //             Text('Question $questionCounter',
+              //                 style: TextStyle(
+              //                   fontSize: 22,
+              //                 )),
+              //             QuestionTimer(
+              //               quizTime: widget.quiz.timeInSeconds,
+              //             ),
+              //           ],
+              //         ),
+              //         QuestionTile(question: questions[index]),
+              //         _getAnswers(questions[index]),
+              //         RaisedButton(
+              //           onPressed: () {
+              //             _checkAnswer(questions[index].correctAnswer);
+              //           },
+              //           child: Text('Submit'),
+              //           color: Colors.deepPurple,
+              //         )
+              //       ],
+              //     ));
             },
           );
   }

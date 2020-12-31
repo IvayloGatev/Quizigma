@@ -17,6 +17,7 @@ class QuizTile extends StatelessWidget {
           margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
           child: ListTile(
             title: Text(quiz.id + '  ' + quiz.name),
+            tileColor: Colors.green,
           )),
       onPressed: () async {
         Navigator.push(

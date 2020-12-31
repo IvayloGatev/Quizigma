@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/question.dart';
 import 'categories_screen.dart';
+import 'package:quizigma/views/quiz/results/results.dart';
 import 'dart:async';
 
 class QuestionTimer extends StatefulWidget {
@@ -130,10 +131,10 @@ class _QuestionTimerState extends State<QuestionTimer> {
           _counter--;
         } else {
           _timer.cancel();
-          _timer = new Timer(const Duration(seconds: 2), () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => CategoriesScreen()));
-          });
+          // _timer = new Timer(const Duration(seconds: 2), () {
+          //   Navigator.push(
+          //       context, MaterialPageRoute(builder: (context) => Results()));
+          // });
         }
       });
     });

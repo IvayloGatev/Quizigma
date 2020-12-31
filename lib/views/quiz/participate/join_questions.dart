@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/Participate/questions_list.dart';
+import 'package:quizigma/views/quiz/participate/take_quiz.dart';
 
 class JoinQuestions extends StatelessWidget {
   final String quizId;
@@ -23,7 +24,10 @@ class JoinQuestions extends StatelessWidget {
           backgroundColor: Colors.deepPurple[200],
           elevation: 0.0,
         ),
-        body: QuestionList(quiz: quiz),
+        body: SingleChildScrollView(
+          physics: ScrollPhysics(),
+          child: TakeQuiz(quiz: quiz),
+        ),
       ),
     );
   }
