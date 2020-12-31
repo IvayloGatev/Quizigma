@@ -17,10 +17,15 @@ class _QuestionTileState extends State<QuestionTile> {
   Widget build(BuildContext context) {
     return Column(children: [
       Padding(
-          padding: const EdgeInsets.only(right: 32.0),
+          padding: const EdgeInsets.only(right: 10.0, left: 10),
           child: TextFormField(
             controller: widget.editor.questionTextController,
-            decoration: InputDecoration(hintText: 'Enter the question'),
+            decoration: InputDecoration(
+              hintText: 'Enter the question',
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.purple)),
+            ),
+            cursorColor: Colors.purple,
             validator: (v) {
               if (v.trim().isEmpty) return 'Please enter the question';
               return null;

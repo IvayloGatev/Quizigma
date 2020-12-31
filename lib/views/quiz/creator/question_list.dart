@@ -45,39 +45,68 @@ class _QuestionListState extends State<QuestionList> {
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.deepPurple)),
                 child: Column(children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Expanded(child: questionTiles[i]),
-                    questionTiles.length <= Quiz.minQuestions
-                        ? Container(
-                            width: 30,
-                          )
-                        : InkWell(
-                            onTap: () {
-                              setState(() {
-                                _editors.removeAt(i);
-                                questionTiles.removeAt(i);
-                              });
-                            },
-                            child: Container(
-                              width: 30,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Icon(
-                                Icons.remove,
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
-                  ]),
+                  Padding(
+                    padding: EdgeInsets.only(right: 10, top: 10),
+                    child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: questionTiles[i]),
+                          questionTiles.length <= Quiz.minQuestions
+                              ? Container(
+                                  width: 30,
+                                )
+                              : InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      _editors.removeAt(i);
+                                      questionTiles.removeAt(i);
+                                    });
+                                  },
+                                  child: Container(
+                                    width: 30,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      color: Colors.purple,
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Icon(
+                                      Icons.remove,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                )
+                        ]),
+                  )
+                  // Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  //   Expanded(child: questionTiles[i]),
+                  //   questionTiles.length <= Quiz.minQuestions
+                  //       ? Container(
+                  //           width: 30,
+                  //         )
+                  //       : InkWell(
+                  //           onTap: () {
+                  //             setState(() {
+                  //               _editors.removeAt(i);
+                  //               questionTiles.removeAt(i);
+                  //             });
+                  //           },
+                  //           child: Container(
+                  //             width: 30,
+                  //             height: 30,
+                  //             decoration: BoxDecoration(
+                  //               color: Colors.purple,
+                  //               borderRadius: BorderRadius.circular(20),
+                  //             ),
+                  //             child: Icon(
+                  //               Icons.remove,
+                  //               color: Colors.white,
+                  //             ),
+                  //           ),
+                  //         )
+                  // ]),
                 ]));
           }),
-      SizedBox(height: 20),
+      SizedBox(height: 15),
       InkWell(
         onTap: () {
           setState(() {
@@ -90,7 +119,7 @@ class _QuestionListState extends State<QuestionList> {
           width: 30,
           height: 30,
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Colors.purple,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Icon(

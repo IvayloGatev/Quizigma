@@ -78,164 +78,176 @@ class _QuizCreatorState extends State<QuizCreator> {
           Form(
               key: _formKey,
               child: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                  child: TextFormField(
-                    controller: nameEditingController,
-                    decoration: InputDecoration(hintText: 'Enter quiz name'),
-                    validator: (v) {
-                      if (v.trim().isEmpty) return 'Please enter something';
-                      return null;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                  child: DropdownButtonFormField<String>(
-                    value: category,
-                    icon: Icon(Icons.arrow_downward),
-                    iconSize: 16,
-                    elevation: 16,
-                    decoration: InputDecoration(
-                      labelText: 'Select category',
-                      labelStyle: TextStyle(
-                        fontSize: 22,
+                Container(
+                  margin: const EdgeInsets.all(2.0),
+                  padding: const EdgeInsets.all(2.0),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.deepPurple)),
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                        child: TextFormField(
+                          controller: nameEditingController,
+                          decoration: InputDecoration(
+                              hintText: 'Enter quiz name',
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.purple))),
+                          cursorColor: Colors.purple,
+                          validator: (v) {
+                            if (v.trim().isEmpty)
+                              return 'Please enter something';
+                            return null;
+                          },
+                        ),
                       ),
-                    ),
-                    onChanged: (String value) {
-                      setState(() {
-                        category = value;
-                      });
-                    },
-                    items: categories.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                        child: DropdownButtonFormField<String>(
+                          value: category,
+                          icon: Icon(Icons.arrow_downward),
+                          iconSize: 16,
+                          elevation: 16,
+                          decoration: InputDecoration(
+                            labelText: 'Select category',
+                            labelStyle: TextStyle(
+                              fontSize: 22,
+                            ),
+                          ),
+                          onChanged: (String value) {
+                            setState(() {
+                              category = value;
+                            });
+                          },
+                          items: categories.map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                        child: Container(
+                            child: Column(
+                          children: <Widget>[
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Select question timer',
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    color: Colors.black.withOpacity(0.6),
+                                  ),
+                                ),
+                                SizedBox(width: 150),
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      if (_counter < 61) {
+                                        _increaseCounter();
+                                      }
+                                    });
+                                  },
+                                  child: Container(
+                                    width: 30,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      color: Colors.purple,
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      if (_counter > 14) {
+                                        _decreaseCounter();
+                                      }
+                                    });
+                                  },
+                                  child: Container(
+                                    width: 30,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      color: Colors.purple,
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Icon(
+                                      Icons.remove,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Text('$_counter',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ))
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                          ],
+                        )),
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(height: 10),
-                Padding(
-                  padding: EdgeInsets.only(left: 10, right: 10),
-                  child: Container(
-                      decoration: BoxDecoration(
-                          border: new BorderDirectional(
-                              bottom: new BorderSide(
-                        color: Colors.black.withOpacity(0.6),
-                      ))),
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Select question timer',
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  color: Colors.black.withOpacity(0.6),
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    if (_counter < 61) {
-                                      _increaseCounter();
-                                    }
-                                  });
-                                },
-                                child: Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                    color: Colors.purple,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Icon(
-                                    Icons.add,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    if (_counter > 14) {
-                                      _decreaseCounter();
-                                    }
-                                  });
-                                },
-                                child: Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                    color: Colors.purple,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Icon(
-                                    Icons.remove,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Text('$_counter',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                  ))
-                            ],
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                        ],
-                      )),
-                ),
-                SizedBox(height: 10),
                 QuestionList(editors: editors),
                 SizedBox(height: 15),
-                RaisedButton(
-                  onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      String name = nameEditingController.text;
-                      List<Question> questions = List<Question>();
-                      int value = _counter;
-                      for (var editor in editors) {
-                        String questionText =
-                            editor.questionTextController.text;
-                        List<String> answers = List<String>();
-                        for (var answerTextController
-                            in editor.answerTextControllers) {
-                          answers.add(answerTextController.text);
+                Container(
+                  child: RaisedButton(
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        String name = nameEditingController.text;
+                        List<Question> questions = List<Question>();
+                        int value = _counter;
+                        for (var editor in editors) {
+                          String questionText =
+                              editor.questionTextController.text;
+                          List<String> answers = List<String>();
+                          for (var answerTextController
+                              in editor.answerTextControllers) {
+                            answers.add(answerTextController.text);
+                          }
+                          questions.add(Question(questions.length + 1,
+                              questionText, answers, editor.correctAnswer));
                         }
-                        questions.add(Question(questions.length + 1,
-                            questionText, answers, editor.correctAnswer));
-                      }
 
-                      Quiz quiz = Quiz(category, name, questions, value);
-                      _controller.addQuiz(quiz);
-                      _showCreatorAlert();
-                    }
-                  },
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 20.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                        Quiz quiz = Quiz(category, name, questions, value);
+                        _controller.addQuiz(quiz);
+                        _showCreatorAlert();
+                      }
+                    },
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Text('Create Quiz'),
+                    color: Colors.deepPurple,
                   ),
-                  child: Text('Create Quiz'),
-                  color: Colors.deepPurple,
-                ),
+                )
               ])),
         ]));
   }
