@@ -23,16 +23,27 @@ class _TakeQuizState extends State<TakeQuiz> {
     return Column(
       children: <Widget>[
         Container(
+            padding: EdgeInsets.all(5),
             color: Colors.yellow,
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                SizedBox(
-                  width: 10,
+                Column(
+                  children: <Widget>[
+                    Text(
+                      '${widget.quiz.name}',
+                      style:
+                          TextStyle(fontSize: 40, fontStyle: FontStyle.italic),
+                    ),
+                    Text(
+                      '${widget.quiz.category}',
+                      style:
+                          TextStyle(fontSize: 22, fontStyle: FontStyle.italic),
+                    ),
+                  ],
                 ),
-                Text(
-                  '${widget.quiz.name}',
-                  style: TextStyle(fontSize: 40, fontStyle: FontStyle.italic),
-                ),
+                Spacer(),
                 // clock in some stack or overlay so itll always be in a specific spot on screen
                 QuestionTimer(
                   quizTime: widget.quiz.timeInSeconds,
@@ -41,6 +52,7 @@ class _TakeQuizState extends State<TakeQuiz> {
             )),
         Container(
           //width and height fields manadatory so the questionlist can load into the screen
+          //takes height of quiz with most questions
           //how to do this dynamically?
           width: width,
           height: height,
@@ -55,6 +67,7 @@ class _TakeQuizState extends State<TakeQuiz> {
           child: RaisedButton(
             onPressed: () {
               // how to get radio button values and check for final score
+              // pass score when timer hits 0?
             },
             child: Text('Submit'),
             color: Colors.deepPurple,

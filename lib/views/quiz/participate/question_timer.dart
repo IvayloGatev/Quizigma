@@ -105,9 +105,20 @@ class _QuestionTimerState extends State<QuestionTimer> {
                     decoration: BoxDecoration(
                         color: Colors.white, shape: BoxShape.circle),
                     child: Center(
-                        child: Text(
-                      "$_counter",
-                      style: TextStyle(fontSize: 28),
+                        child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        (_counter < 10)
+                            ? Text(
+                                '$_counter',
+                                style:
+                                    TextStyle(fontSize: 28, color: Colors.red),
+                              )
+                            : Text(
+                                '$_counter',
+                                style: TextStyle(fontSize: 28),
+                              )
+                      ],
                     )),
                   ),
                 )
