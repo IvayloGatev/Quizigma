@@ -34,11 +34,10 @@ class _AnswerListState extends State<AnswerList> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Expanded(
-          child: ListView.builder(
-        itemCount: _answerTiles.length,
+      ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        physics: ScrollPhysics(),
+        itemCount: _answerTiles.length,
         itemBuilder: (context, i) {
           return Column(children: [
             SizedBox(
@@ -55,7 +54,9 @@ class _AnswerListState extends State<AnswerList> {
                   }),
               Expanded(child: _answerTiles[i]),
               _answerTiles.length <= Question.minAnswers
-                  ? Container()
+                  ? Container(
+                      width: 30,
+                    )
                   : InkWell(
                       onTap: () {
                         setState(() {
@@ -82,7 +83,8 @@ class _AnswerListState extends State<AnswerList> {
             ]),
           ]);
         },
-      )),
+      ),
+      SizedBox(height: 10),
       _answerTiles.length >= Question.maxAnswers
           ? Container()
           : InkWell(

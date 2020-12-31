@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/question_text_editor.dart';
@@ -18,7 +17,7 @@ class _QuestionTileState extends State<QuestionTile> {
   Widget build(BuildContext context) {
     return Column(children: [
       Padding(
-          padding: const EdgeInsets.only(left: 10, right: 10.0),
+          padding: const EdgeInsets.only(right: 32.0),
           child: TextFormField(
             controller: widget.editor.questionTextController,
             decoration: InputDecoration(hintText: 'Enter the question'),
@@ -27,10 +26,7 @@ class _QuestionTileState extends State<QuestionTile> {
               return null;
             },
           )),
-      SizedBox(
-        height: 200,
-        child: AnswerList(editor: widget.editor),
-      ),
+      AnswerList(editor: widget.editor)
     ]);
   }
 }

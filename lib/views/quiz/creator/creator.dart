@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:quizigma/models/question_text_editor.dart';
 import 'package:quizigma/models/quiz.dart';
-import 'package:quizigma/views/home/login/background.dart';
 import 'package:quizigma/views/quiz/creator/creator_alert.dart';
 import 'package:quizigma/views/quiz/creator/question_list.dart';
 
@@ -31,39 +29,6 @@ class _QuizCreatorState extends State<QuizCreator> {
 
   String category = 'Other';
   int dropdownValue = 30;
-  List<int> dropDownValues = [
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25,
-    26,
-    27,
-    28,
-    29,
-    30,
-    31,
-    32,
-    33,
-    34,
-    35,
-    36,
-    37,
-    38,
-    39,
-    40,
-    41,
-    42,
-    43,
-    44,
-    45
-  ];
   int _counter = 30;
   List<QuestionTextEditor> editors = List<QuestionTextEditor>();
   TextEditingController nameEditingController = TextEditingController();
@@ -74,13 +39,17 @@ class _QuizCreatorState extends State<QuizCreator> {
 
   void _increaseCounter() {
     setState(() {
-      _counter++;
+      if (_counter < 60) {
+        _counter++;
+      }
     });
   }
 
   void _decreaseCounter() {
     setState(() {
-      _counter--;
+      if (_counter > 15) {
+        _counter--;
+      }
     });
   }
 
@@ -94,7 +63,6 @@ class _QuizCreatorState extends State<QuizCreator> {
 
   @override
   Widget build(BuildContext context) {
-    const Key centerKey = ValueKey('bottom-sliver-list');
     return Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
@@ -106,11 +74,10 @@ class _QuizCreatorState extends State<QuizCreator> {
             onPressed: () => Navigator.pop(context, true),
           ),
         ),
-        body: SingleChildScrollView(
-            child: Column(children: <Widget>[
+        body: ListView(physics: ScrollPhysics(), children: <Widget>[
           Form(
               key: _formKey,
-              child: Column(children: <Widget>[
+              child: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   child: TextFormField(
@@ -152,62 +119,6 @@ class _QuizCreatorState extends State<QuizCreator> {
                   ),
                 ),
                 SizedBox(height: 10),
-                /*  Padding(
-                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                  child: DropdownButtonFormField<int>(
-                    value: dropdownValue,
-                    icon: Icon(Icons.arrow_downward),
-                    iconSize: 16,
-                    elevation: 16,
-                    decoration: InputDecoration(
-                      labelText: 'Select question timer',
-                      labelStyle: TextStyle(
-                        fontSize: 22,
-                      ),
-                    ),
-                    onChanged: (int newValue) {
-                      setState(() {
-                        dropdownValue = newValue;
-                      });
-                    },
-                    items:
-                        dropDownValues.map<DropdownMenuItem<int>>((int value) {
-                      return DropdownMenuItem<int>(
-                        value: value,
-                        child: Text(value.toString()),
-                      );
-                    }).toList(),
-                  ),
-                ),
-                SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                  child: DropdownButtonFormField<int>(
-                    value: dropdownValue,
-                    icon: Icon(Icons.arrow_downward),
-                    iconSize: 16,
-                    elevation: 16,
-                    decoration: InputDecoration(
-                      labelText: 'Select question timer',
-                      labelStyle: TextStyle(
-                        fontSize: 22,
-                      ),
-                    ),
-                    onChanged: (int newValue) {
-                      setState(() {
-                        dropdownValue = newValue;
-                      });
-                    },
-                    items:
-                        dropDownValues.map<DropdownMenuItem<int>>((int value) {
-                      return DropdownMenuItem<int>(
-                        value: value,
-                        child: Text(value.toString()),
-                      );
-                    }).toList(),
-                  ),
-                ),*/
-
                 Padding(
                   padding: EdgeInsets.only(left: 10, right: 10),
                   child: Container(
@@ -220,6 +131,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                         children: <Widget>[
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 'Select question timer',
@@ -227,9 +139,6 @@ class _QuizCreatorState extends State<QuizCreator> {
                                   fontSize: 17,
                                   color: Colors.black.withOpacity(0.6),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 160,
                               ),
                               InkWell(
                                 onTap: () {
@@ -281,19 +190,10 @@ class _QuizCreatorState extends State<QuizCreator> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
-                              (_counter >= 15 && _counter <= 60)
-                                  ? Text('$_counter',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                      ))
-                                  : Text(
-                                      'Timer must be between 15 and 60',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.red.withOpacity(0.9),
-                                        fontStyle: FontStyle.italic,
-                                      ),
-                                    ),
+                              Text('$_counter',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ))
                             ],
                           ),
                           SizedBox(
@@ -303,17 +203,8 @@ class _QuizCreatorState extends State<QuizCreator> {
                       )),
                 ),
                 SizedBox(height: 10),
-
-                /*  Padding(
-                  padding: EdgeInsets.only(left: 10, right: 10),
-                  child:Container(
-                    
-                  )
-                ), */
-                SizedBox(
-                  height: 200,
-                  child: QuestionList(editors: editors),
-                ),
+                QuestionList(editors: editors),
+                SizedBox(height: 15),
                 RaisedButton(
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
@@ -346,6 +237,6 @@ class _QuizCreatorState extends State<QuizCreator> {
                   color: Colors.deepPurple,
                 ),
               ])),
-        ])));
+        ]));
   }
 }

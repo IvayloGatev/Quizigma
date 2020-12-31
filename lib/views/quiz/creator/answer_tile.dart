@@ -25,8 +25,7 @@ class _AnswerTileState extends State<AnswerTile> {
       padding: const EdgeInsets.only(right: 32.0),
       child: TextFormField(
         controller: _answerEditingController,
-        decoration:
-            InputDecoration(hintText: 'Enter an answer and select if correct'),
+        decoration: InputDecoration(hintText: 'Enter an answer'),
         validator: (v) {
           if (v.trim().isEmpty) return 'Please enter an answer';
           return null;

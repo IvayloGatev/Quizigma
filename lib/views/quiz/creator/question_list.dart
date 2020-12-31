@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/question_text_editor.dart';
 import 'package:quizigma/models/quiz.dart';
@@ -35,40 +34,50 @@ class _QuestionListState extends State<QuestionList> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Expanded(
-          child: ListView.builder(
-        itemCount: questionTiles.length,
-        itemBuilder: (context, i) {
-          return Column(children: [
-            Row(children: [
-              Expanded(child: questionTiles[i]),
-              questionTiles.length <= Quiz.minQuestions
-                  ? Container()
-                  : InkWell(
-                      onTap: () {
-                        setState(() {
-                          _editors.removeAt(i);
-                          questionTiles.removeAt(i);
-                        });
-                      },
-                      child: Container(
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Icon(
-                          Icons.remove,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-            ]),
-          ]);
-        },
-      )),                          
-      SizedBox(height: 10),
+      ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: questionTiles.length,
+          itemBuilder: (context, i) {
+            return Container(
+                margin: const EdgeInsets.all(2.0),
+                padding: const EdgeInsets.all(2.0),
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.deepPurple)),
+                child: Column(children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Expanded(child: questionTiles[i]),
+                    questionTiles.length <= Quiz.minQuestions
+                        ? Container(
+                            width: 30,
+                          )
+                        : InkWell(
+                            onTap: () {
+                              setState(() {
+                                _editors.removeAt(i);
+                                questionTiles.removeAt(i);
+                              });
+                            },
+                            child: Container(
+                              width: 30,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Icon(
+                                Icons.remove,
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
+                  ]),
+                ]));
+          }),
+      SizedBox(height: 20),
       InkWell(
         onTap: () {
           setState(() {
@@ -80,7 +89,7 @@ class _QuestionListState extends State<QuestionList> {
         child: Container(
           width: 30,
           height: 30,
-            decoration: BoxDecoration(
+          decoration: BoxDecoration(
             color: Colors.blue,
             borderRadius: BorderRadius.circular(20),
           ),
@@ -89,7 +98,7 @@ class _QuestionListState extends State<QuestionList> {
             color: Colors.white,
           ),
         ),
-      ),
+      )
     ]);
   }
 }
