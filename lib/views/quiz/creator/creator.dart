@@ -17,6 +17,7 @@ class QuizCreator extends StatefulWidget {
 class _QuizCreatorState extends State<QuizCreator> {
   List<int> bottom = [0];
   List<String> categories = [
+    'Other',
     'Literature',
     'History',
     'Physics',
@@ -24,10 +25,11 @@ class _QuizCreatorState extends State<QuizCreator> {
     'Biology',
     'General Knowledge',
     'Polictics',
-    'Nature'
+    'Nature',
+    'Computer'
   ];
 
-  String category = 'Literature';
+  String category = 'Other';
   int dropdownValue = 30;
   List<int> dropDownValues = [
     15,

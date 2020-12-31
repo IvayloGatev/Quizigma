@@ -48,7 +48,7 @@ class Quiz {
     _category = category;
     _name = name;
     _questions = questions;
-    _timeInSeconds = timeInSeconds;
+    _timeInSeconds = timeInSeconds * questions.length;
   }
 
   String get id {

@@ -29,12 +29,12 @@ const DUMMY_CATEGORIES = const [
   ),
   Category(
     id: 'c6',
-    title: 'Computers',
+    title: 'Chemistry',
     color: Colors.green,
   ),
   Category(
     id: 'c7',
-    title: 'Animals',
+    title: 'Biology',
     color: Colors.lightBlue,
   ),
   Category(
@@ -44,12 +44,12 @@ const DUMMY_CATEGORIES = const [
   ),
   Category(
     id: 'c9',
-    title: 'IT',
+    title: 'Computer',
     color: Colors.pink,
   ),
   Category(
     id: 'c10',
-    title: 'Others',
+    title: 'Other',
     color: Colors.teal,
   ),
 ];

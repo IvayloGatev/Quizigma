@@ -119,7 +119,7 @@ class FirestoreDatabase implements IDatabase {
         doc.id ?? 0,
         doc.data()['category'] ?? '',
         doc.data()['name'] ?? '',
-        doc.data()['timeInSeconds'] ?? 15,
+        doc.data()['timeInSeconds'] ?? 0,
       );
     }).toList();
   }
