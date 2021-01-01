@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:quizigma/views/quiz/participate/question_timer.dart';
+import 'package:quizigma/views/quiz/results/results.dart';
 import 'questions_tile.dart';
 import 'package:quizigma/services/firestore_database.dart';
 import 'package:quizigma/models/quiz.dart';
@@ -13,10 +14,13 @@ class TakeQuiz extends StatefulWidget {
   final Quiz quiz;
   TakeQuiz({this.quiz});
 
-  _TakeQuizState createState() => _TakeQuizState();
+  _TakeQuizState createState() => _TakeQuizState(quiz);
 }
 
 class _TakeQuizState extends State<TakeQuiz> {
+  final Quiz quiz;
+
+  _TakeQuizState(this.quiz);
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -67,6 +71,8 @@ class _TakeQuizState extends State<TakeQuiz> {
           color: Colors.deepPurple,
           child: RaisedButton(
             onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Results(quiz: quiz)));
               // how to get radio button values and check for final score
               // pass score when timer hits 0?
             },

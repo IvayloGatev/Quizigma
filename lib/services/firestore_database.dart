@@ -18,6 +18,7 @@ class FirestoreDatabase implements IDatabase {
       'category': quiz.category,
       'name': quiz.name,
       'timeInSeconds': quiz.timeInSeconds,
+      'numofQuestions': quiz.numofQuestions,
       'startDate': quiz.startDate,
       'endDate': quiz.endDate,
     });
@@ -38,11 +39,13 @@ class FirestoreDatabase implements IDatabase {
       DateTime endDate = snapshot.data()['endDate'].toDate();
       List<Question> questions = await _getQuestions(quizId);
       int timeInSeconds = snapshot.data()['timeInSeconds'];
+      int numofQuestions = snapshot.data()['numofQuestions'];
       quiz = Quiz(
         category,
         name,
         questions,
         timeInSeconds,
+        numofQuestions,
         startDate,
         endDate,
         quizId,
@@ -120,6 +123,7 @@ class FirestoreDatabase implements IDatabase {
         doc.data()['category'] ?? '',
         doc.data()['name'] ?? '',
         doc.data()['timeInSeconds'] ?? 0,
+        doc.data()['numofQuestions'] ?? 0,
       );
     }).toList();
   }

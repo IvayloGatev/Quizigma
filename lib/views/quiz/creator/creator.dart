@@ -236,7 +236,8 @@ class _QuizCreatorState extends State<QuizCreator> {
                               questionText, answers, editor.correctAnswer));
                         }
 
-                        Quiz quiz = Quiz(category, name, questions, value);
+                        Quiz quiz = Quiz(
+                            category, name, questions, value, questions.length);
                         _controller.addQuiz(quiz);
                         _showCreatorAlert(quiz);
                       }

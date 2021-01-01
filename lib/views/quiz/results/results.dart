@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:quizigma/controllers/quiz_controller.dart';
+import 'package:quizigma/models/quiz.dart';
+import 'package:quizigma/models/question.dart';
 import 'package:quizigma/views/quiz/results/check_answers.dart';
 
 class Results extends StatelessWidget {
+  final Quiz quiz;
+
+  Results({this.quiz});
+
   @override
   Widget build(BuildContext context) {
     final TextStyle titleStyle = TextStyle(
         color: Colors.deepPurple, fontSize: 16.0, fontWeight: FontWeight.bold);
     final TextStyle trailingStyle = TextStyle(
         color: Colors.purple, fontSize: 20.0, fontWeight: FontWeight.bold);
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Quiz Result'),
@@ -33,7 +39,7 @@ class Results extends StatelessWidget {
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16.0),
                   title: Text("Total Questions", style: titleStyle),
-                  trailing: Text("questions.length variable goes here",
+                  trailing: Text(quiz.numofQuestions.toString(),
                       style: trailingStyle),
                 ),
               ),
