@@ -21,7 +21,7 @@ class JoinQuestions extends StatelessWidget {
         backgroundColor: Colors.purple[50],
         appBar: AppBar(
           title: Text('Welcome to your Quiz'),
-          backgroundColor: Colors.deepPurple[200],
+          backgroundColor: Colors.deepPurple,
           elevation: 0.0,
         ),
         body: SingleChildScrollView(

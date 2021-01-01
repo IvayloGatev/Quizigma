@@ -24,7 +24,7 @@ class _TakeQuizState extends State<TakeQuiz> {
       children: <Widget>[
         Container(
             padding: EdgeInsets.all(5),
-            color: Colors.yellow,
+            color: Colors.deepPurple[40],
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -56,21 +56,21 @@ class _TakeQuizState extends State<TakeQuiz> {
           //how to do this dynamically?
           width: width,
           height: height,
-          color: Colors.green,
+          color: Colors.white,
           child: QuestionList(
             quiz: widget.quiz,
           ),
         ),
         Container(
           alignment: Alignment.bottomLeft,
-          color: Colors.red,
+          color: Colors.deepPurple,
           child: RaisedButton(
             onPressed: () {
               // how to get radio button values and check for final score
               // pass score when timer hits 0?
             },
             child: Text('Submit'),
-            color: Colors.deepPurple,
+            color: Colors.white,
           ),
         )
       ],
