@@ -3,6 +3,7 @@ import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:quizigma/views/quiz/results/check_answers.dart';
+import 'package:quizigma/views/home/home.dart';
 
 class Results extends StatelessWidget {
   final Quiz quiz;
@@ -90,7 +91,10 @@ class Results extends StatelessWidget {
                     color: Colors.deepPurple,
                     child: Text("Goto Home"),
                     textColor: Colors.white,
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (_) => Home()));
+                    },
                   ),
                   RaisedButton(
                     padding: const EdgeInsets.symmetric(

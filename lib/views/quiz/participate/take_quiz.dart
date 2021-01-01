@@ -14,13 +14,13 @@ class TakeQuiz extends StatefulWidget {
   final Quiz quiz;
   TakeQuiz({this.quiz});
 
-  _TakeQuizState createState() => _TakeQuizState(quiz);
+  _TakeQuizState createState() => _TakeQuizState();
 }
 
 class _TakeQuizState extends State<TakeQuiz> {
-  final Quiz quiz;
+  //final Quiz quiz;
 
-  _TakeQuizState(this.quiz);
+  //_TakeQuizState(this.quiz);
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -50,7 +50,8 @@ class _TakeQuizState extends State<TakeQuiz> {
                 ),
                 Spacer(),
                 // clock in some stack or overlay so itll always be in a specific spot on screen
-                QuestionTimer(quizTime: widget.quiz.timeInSeconds, quiz: quiz),
+                QuestionTimer(
+                    quizTime: widget.quiz.timeInSeconds, quiz: widget.quiz),
               ],
             )),
         Container(
@@ -69,8 +70,10 @@ class _TakeQuizState extends State<TakeQuiz> {
           color: Colors.deepPurple,
           child: RaisedButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Results(quiz: quiz)));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Results(quiz: widget.quiz)));
               // how to get radio button values and check for final score
               // pass score when timer hits 0?
             },

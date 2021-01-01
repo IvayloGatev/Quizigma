@@ -16,7 +16,10 @@ class QuizTile extends StatelessWidget {
       child: Card(
           margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
           child: ListTile(
-            title: Text(quiz.id + '  ' + quiz.name),
+            title: Text('ID: ${quiz.id}' + ' ' + 'Quiz name: ${quiz.name}'),
+            subtitle: Text('number of Questions: ${quiz.numofQuestions}' +
+                ' ' +
+                'time to complete: ${quiz.timeInSeconds}'),
             tileColor: Colors.white,
           )),
       onPressed: () async {
