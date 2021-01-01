@@ -53,11 +53,13 @@ class _QuizCreatorState extends State<QuizCreator> {
     });
   }
 
-  void _showCreatorAlert() {
+  void _showCreatorAlert(Quiz quiz) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          return CreatorAlert();
+          return CreatorAlert(
+            quiz: quiz,
+          );
         });
   }
 
@@ -236,7 +238,7 @@ class _QuizCreatorState extends State<QuizCreator> {
 
                         Quiz quiz = Quiz(category, name, questions, value);
                         _controller.addQuiz(quiz);
-                        _showCreatorAlert();
+                        _showCreatorAlert(quiz);
                       }
                     },
                     padding: const EdgeInsets.symmetric(
