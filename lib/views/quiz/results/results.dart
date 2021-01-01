@@ -50,7 +50,8 @@ class Results extends StatelessWidget {
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16.0),
                   title: Text("Score", style: titleStyle),
-                  trailing: Text("correct/questions.length * 100 %",
+                  trailing: Text(
+                      "correct/ " + quiz.numofQuestions.toString() + " *100 %",
                       style: trailingStyle),
                 ),
               ),
@@ -61,8 +62,8 @@ class Results extends StatelessWidget {
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16.0),
                   title: Text("Correct Answers", style: titleStyle),
-                  trailing:
-                      Text("correct/questions.length", style: trailingStyle),
+                  trailing: Text("correct/ " + quiz.numofQuestions.toString(),
+                      style: trailingStyle),
                 ),
               ),
               SizedBox(height: 10.0),
@@ -72,8 +73,8 @@ class Results extends StatelessWidget {
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16.0),
                   title: Text("Incorrect Answers", style: titleStyle),
-                  trailing:
-                      Text("questions.length - correct", style: trailingStyle),
+                  trailing: Text(quiz.numofQuestions.toString() + " - correct",
+                      style: trailingStyle),
                 ),
               ),
               SizedBox(height: 20.0),

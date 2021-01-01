@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/question.dart';
+import 'package:quizigma/models/quiz.dart';
 import 'categories_screen.dart';
 import 'package:quizigma/views/quiz/results/results.dart';
 import 'dart:async';
 
 class QuestionTimer extends StatefulWidget {
   final int quizTime;
+  final Quiz quiz;
 
-  QuestionTimer({this.quizTime});
+  QuestionTimer({this.quizTime, this.quiz});
 
   @override
   _QuestionTimerState createState() => _QuestionTimerState();
@@ -144,7 +146,9 @@ class _QuestionTimerState extends State<QuestionTimer> {
           _timer.cancel();
           _timer = new Timer(const Duration(seconds: 2), () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Results()));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Results(quiz: widget.quiz)));
           });
         }
       });

@@ -50,9 +50,7 @@ class _TakeQuizState extends State<TakeQuiz> {
                 ),
                 Spacer(),
                 // clock in some stack or overlay so itll always be in a specific spot on screen
-                QuestionTimer(
-                  quizTime: widget.quiz.timeInSeconds,
-                ),
+                QuestionTimer(quizTime: widget.quiz.timeInSeconds, quiz: quiz),
               ],
             )),
         Container(
