@@ -18,44 +18,44 @@ class QuestionList extends StatefulWidget {
 class _QuestionListState extends State<QuestionList> {
   String category;
   Question question;
-  int selectedRadio = -1;
-  int case2Value1 = 0;
-  int case2Value2 = 1;
 
-  int case3Value1 = 0;
-  int case3Value2 = 1;
-  int case3Value3 = 2;
+  int _radioValueCase2 = -1;
+  int _radioValueCase3 = -1;
+  int _radioValueCase4 = -1;
+  int _radioValueCase5 = -1;
 
-  int questionCounter;
-
-  setSelectedRadio(int val) {
+  void setSelectedRadioCase2(int value) {
     setState(() {
-      selectedRadio = val;
+      _radioValueCase2 = value;
     });
   }
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   final questions = Provider.of<List<Question>>(context);
-  //   return questions == null
-  //       ? Center(child: CircularProgressIndicator())
-  //       : ListView.builder(
-  //           itemCount: questions.length,
-  //           itemBuilder: (context, index) {
-  //             return QuestionTile(question: questions[index]);
-  //           },
-  //         );
-  // }
+  void setSelectedRadioCase3(int value) {
+    setState(() {
+      _radioValueCase3 = value;
+    });
+  }
+
+  void setSelectedRadioCase4(int value) {
+    setState(() {
+      _radioValueCase4 = value;
+    });
+  }
+
+  void setSelectedRadioCase5(int value) {
+    setState(() {
+      _radioValueCase5 = value;
+    });
+  }
 
   Widget build(BuildContext context) {
     final questions = Provider.of<List<Question>>(context);
     return questions == null
         ? Center(child: CircularProgressIndicator())
         : ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
+            physics: ClampingScrollPhysics(),
             itemCount: questions.length,
             itemBuilder: (context, index) {
-              questionCounter = index + 1;
               return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -64,47 +64,8 @@ class _QuestionListState extends State<QuestionList> {
                     _getAnswers(questions[index]),
                     SizedBox(height: 10),
                   ]);
-              // return Container(
-              //     color: Colors.yellow,
-              //     child: Column(
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: <Widget>[
-              //         Row(
-              //           children: [
-              //             Text('Question $questionCounter',
-              //                 style: TextStyle(
-              //                   fontSize: 22,
-              //                 )),
-              //             QuestionTimer(
-              //               quizTime: widget.quiz.timeInSeconds,
-              //             ),
-              //           ],
-              //         ),
-              //         QuestionTile(question: questions[index]),
-              //         _getAnswers(questions[index]),
-              //         RaisedButton(
-              //           onPressed: () {
-              //             _checkAnswer(questions[index].correctAnswer);
-              //           },
-              //           child: Text('Submit'),
-              //           color: Colors.deepPurple,
-              //         )
-              //       ],
-              //     ));
             },
           );
-  }
-
-  bool _checkAnswer(int x) {
-    print('correct answer $x');
-    print('selected $selectedRadio');
-    if (selectedRadio == x) {
-      print("correct");
-
-      return true;
-    }
-    print("false");
-    return false;
   }
 
   Column _getAnswers(Question question) {
@@ -122,11 +83,11 @@ class _QuestionListState extends State<QuestionList> {
                   title: Text(
                     question.answers[0],
                   ),
-                  value: case2Value1,
-                  groupValue: selectedRadio,
+                  value: 0,
+                  groupValue: _radioValueCase2,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase2(val);
                   },
                 ),
               ),
@@ -136,11 +97,11 @@ class _QuestionListState extends State<QuestionList> {
                   title: Text(
                     question.answers[1],
                   ),
-                  value: case2Value2,
-                  groupValue: selectedRadio,
+                  value: 1,
+                  groupValue: _radioValueCase2,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase2(val);
                   },
                 ),
               )
@@ -158,11 +119,11 @@ class _QuestionListState extends State<QuestionList> {
                   title: Text(
                     question.answers[0],
                   ),
-                  value: case3Value1,
-                  groupValue: selectedRadio,
+                  value: 0,
+                  groupValue: _radioValueCase3,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase3(val);
                   },
                 ),
               ),
@@ -172,11 +133,11 @@ class _QuestionListState extends State<QuestionList> {
                   title: Text(
                     question.answers[1],
                   ),
-                  value: case3Value2,
-                  groupValue: selectedRadio,
+                  value: 1,
+                  groupValue: _radioValueCase3,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase3(val);
                   },
                 ),
               ),
@@ -186,11 +147,11 @@ class _QuestionListState extends State<QuestionList> {
                   title: Text(
                     question.answers[2],
                   ),
-                  value: case3Value3,
-                  groupValue: selectedRadio,
+                  value: 2,
+                  groupValue: _radioValueCase3,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase3(val);
                   },
                 ),
               )
@@ -208,10 +169,10 @@ class _QuestionListState extends State<QuestionList> {
                     question.answers[0],
                   ),
                   value: 0,
-                  groupValue: selectedRadio,
+                  groupValue: _radioValueCase4,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase4(val);
                   },
                 ),
               ),
@@ -222,10 +183,10 @@ class _QuestionListState extends State<QuestionList> {
                     question.answers[1],
                   ),
                   value: 1,
-                  groupValue: selectedRadio,
+                  groupValue: _radioValueCase4,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase4(val);
                   },
                 ),
               ),
@@ -236,10 +197,10 @@ class _QuestionListState extends State<QuestionList> {
                     question.answers[2],
                   ),
                   value: 2,
-                  groupValue: selectedRadio,
+                  groupValue: _radioValueCase4,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase4(val);
                   },
                 ),
               ),
@@ -250,10 +211,10 @@ class _QuestionListState extends State<QuestionList> {
                     question.answers[3],
                   ),
                   value: 3,
-                  groupValue: selectedRadio,
+                  groupValue: _radioValueCase4,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase4(val);
                   },
                 ),
               )
@@ -271,10 +232,10 @@ class _QuestionListState extends State<QuestionList> {
                     question.answers[0],
                   ),
                   value: 0,
-                  groupValue: selectedRadio,
+                  groupValue: _radioValueCase5,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase5(val);
                   },
                 ),
               ),
@@ -285,10 +246,10 @@ class _QuestionListState extends State<QuestionList> {
                     question.answers[1],
                   ),
                   value: 1,
-                  groupValue: selectedRadio,
+                  groupValue: _radioValueCase5,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase5(val);
                   },
                 ),
               ),
@@ -299,10 +260,10 @@ class _QuestionListState extends State<QuestionList> {
                     question.answers[2],
                   ),
                   value: 2,
-                  groupValue: selectedRadio,
+                  groupValue: _radioValueCase5,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase5(val);
                   },
                 ),
               ),
@@ -313,10 +274,10 @@ class _QuestionListState extends State<QuestionList> {
                     question.answers[3],
                   ),
                   value: 3,
-                  groupValue: selectedRadio,
+                  groupValue: _radioValueCase5,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase5(val);
                   },
                 ),
               ),
@@ -327,10 +288,10 @@ class _QuestionListState extends State<QuestionList> {
                     question.answers[4],
                   ),
                   value: 4,
-                  groupValue: selectedRadio,
+                  groupValue: _radioValueCase5,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadio(val);
+                    setSelectedRadioCase5(val);
                   },
                 ),
               )
@@ -346,10 +307,10 @@ class _QuestionListState extends State<QuestionList> {
                   question.answers[0],
                 ),
                 value: 1,
-                groupValue: selectedRadio,
+                groupValue: -1,
                 activeColor: Colors.blue,
                 onChanged: (val) {
-                  setSelectedRadio(val);
+                  setSelectedRadioCase5(val);
                 },
               ),
             )
