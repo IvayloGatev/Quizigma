@@ -141,13 +141,13 @@ class _QuizCreatorState extends State<QuizCreator> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Select question timer',
+                                  'Select time per question',
                                   style: TextStyle(
                                     fontSize: 17,
                                     color: Colors.black.withOpacity(0.6),
                                   ),
                                 ),
-                                SizedBox(width: 150),
+                                SizedBox(width: 120),
                                 InkWell(
                                   onTap: () {
                                     setState(() {
