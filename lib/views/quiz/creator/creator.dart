@@ -147,7 +147,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                                     color: Colors.black.withOpacity(0.6),
                                   ),
                                 ),
-                                SizedBox(width: 150),
+                                Spacer(),
                                 InkWell(
                                   onTap: () {
                                     setState(() {

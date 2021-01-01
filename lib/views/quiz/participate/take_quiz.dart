@@ -30,6 +30,7 @@ class _TakeQuizState extends State<TakeQuiz> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
                       '${widget.quiz.name}',
