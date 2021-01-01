@@ -31,6 +31,7 @@ class _MyFormState extends State<MyForm> {
   bool iDExists = false;
   Future<String> id;
   String quizId;
+  static Quiz quiz = Quiz.namedconstructor('id', 'category', 'name', 50); //for sending the timer default timeInSeconds
 
   @override
   void initState() {
@@ -125,7 +126,7 @@ class _MyFormState extends State<MyForm> {
                                         MaterialPageRoute(
                                             builder: (context) => JoinQuestions(
                                                 quizId: quizId,
-                                                quiz: getQuiz(quizId))));
+                                                quiz: quiz )));
                                   });
                                 },
                                 textColor: Colors.white,
