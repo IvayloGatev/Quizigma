@@ -24,27 +24,47 @@ class _QuestionListState extends State<QuestionList> {
   int _radioValueCase4 = -1;
   int _radioValueCase5 = -1;
 
-  void setSelectedRadioCase2(int value) {
+  void setSelectedRadioCase2(int value, int correctAnswer) {
     setState(() {
       _radioValueCase2 = value;
+      if (_radioValueCase2 == correctAnswer) {
+        print('correct');
+      } else {
+        print('false');
+      }
     });
   }
 
-  void setSelectedRadioCase3(int value) {
+  void setSelectedRadioCase3(int value, int correctAnswer) {
     setState(() {
       _radioValueCase3 = value;
+      if (_radioValueCase3 == correctAnswer) {
+        print('correct');
+      } else {
+        print('false');
+      }
     });
   }
 
-  void setSelectedRadioCase4(int value) {
+  void setSelectedRadioCase4(int value, int correctAnswer) {
     setState(() {
       _radioValueCase4 = value;
+      if (_radioValueCase4 == correctAnswer) {
+        print('correct');
+      } else {
+        print('false');
+      }
     });
   }
 
-  void setSelectedRadioCase5(int value) {
+  void setSelectedRadioCase5(int value, int correctAnswer) {
     setState(() {
       _radioValueCase5 = value;
+      if (_radioValueCase5 == correctAnswer) {
+        print('correct');
+      } else {
+        print('false');
+      }
     });
   }
 
@@ -87,7 +107,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase2,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase2(val);
+                    setSelectedRadioCase2(val, question.correctAnswer);
                   },
                 ),
               ),
@@ -101,7 +121,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase2,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase2(val);
+                    setSelectedRadioCase2(val, question.correctAnswer);
                   },
                 ),
               )
@@ -123,7 +143,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase3,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase3(val);
+                    setSelectedRadioCase3(val, question.correctAnswer);
                   },
                 ),
               ),
@@ -137,7 +157,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase3,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase3(val);
+                    setSelectedRadioCase3(val, question.correctAnswer);
                   },
                 ),
               ),
@@ -151,7 +171,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase3,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase3(val);
+                    setSelectedRadioCase3(val, question.correctAnswer);
                   },
                 ),
               )
@@ -172,7 +192,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase4,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase4(val);
+                    setSelectedRadioCase4(val, question.correctAnswer);
                   },
                 ),
               ),
@@ -186,7 +206,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase4,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase4(val);
+                    setSelectedRadioCase4(val, question.correctAnswer);
                   },
                 ),
               ),
@@ -200,7 +220,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase4,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase4(val);
+                    setSelectedRadioCase4(val, question.correctAnswer);
                   },
                 ),
               ),
@@ -214,7 +234,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase4,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase4(val);
+                    setSelectedRadioCase4(val, question.correctAnswer);
                   },
                 ),
               )
@@ -235,7 +255,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase5,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase5(val);
+                    setSelectedRadioCase5(val, question.correctAnswer);
                   },
                 ),
               ),
@@ -249,7 +269,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase5,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase5(val);
+                    setSelectedRadioCase5(val, question.correctAnswer);
                   },
                 ),
               ),
@@ -263,7 +283,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase5,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase5(val);
+                    setSelectedRadioCase5(val, question.correctAnswer);
                   },
                 ),
               ),
@@ -277,7 +297,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase5,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase5(val);
+                    setSelectedRadioCase5(val, question.correctAnswer);
                   },
                 ),
               ),
@@ -291,7 +311,7 @@ class _QuestionListState extends State<QuestionList> {
                   groupValue: _radioValueCase5,
                   activeColor: Colors.blue,
                   onChanged: (val) {
-                    setSelectedRadioCase5(val);
+                    setSelectedRadioCase5(val, question.correctAnswer);
                   },
                 ),
               )
@@ -310,7 +330,7 @@ class _QuestionListState extends State<QuestionList> {
                 groupValue: -1,
                 activeColor: Colors.blue,
                 onChanged: (val) {
-                  setSelectedRadioCase5(val);
+                  setSelectedRadioCase5(val, question.correctAnswer);
                 },
               ),
             )
