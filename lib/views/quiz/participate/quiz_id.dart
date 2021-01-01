@@ -31,8 +31,9 @@ class _MyFormState extends State<MyForm> {
   bool iDExists = false;
   Future<String> id;
   String quizId;
-  static Quiz quiz = Quiz.namedconstructor('id', 'category', 'name', 50); //for sending the timer default timeInSeconds
-
+  // Quiz quiz = Quiz.namedconstructor('id', 'category', 'name',
+  //     50); //for sending the timer default timeInSeconds
+  Quiz quizToJoin;
   @override
   void initState() {
     super.initState();
@@ -61,8 +62,12 @@ class _MyFormState extends State<MyForm> {
   //   });
   // }
 
-  Quiz getQuiz(String id) {
-    CollectionReference quiz = _quizController.getQuizWithId(id);
+  getQuiz(Quiz quiz, String id) async {
+    print('here');
+    quiz = await _quizController.getQuiz(id);
+
+    quizToJoin = quiz;
+    print(quizToJoin.name);
 
     //quiz.get(quiz);
 
@@ -114,8 +119,9 @@ class _MyFormState extends State<MyForm> {
                                   Center(child: CircularProgressIndicator());
                                   _quizController.checkIfDocExists(quizId);
                                   assignToBool(iDExists, quizId);
+                                  getQuiz(quizToJoin, quizId);
                                   Future.delayed(
-                                      const Duration(milliseconds: 300), () {
+                                      const Duration(milliseconds: 400), () {
                                     if (!_formKey.currentState.validate()) {
                                       return;
                                     }
@@ -126,7 +132,7 @@ class _MyFormState extends State<MyForm> {
                                         MaterialPageRoute(
                                             builder: (context) => JoinQuestions(
                                                 quizId: quizId,
-                                                quiz: quiz )));
+                                                quiz: quizToJoin)));
                                   });
                                 },
                                 textColor: Colors.white,
