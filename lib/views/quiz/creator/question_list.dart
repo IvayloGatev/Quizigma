@@ -66,7 +66,7 @@ class _QuestionListState extends State<QuestionList> {
                                     width: 30,
                                     height: 30,
                                     decoration: BoxDecoration(
-                                      color: Colors.purple,
+                                      color: Colors.deepPurple,
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: Icon(
@@ -119,7 +119,7 @@ class _QuestionListState extends State<QuestionList> {
           width: 30,
           height: 30,
           decoration: BoxDecoration(
-            color: Colors.purple,
+            color: Colors.deepPurple,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Icon(

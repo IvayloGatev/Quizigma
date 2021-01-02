@@ -162,7 +162,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                                     width: 30,
                                     height: 30,
                                     decoration: BoxDecoration(
-                                      color: Colors.purple,
+                                      color: Colors.green,
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: Icon(
@@ -186,7 +186,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                                     width: 30,
                                     height: 30,
                                     decoration: BoxDecoration(
-                                      color: Colors.purple,
+                                      color: Colors.red,
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: Icon(
