@@ -46,7 +46,7 @@ class _AnswerListState extends State<AnswerList> {
             Row(children: [
               Radio(
                   groupValue: _editor.correctAnswer,
-                  activeColor: Colors.purple,
+                  activeColor: Colors.green,
                   value: i,
                   onChanged: (int value) {
                     setState(() {
@@ -72,7 +72,7 @@ class _AnswerListState extends State<AnswerList> {
                         width: 30,
                         height: 30,
                         decoration: BoxDecoration(
-                          color: Colors.purple,
+                          color: Colors.red,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Icon(
@@ -103,7 +103,7 @@ class _AnswerListState extends State<AnswerList> {
                 width: 30,
                 height: 30,
                 decoration: BoxDecoration(
-                  color: Colors.purple,
+                  color: Colors.green,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Icon(
