@@ -6,12 +6,17 @@ import 'package:quizigma/views/quiz/creator/creator.dart';
 import 'package:quizigma/views/quiz/participate/categories_screen.dart';
 import 'package:quizigma/views/quiz/participate/quiz_id.dart';
 import 'package:quizigma/views/quiz/results/results.dart';
+import 'package:quizigma/models/quiz.dart';
+import 'package:quizigma/models/question.dart';
 
 class Home extends StatelessWidget {
   final _controller = HomeController();
 
   @override
   Widget build(BuildContext context) {
+    Question dummyQuestion = new Question(1, 'hi', ['1,2'], 0);
+    Quiz dummyQuiz = new Quiz('Literature', 'test', [dummyQuestion], 30, 1);
+
     return Scaffold(
         //backgroundColor: Colors.purple[50],
         appBar: AppBar(
@@ -113,8 +118,12 @@ class Home extends StatelessWidget {
               color: Colors.deepPurple,
               textColor: Colors.white,
               onPressed: () async {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Results()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Results(
+                              quiz: dummyQuiz,
+                            )));
               },
             ),
           ]),
