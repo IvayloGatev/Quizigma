@@ -89,7 +89,7 @@ class Results extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     color: Colors.deepPurple,
-                    child: Text("Goto Home"),
+                    child: Text("Go to Home"),
                     textColor: Colors.white,
                     onPressed: () {
                       Navigator.of(context)

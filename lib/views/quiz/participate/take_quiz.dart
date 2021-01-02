@@ -3,15 +3,19 @@ import 'package:provider/provider.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:quizigma/views/quiz/participate/question_timer.dart';
+import 'package:quizigma/views/quiz/participate/sticky_header.dart';
 import 'package:quizigma/views/quiz/results/results.dart';
 import 'questions_tile.dart';
 import 'package:quizigma/services/firestore_database.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'questions_list.dart';
+import 'sticky_header.dart';
+import 'package:sticky_headers/sticky_headers.dart';
 
 class TakeQuiz extends StatefulWidget {
   @override
   final Quiz quiz;
+
   TakeQuiz({this.quiz});
 
   _TakeQuizState createState() => _TakeQuizState();
@@ -21,67 +25,61 @@ class _TakeQuizState extends State<TakeQuiz> {
   //final Quiz quiz;
 
   //_TakeQuizState(this.quiz);
+  int score = 0;
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Column(
-      children: <Widget>[
-        Container(
-            padding: EdgeInsets.all(5),
-            color: Colors.deepPurple[40],
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      '${widget.quiz.name}',
-                      style:
-                          TextStyle(fontSize: 40, fontStyle: FontStyle.italic),
-                    ),
-                    Text(
-                      '${widget.quiz.category}',
-                      style:
-                          TextStyle(fontSize: 22, fontStyle: FontStyle.italic),
-                    ),
-                  ],
-                ),
-                Spacer(),
-                // clock in some stack or overlay so itll always be in a specific spot on screen
-                QuestionTimer(
-                    quizTime: widget.quiz.timeInSeconds, quiz: widget.quiz),
-              ],
-            )),
-        Container(
-          //width and height fields manadatory so the questionlist can load into the screen
-          //takes height of quiz with most questions
-          //how to do this dynamically?
-          width: width,
-          height: height,
-          color: Colors.white,
-          child: QuestionList(
+    return StickyHeader(
+        header: Container(
+          color: Colors.yellow,
+          padding: EdgeInsets.only(left: 10),
+          child: StickyHeaderForQuiz(
             quiz: widget.quiz,
           ),
         ),
-        Container(
-          alignment: Alignment.bottomLeft,
-          color: Colors.deepPurple,
-          child: RaisedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Results(quiz: widget.quiz)));
-              // how to get radio button values and check for final score
-              // pass score when timer hits 0?
-            },
-            child: Text('Submit'),
-            color: Colors.white,
-          ),
-        )
-      ],
-    );
+        content: Column(
+          children: [
+            Container(
+              //width and height fields manadatory so the questionlist can load into the screen
+              //takes height of quiz with most questions
+              //how to do this dynamically?
+              width: width,
+              height: height,
+              color: Colors.white,
+              child: QuestionList(
+                quiz: widget.quiz,
+              ),
+            ),
+            Container(
+              alignment: Alignment.bottomLeft,
+              color: Colors.deepPurple,
+              child: RaisedButton(
+                onPressed: () {
+                  // checkAnswers([0, 0, 0, 0], widget.quiz);
+                  print(score);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Results(quiz: widget.quiz)));
+                  // how to get radio button values and check for final score
+                  // pass score when timer hits 0?
+                },
+                child: Text('Submit'),
+                color: Colors.white,
+              ),
+            )
+          ],
+        ));
+    // Column(
+    //   children: <Widget>[
+    //     Container(
+    //       padding: EdgeInsets.all(5),
+    //       color: Colors.deepPurple[40],
+
+    //       // clock in some stack or overlay so itll always be in a specific spot on screen
+    //     ),
+
+    //   ],
+    // );
   }
 }

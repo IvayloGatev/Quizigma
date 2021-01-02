@@ -144,12 +144,12 @@ class _QuestionTimerState extends State<QuestionTimer> {
           _counter--;
         } else {
           _timer.cancel();
-          _timer = new Timer(const Duration(seconds: 2), () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Results(quiz: widget.quiz)));
-          });
+          // _timer = new Timer(const Duration(seconds: 2), () {
+          //   Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //           builder: (context) => Results(quiz: widget.quiz)));
+          // });
         }
       });
     });

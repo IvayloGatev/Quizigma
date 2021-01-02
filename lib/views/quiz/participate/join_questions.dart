@@ -4,12 +4,12 @@ import 'package:provider/provider.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/Participate/questions_list.dart';
+import 'package:quizigma/views/quiz/participate/question_timer.dart';
 import 'package:quizigma/views/quiz/participate/take_quiz.dart';
 
 class JoinQuestions extends StatelessWidget {
   final String quizId;
   final Quiz quiz;
-  //final int timeInSeconds;
 
   const JoinQuestions({this.quizId, this.quiz});
 
