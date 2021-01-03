@@ -47,6 +47,7 @@ class _QuestionListState extends State<QuestionList> {
   Widget build(BuildContext context) {
     // set the length of correct answers, other array is set in "radio_buttons"
     correctAnswers.length = widget.quiz.numofQuestions;
+    selectedAnswers.length = widget.quiz.numofQuestions;
 
     final questions = Provider.of<List<Question>>(context);
     return questions == null
@@ -79,7 +80,7 @@ class _QuestionListState extends State<QuestionList> {
                             widget.submit(score);
                           });
                         },
-                        numberOfQuestions: questions.length,
+                        selectedAnswers: selectedAnswers,
                       )
                     ]),
                     SizedBox(height: 10),
