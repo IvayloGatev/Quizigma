@@ -45,8 +45,8 @@ class _TakeQuizState extends State<TakeQuiz> {
         content: Column(
           children: [
             Container(
-              width: width,
-              height: height * 0.685,
+              // width: width,
+              // height: height * 0.685,
               color: Colors.white,
 
               //width and height fields manadatory so the questionlist can load into the screen

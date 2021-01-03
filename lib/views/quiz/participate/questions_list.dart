@@ -37,9 +37,9 @@ class _QuestionListState extends State<QuestionList> {
     print(selections.toString());
 
     for (int i = 0; i < answers.length; i++) {
-      if (answers[i] == null) {
-        answers[i] = -1;
-      }
+      // if (answers[i] == null) {
+      //   answers[i] = -1;
+      // }
       if (selections[i] == answers[i]) {
         score++;
       }
@@ -56,7 +56,7 @@ class _QuestionListState extends State<QuestionList> {
     return questions == null
         ? Center(child: CircularProgressIndicator())
         : ListView.builder(
-            physics: AlwaysScrollableScrollPhysics(),
+            physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: questions.length,
             itemBuilder: (context, index) {
