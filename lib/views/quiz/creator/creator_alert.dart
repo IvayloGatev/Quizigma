@@ -25,18 +25,30 @@ class CreatorAlert extends StatelessWidget {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-              SizedBox(width: 15),
-              Flexible(
+
+              SizedBox(
+                height:350,
+                child:Flexible(
                 child: Text(
                 subject + ' :' + quizId,
                 textAlign: TextAlign.center ,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize:35),
                 )
+                )
               ),
+                          
               Container(
+                width:200,
+
                 child: RaisedButton(
-                  child: Text('Share your code with friends!'),
+                shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+                  child: Text('Share your code',
+                  style: TextStyle(fontSize: 20),                  
+),
+                  textColor: Colors.white,
                   color: Colors.deepPurple,
                   onPressed: () {
                     final RenderBox box = context.findRenderObject();
@@ -47,24 +59,43 @@ class CreatorAlert extends StatelessWidget {
                   },
                 ),
               ),
-              RaisedButton(
-                  child: Text('Return home'),
+                                                
+             
+              Container(
+              width:200,
+              child:RaisedButton(
+                shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+                  child: Text('Return home',
+                  style: TextStyle(fontSize: 20),
+                  ),
+                  textColor: Colors.white,
                   color: Colors.deepPurple,
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Home()));
-                  }),
-              RaisedButton(
-                child: Text('Take quiz'),
-                color: Colors.deepPurple,
-                onPressed: () {
+                  })),
+              Container(
+                width:200,
+                child:RaisedButton(
+                  shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+                  child: Text('Take quiz',
+                  style: TextStyle(fontSize: 20),
+                  ),
+                  //style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),                  
+                  textColor: Colors.white,
+                  color: Colors.deepPurple,
+                  onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
                               JoinQuestions(quizId: quiz.id, quiz: quiz)));
                 },
-              )
+              ))
             ])));
 
     // return AlertDialog(
