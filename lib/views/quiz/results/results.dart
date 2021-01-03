@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/models/question.dart';
+import 'package:quizigma/views/quiz/participate/join_questions.dart';
 import 'package:quizigma/views/quiz/results/check_answers.dart';
 import 'package:quizigma/views/home/home.dart';
 
@@ -115,6 +116,22 @@ class Results extends StatelessWidget {
                           builder: (_) => CheckAnswersPage()));
                     },
                   ),
+                  RaisedButton(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 20.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      color: Colors.deepPurple,
+                      child: Text("Retake Quiz"),
+                      textColor: Colors.white,
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => JoinQuestions(
+                                  quiz: quiz,
+                                  quizId: quiz.id,
+                                )));
+                      }),
                 ],
               )
             ],

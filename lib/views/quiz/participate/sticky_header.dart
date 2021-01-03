@@ -5,8 +5,8 @@ import 'package:quizigma/models/quiz.dart';
 class StickyHeaderForQuiz extends StatefulWidget {
   @override
   final Quiz quiz;
-
-  StickyHeaderForQuiz({this.quiz});
+  final int score;
+  StickyHeaderForQuiz({this.quiz, this.score});
 
   _StickyHeaderForQuizState createState() => _StickyHeaderForQuizState();
 }
@@ -32,7 +32,11 @@ class _StickyHeaderForQuizState extends State<StickyHeaderForQuiz> {
           ],
         ),
         Spacer(),
-        QuestionTimer(quizTime: widget.quiz.timeInSeconds, quiz: widget.quiz),
+        QuestionTimer(
+          quizTime: widget.quiz.timeInSeconds,
+          quiz: widget.quiz,
+          score: widget.score,
+        ),
       ],
     );
   }

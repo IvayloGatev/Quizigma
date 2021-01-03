@@ -7,9 +7,10 @@ import 'dart:async';
 
 class QuestionTimer extends StatefulWidget {
   final int quizTime;
+  final int score;
   final Quiz quiz;
 
-  QuestionTimer({this.quizTime, this.quiz});
+  QuestionTimer({this.quizTime, this.quiz, this.score});
 
   @override
   _QuestionTimerState createState() => _QuestionTimerState();
@@ -148,7 +149,10 @@ class _QuestionTimerState extends State<QuestionTimer> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => Results(quiz: widget.quiz)));
+                    builder: (context) => Results(
+                          quiz: widget.quiz,
+                          score: widget.score,
+                        )));
           });
         }
       });

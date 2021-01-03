@@ -84,17 +84,6 @@ class _QuestionListState extends State<QuestionList> {
                       )
                     ]),
                     SizedBox(height: 10),
-                    RaisedButton(
-                      onPressed: () {
-                        score = calculateScore(selectedAnswers, correctAnswers);
-
-                        print('checkscore $score');
-                        // submit score to "take_quiz"
-                        widget.submit(score);
-                      },
-                      child: Text('Submit'),
-                      color: Colors.white,
-                    ),
                   ]);
             },
           );
