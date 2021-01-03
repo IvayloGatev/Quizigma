@@ -55,7 +55,7 @@ class Results extends StatelessWidget {
                   contentPadding: const EdgeInsets.all(16.0),
                   title: Text("Score", style: titleStyle),
                   trailing: Text(
-                      ((score / quiz.numofQuestions) * 100).toString() + "%",
+                      ((score / quiz.numofQuestions) * 100).toStringAsFixed(2) + "%",
                       style: trailingStyle),
                 ),
               ),
