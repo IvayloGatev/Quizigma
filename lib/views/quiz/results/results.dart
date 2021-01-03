@@ -12,8 +12,25 @@ class Results extends StatelessWidget {
 
   Results({this.quiz, this.score});
 
-  @override
+  String calculateScore(Quiz quiz, int score) {
+    String scoreAsString = '';
+    score = quiz.numofQuestions * score;
+    scoreAsString = score.toString();
+
+    return scoreAsString;
+  }
+
+  String getIncorrectAnswers(Quiz quiz, int score) {
+    String incorrectAnswersAsString = '';
+    score = quiz.numofQuestions - score;
+    incorrectAnswersAsString = score.toString();
+
+    return incorrectAnswersAsString;
+  }
+
   Widget build(BuildContext context) {
+    String scoreString = calculateScore(quiz, score);
+    String incorrectAnswers = getIncorrectAnswers(quiz, score);
     final TextStyle titleStyle = TextStyle(
         color: Colors.deepPurple, fontSize: 16.0, fontWeight: FontWeight.bold);
     final TextStyle trailingStyle = TextStyle(
@@ -54,11 +71,7 @@ class Results extends StatelessWidget {
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16.0),
                   title: Text("Score", style: titleStyle),
-                  trailing: Text(
-                      score.toString() +
-                          quiz.numofQuestions.toString() +
-                          " *100 %",
-                      style: trailingStyle),
+                  trailing: Text(scoreString, style: trailingStyle),
                 ),
               ),
               SizedBox(height: 10.0),
@@ -80,8 +93,7 @@ class Results extends StatelessWidget {
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16.0),
                   title: Text("Incorrect Answers", style: titleStyle),
-                  trailing: Text(quiz.numofQuestions.toString() + " - correct",
-                      style: trailingStyle),
+                  trailing: Text(incorrectAnswers, style: trailingStyle),
                 ),
               ),
               SizedBox(height: 20.0),

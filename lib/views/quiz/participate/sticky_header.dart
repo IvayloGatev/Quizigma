@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:quizigma/views/quiz/participate/question_timer.dart';
 import 'package:quizigma/models/quiz.dart';
 
@@ -23,7 +24,7 @@ class _StickyHeaderForQuizState extends State<StickyHeaderForQuiz> {
           children: <Widget>[
             Text(
               '${widget.quiz.name}',
-              style: TextStyle(fontSize: 40, fontStyle: FontStyle.italic),
+              style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic),
             ),
             Text(
               '${widget.quiz.category}',
@@ -31,12 +32,19 @@ class _StickyHeaderForQuizState extends State<StickyHeaderForQuiz> {
             ),
           ],
         ),
+        // Card(
+        //     margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
+        //     child: ListTile(
+        //       title: Text('${widget.quiz.name}'),
+        //       subtitle: Text('${widget.quiz.category}'),
+        //       tileColor: Colors.white,
+        //     )),
         Spacer(),
-        QuestionTimer(
-          quizTime: widget.quiz.timeInSeconds,
-          quiz: widget.quiz,
-          score: widget.score,
-        ),
+        // QuestionTimer(
+        //   quizTime: widget.quiz.timeInSeconds,
+        //   quiz: widget.quiz,
+        //   score: widget.score,
+        // ),
       ],
     );
   }

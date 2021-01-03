@@ -24,42 +24,43 @@ class _QuestionTimerState extends State<QuestionTimer> {
   int _counter;
   Timer _timer;
 
-  /*Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Example timer"),
-        backgroundColor: Colors.pink,
-      ),
-      body: Container(
-        padding: EdgeInsets.all(16),
-        alignment: Alignment.topRight,
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            (_counter > 0)
-                ? Text("Time left")
-                : Text(
-                    "Time is out",
-                    style: TextStyle(
-                      color: Colors.red,
-                    ),
-                  ),
-            Text(
-              '$_counter',
-              style: TextStyle(
-                fontSize: 32,
-              ),
-            ),
-            RaisedButton(
-              onPressed: () => _startTimer(),
-              child: Text("Start timer"),
-            ),
-          ],
-        ),
-      ),
-    );
-  }*/
+  // Widget build(BuildContext context) {
+  //   // return Scaffold(
+  //   //   appBar: AppBar(
+  //   //     title: Text("Example timer"),
+  //   //     backgroundColor: Colors.pink,
+  //   //   ),
+  //   //   body: Container(
+  //   //     padding: EdgeInsets.all(16),
+  //   //     alignment: Alignment.topRight,
+  //   //     child:
+  //   return Column(
+  //     // mainAxisAlignment: MainAxisAlignment.center,
+  //     crossAxisAlignment: CrossAxisAlignment.center,
+  //     children: <Widget>[
+  //       (widget.quizTime > 0)
+  //           ? Text("Time left")
+  //           : Text(
+  //               "Time is out",
+  //               style: TextStyle(
+  //                 color: Colors.red,
+  //               ),
+  //             ),
+  //       Text(
+  //         '$_counter',
+  //         style: TextStyle(
+  //           fontSize: 32,
+  //         ),
+  //       ),
+  //       RaisedButton(
+  //         onPressed: () => _startTimer(_counter),
+  //         child: Text("Start timer"),
+  //       ),
+  //     ],
+  //   );
+  //   //   ),
+  //   // );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +121,7 @@ class _QuestionTimerState extends State<QuestionTimer> {
                             : Text(
                                 '$_counter',
                                 style: TextStyle(fontSize: 28),
-                              )
+                              ),
                       ],
                     )),
                   ),
@@ -145,7 +146,7 @@ class _QuestionTimerState extends State<QuestionTimer> {
           _counter--;
         } else {
           _timer.cancel();
-          _timer = new Timer(const Duration(seconds: 2), () {
+          _timer = Timer(const Duration(seconds: 2), () {
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -163,7 +164,7 @@ class _QuestionTimerState extends State<QuestionTimer> {
     super.initState();
 
     int seconds = widget.quizTime;
-    print(seconds);
+
     _startTimer(seconds);
   }
 }

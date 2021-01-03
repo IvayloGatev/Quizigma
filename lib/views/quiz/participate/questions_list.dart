@@ -37,6 +37,9 @@ class _QuestionListState extends State<QuestionList> {
     print(selections.toString());
 
     for (int i = 0; i < answers.length; i++) {
+      if (answers[i] == null) {
+        answers[i] = -1;
+      }
       if (selections[i] == answers[i]) {
         score++;
       }
@@ -59,7 +62,6 @@ class _QuestionListState extends State<QuestionList> {
             itemBuilder: (context, index) {
               // fill correct answer array
               correctAnswers[index] = questions[index].correctAnswer;
-
               return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -71,6 +73,7 @@ class _QuestionListState extends State<QuestionList> {
                         buttonSelected: (selectedListFromRadio) {
                           setState(() {
                             // get the selected answer array
+
                             selectedAnswers = selectedListFromRadio;
                             score =
                                 calculateScore(selectedAnswers, correctAnswers);

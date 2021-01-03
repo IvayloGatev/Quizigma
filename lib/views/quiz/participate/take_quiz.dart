@@ -30,7 +30,12 @@ class _TakeQuizState extends State<TakeQuiz> {
 
     return StickyHeader(
         header: Container(
-          color: Colors.yellow,
+          decoration: BoxDecoration(
+              color: Colors.yellow,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              )),
           padding: EdgeInsets.only(left: 10),
           child: StickyHeaderForQuiz(
             quiz: widget.quiz,
@@ -40,8 +45,8 @@ class _TakeQuizState extends State<TakeQuiz> {
         content: Column(
           children: [
             Container(
-              // width: width,
-              //height: height * 0.685,
+              width: width,
+              height: height * 0.685,
               color: Colors.white,
 
               //width and height fields manadatory so the questionlist can load into the screen
@@ -58,12 +63,9 @@ class _TakeQuizState extends State<TakeQuiz> {
                 },
               ),
             ),
-
-            Text('$totalScore'),
-            // SizedBox(height: 300),
             Container(
               alignment: Alignment.bottomLeft,
-              color: Colors.deepPurple,
+              //  color: Colors.deepPurple,
               child: RaisedButton(
                 onPressed: () {
                   // checkAnswers([0, 0, 0, 0], widget.quiz);

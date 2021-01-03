@@ -18,7 +18,7 @@ class JoinQuestions extends StatelessWidget {
     return StreamProvider<List<Question>>.value(
       value: QuizController().database.getquestions(quizId),
       child: Scaffold(
-        backgroundColor: Colors.purple[50],
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text('Welcome to your Quiz'),
           backgroundColor: Colors.deepPurple,
