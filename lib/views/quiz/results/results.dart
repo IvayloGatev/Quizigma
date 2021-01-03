@@ -7,8 +7,9 @@ import 'package:quizigma/views/home/home.dart';
 
 class Results extends StatelessWidget {
   final Quiz quiz;
+  final int score;
 
-  Results({this.quiz});
+  Results({this.quiz, this.score});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,8 @@ class Results extends StatelessWidget {
         color: Colors.purple, fontSize: 20.0, fontWeight: FontWeight.bold);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz Result'),
+        automaticallyImplyLeading: false,
+        title: Text('Quiz Results'),
         elevation: 0,
         backgroundColor: Colors.deepPurple,
       ),
@@ -52,7 +54,9 @@ class Results extends StatelessWidget {
                   contentPadding: const EdgeInsets.all(16.0),
                   title: Text("Score", style: titleStyle),
                   trailing: Text(
-                      "correct/ " + quiz.numofQuestions.toString() + " *100 %",
+                      score.toString() +
+                          quiz.numofQuestions.toString() +
+                          " *100 %",
                       style: trailingStyle),
                 ),
               ),
@@ -63,7 +67,8 @@ class Results extends StatelessWidget {
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16.0),
                   title: Text("Correct Answers", style: titleStyle),
-                  trailing: Text("correct/ " + quiz.numofQuestions.toString(),
+                  trailing: Text(
+                      score.toString() + '/' + quiz.numofQuestions.toString(),
                       style: trailingStyle),
                 ),
               ),
@@ -89,7 +94,7 @@ class Results extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     color: Colors.deepPurple,
-                    child: Text("Go to Home"),
+                    child: Text("Home"),
                     textColor: Colors.white,
                     onPressed: () {
                       Navigator.of(context)

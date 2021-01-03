@@ -31,9 +31,8 @@ class _MyFormState extends State<MyForm> {
   bool iDExists = false;
   Future<String> id;
   String quizId;
-  // Quiz quiz = Quiz.namedconstructor('id', 'category', 'name',
-  //     50); //for sending the timer default timeInSeconds
   Quiz quizToJoin;
+
   @override
   void initState() {
     super.initState();
@@ -53,25 +52,10 @@ class _MyFormState extends State<MyForm> {
       iDExists = val;
     });
   }
-  // assignToBool(bool val, String id) async {
-  //   val = await _quizController.checkIfDocExists(id);
-  //   Future.delayed(Duration(seconds: 2), () {
-  //     setState(() {
-  //       iDExists = val;
-  //     });
-  //   });
-  // }
 
   getQuiz(Quiz quiz, String id) async {
-    print('here');
     quiz = await _quizController.getQuiz(id);
-
     quizToJoin = quiz;
-    print(quizToJoin.name);
-
-    //quiz.get(quiz);
-
-    //return quiz;
   }
 
   @override
@@ -150,7 +134,6 @@ class _MyFormState extends State<MyForm> {
                     SizedBox(
                       height: 20,
                     ),
-                    // showAlert(),
                     SizedBox(
                       height: 40,
                     )

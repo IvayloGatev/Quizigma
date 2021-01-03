@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:quizigma/views/quiz/participate/question_timer.dart';
+import 'package:quizigma/views/quiz/participate/radio_buttons.dart';
 import 'package:quizigma/views/quiz/participate/sticky_header.dart';
 import 'package:quizigma/views/quiz/results/results.dart';
 import 'questions_tile.dart';
@@ -13,7 +14,6 @@ import 'sticky_header.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
 class TakeQuiz extends StatefulWidget {
-  @override
   final Quiz quiz;
 
   TakeQuiz({this.quiz});
@@ -22,13 +22,12 @@ class TakeQuiz extends StatefulWidget {
 }
 
 class _TakeQuizState extends State<TakeQuiz> {
-  //final Quiz quiz;
+  int totalScore = 0;
 
-  //_TakeQuizState(this.quiz);
-  int score = 0;
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
     return StickyHeader(
         header: Container(
           color: Colors.yellow,
@@ -48,19 +47,27 @@ class _TakeQuizState extends State<TakeQuiz> {
               color: Colors.white,
               child: QuestionList(
                 quiz: widget.quiz,
+                submit: (scoreFromList) {
+                  setState(() {
+                    // get the score
+                    totalScore = scoreFromList;
+                  });
+                },
               ),
             ),
+            Text('$totalScore'),
             Container(
               alignment: Alignment.bottomLeft,
               color: Colors.deepPurple,
               child: RaisedButton(
                 onPressed: () {
                   // checkAnswers([0, 0, 0, 0], widget.quiz);
-                  print(score);
+                  //      print('pushed button $totalScore');
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Results(quiz: widget.quiz)));
+                          builder: (context) =>
+                              Results(quiz: widget.quiz, score: totalScore)));
                   // how to get radio button values and check for final score
                   // pass score when timer hits 0?
                 },
@@ -70,16 +77,5 @@ class _TakeQuizState extends State<TakeQuiz> {
             )
           ],
         ));
-    // Column(
-    //   children: <Widget>[
-    //     Container(
-    //       padding: EdgeInsets.all(5),
-    //       color: Colors.deepPurple[40],
-
-    //       // clock in some stack or overlay so itll always be in a specific spot on screen
-    //     ),
-
-    //   ],
-    // );
   }
 }

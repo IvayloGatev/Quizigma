@@ -32,7 +32,7 @@ class _StickyHeaderForQuizState extends State<StickyHeaderForQuiz> {
           ],
         ),
         Spacer(),
-        QuestionTimer(quizTime: widget.quiz.timeInSeconds, quiz: widget.quiz),
+        // QuestionTimer(quizTime: widget.quiz.timeInSeconds, quiz: widget.quiz),
       ],
     );
   }
