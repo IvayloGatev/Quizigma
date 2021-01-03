@@ -14,9 +14,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Question dummyQuestion = new Question(1, 'hi', ['1,2'], 0);
-    Quiz dummyQuiz = new Quiz('Literature', 'test', [dummyQuestion], 30, 1);
-
     return Scaffold(
         //backgroundColor: Colors.purple[50],
         appBar: AppBar(
@@ -103,28 +100,6 @@ class Home extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => QuizID()));
                 },
               ),
-            ),
-            SizedBox(height: 20),
-            RaisedButton(
-              //height: 70.00,
-              //minWidth: 90.00,
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child:
-                  Text("Testing Results Page", style: TextStyle(fontSize: 15)),
-              color: Colors.deepPurple,
-              textColor: Colors.white,
-              onPressed: () async {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Results(
-                              quiz: dummyQuiz,
-                            )));
-              },
             ),
           ]),
         ));
