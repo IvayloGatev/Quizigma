@@ -12,7 +12,7 @@ class CreatorAlert extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String subject = 'Quiz ID';
+    String subject = 'Your Quiz ID';
     String quizId = quiz.id;
     return Scaffold(
         appBar: AppBar(
@@ -21,13 +21,23 @@ class CreatorAlert extends StatelessWidget {
           title: const Text('Create a quiz'),
         ),
         body: Center(
+          
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
               SizedBox(width: 15),
+              Flexible(
+                child: Text(
+                subject + ' :' + quizId,
+                textAlign: TextAlign.center ,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize:35),
+                )
+              ),
               Container(
                 child: RaisedButton(
                   child: Text('Share your code with friends!'),
+                  color: Colors.deepPurple,
                   onPressed: () {
                     final RenderBox box = context.findRenderObject();
                     Share.share(quizId,
@@ -39,12 +49,14 @@ class CreatorAlert extends StatelessWidget {
               ),
               RaisedButton(
                   child: Text('Return home'),
+                  color: Colors.deepPurple,
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Home()));
                   }),
               RaisedButton(
                 child: Text('Take quiz'),
+                color: Colors.deepPurple,
                 onPressed: () {
                   Navigator.push(
                       context,
