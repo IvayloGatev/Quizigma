@@ -22,7 +22,7 @@ class _QuizCreatorState extends State<QuizCreator> {
     'Chemistry',
     'Biology',
     'General Knowledge',
-    'Polictics',
+    'Politics',
     'Nature',
     'Computer'
   ];
