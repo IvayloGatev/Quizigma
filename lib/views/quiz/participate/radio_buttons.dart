@@ -4,7 +4,8 @@ import 'package:quizigma/models/question.dart';
 class RadioSet extends StatefulWidget {
   final Question question;
   //final Function(int selection, int answer) buttonSelected;
-  final Function(int selection, List<int> selections) buttonSelected;
+  //final Function(int selection, List<int> selections) buttonSelected;
+  final Function(List<int> selections) buttonSelected;
   final int numberOfQuestions;
   RadioSet({this.question, this.buttonSelected, this.numberOfQuestions});
 
@@ -42,17 +43,16 @@ class _RadioSetState extends State<RadioSet> {
                     // only works if quiz has 1 question
                     switch (j) {
                       case 1:
-                        selections[0] = groupValue;
+                        selections[0] = selection;
                         break;
                       case 2:
-                        selections[0] = groupValue;
-                        selections[1] = groupValue;
+                        selections[1] = selection;
                         break;
                       default:
                         selections[0] = 10;
                     }
                     // sending the data to the questions list screen
-                    widget.buttonSelected(selection, selections);
+                    widget.buttonSelected(selections);
                   },
                   activeColor: Colors.green,
                 ),

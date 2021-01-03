@@ -52,7 +52,8 @@ class _QuestionListState extends State<QuestionList> {
     return questions == null
         ? Center(child: CircularProgressIndicator())
         : ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
+            physics: AlwaysScrollableScrollPhysics(),
+            shrinkWrap: true,
             itemCount: questions.length,
             itemBuilder: (context, index) {
               // fill correct answer array
@@ -66,11 +67,16 @@ class _QuestionListState extends State<QuestionList> {
                     Column(children: [
                       RadioSet(
                         question: questions[index],
-                        buttonSelected:
-                            (selectedFromRadio, selectedListFromRadio) {
+                        buttonSelected: (selectedListFromRadio) {
                           setState(() {
                             // get the selected answer array
                             selectedAnswers = selectedListFromRadio;
+                            score =
+                                calculateScore(selectedAnswers, correctAnswers);
+
+                            print('checkscore $score');
+                            // submit score to "take_quiz"
+                            widget.submit(score);
                           });
                         },
                         numberOfQuestions: questions.length,

@@ -39,12 +39,14 @@ class _TakeQuizState extends State<TakeQuiz> {
         content: Column(
           children: [
             Container(
+              // width: width,
+              height: height * 0.685,
+              color: Colors.white,
+
               //width and height fields manadatory so the questionlist can load into the screen
               //takes height of quiz with most questions
               //how to do this dynamically?
-              width: width,
-              height: height,
-              color: Colors.white,
+
               child: QuestionList(
                 quiz: widget.quiz,
                 submit: (scoreFromList) {
@@ -55,7 +57,9 @@ class _TakeQuizState extends State<TakeQuiz> {
                 },
               ),
             ),
+
             Text('$totalScore'),
+            // SizedBox(height: 300),
             Container(
               alignment: Alignment.bottomLeft,
               color: Colors.deepPurple,
