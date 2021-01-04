@@ -22,6 +22,21 @@ class TakeQuiz extends StatefulWidget {
 }
 
 class _TakeQuizState extends State<TakeQuiz> {
+  @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   print('init');
+  // }
+
+  // @override
+  // void dispose() {
+  //   //_timer.cancel();
+
+  //   super.dispose();
+  //   print('dispose');
+  // }
+
   int totalScore = 0;
 
   Widget build(BuildContext context) {
@@ -70,7 +85,7 @@ class _TakeQuizState extends State<TakeQuiz> {
                 onPressed: () {
                   // checkAnswers([0, 0, 0, 0], widget.quiz);
                   //      print('pushed button $totalScore');
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>

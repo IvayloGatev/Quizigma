@@ -40,11 +40,11 @@ class _StickyHeaderForQuizState extends State<StickyHeaderForQuiz> {
         //       tileColor: Colors.white,
         //     )),
         Spacer(),
-        // QuestionTimer(
-        //   quizTime: widget.quiz.timeInSeconds,
-        //   quiz: widget.quiz,
-        //   score: widget.score,
-        // ),
+        QuestionTimer(
+          quizTime: widget.quiz.timeInSeconds,
+          quiz: widget.quiz,
+          score: widget.score,
+        ),
       ],
     );
   }

@@ -146,8 +146,9 @@ class _QuestionTimerState extends State<QuestionTimer> {
           _counter--;
         } else {
           _timer.cancel();
-          _timer = Timer(const Duration(seconds: 2), () {
-            Navigator.push(
+
+          _timer = Timer(const Duration(seconds: 1), () {
+            Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                     builder: (context) => Results(
@@ -160,8 +161,16 @@ class _QuestionTimerState extends State<QuestionTimer> {
     });
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _timer.cancel();
+    print('dispose');
+  }
+
   void initState() {
     super.initState();
+    print('init');
 
     int seconds = widget.quizTime;
 

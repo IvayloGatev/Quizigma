@@ -52,4 +52,5 @@ const DUMMY_CATEGORIES = const [
     title: 'Other',
     color: Colors.teal,
   ),
+  Category(id: 'c10', title: 'testing', color: Colors.amber)
 ];
