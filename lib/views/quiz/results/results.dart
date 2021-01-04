@@ -9,8 +9,7 @@ import 'package:quizigma/views/home/home.dart';
 class Results extends StatelessWidget {
   final Quiz quiz;
   final int score;
-  final List<int> selectionList;
-  final List<int> correctList;
+
   final List<String> selectionListString;
   final List<String> correctListString;
   final List<String> questionName;
@@ -18,13 +17,14 @@ class Results extends StatelessWidget {
   Results(
       {this.quiz,
       this.score,
-      this.selectionList,
-      this.correctList,
       this.selectionListString,
       this.correctListString,
       this.questionName});
 
   Widget build(BuildContext context) {
+    // print(selectionListString.toString());
+    // print(correctListString.toString());
+    // print(questionName.toString());
     final TextStyle titleStyle = TextStyle(
         color: Colors.deepPurple, fontSize: 16.0, fontWeight: FontWeight.bold);
     final TextStyle trailingStyle = TextStyle(
@@ -122,8 +122,6 @@ class Results extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (_) => CheckAnswersPage(
-                              selectionList,
-                              correctList,
                               quiz,
                               selectionListString,
                               correctListString,

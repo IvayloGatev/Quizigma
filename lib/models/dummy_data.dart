@@ -52,5 +52,6 @@ const DUMMY_CATEGORIES = const [
     title: 'Other',
     color: Colors.teal,
   ),
-  Category(id: 'c10', title: 'testing', color: Colors.amber)
+  Category(id: 'c11', title: 'testingCategorydiff', color: Colors.amber),
+  Category(id: 'c12', title: 'testingSmallQuiz', color: Colors.amber),
 ];

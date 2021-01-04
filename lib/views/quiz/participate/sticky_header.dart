@@ -4,10 +4,17 @@ import 'package:quizigma/views/quiz/participate/question_timer.dart';
 import 'package:quizigma/models/quiz.dart';
 
 class StickyHeaderForQuiz extends StatefulWidget {
-  @override
   final Quiz quiz;
   final int score;
-  StickyHeaderForQuiz({this.quiz, this.score});
+  final List<String> selectionList;
+  final List<String> correctList;
+  final List<String> questionName;
+  StickyHeaderForQuiz(
+      {this.quiz,
+      this.score,
+      this.selectionList,
+      this.correctList,
+      this.questionName});
 
   _StickyHeaderForQuizState createState() => _StickyHeaderForQuizState();
 }
@@ -44,6 +51,9 @@ class _StickyHeaderForQuizState extends State<StickyHeaderForQuiz> {
           quizTime: widget.quiz.timeInSeconds,
           quiz: widget.quiz,
           score: widget.score,
+          selectionList: widget.selectionList,
+          correctList: widget.correctList,
+          questionName: widget.questionName,
         ),
       ],
     );

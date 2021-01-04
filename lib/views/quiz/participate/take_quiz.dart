@@ -22,7 +22,6 @@ class TakeQuiz extends StatefulWidget {
 }
 
 class _TakeQuizState extends State<TakeQuiz> {
-  @override
   // void initState() {
   //   // TODO: implement initState
   //   super.initState();
@@ -38,21 +37,36 @@ class _TakeQuizState extends State<TakeQuiz> {
   // }
 
   int totalScore = 0;
-  List<int> selection = new List<int>();
-  List<int> answers = new List<int>();
+
   List<String> selectionString = new List<String>();
   List<String> answersString = new List<String>();
   List<String> questionNameString = new List<String>();
 
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
-    selection.length = widget.quiz.numofQuestions;
-    answers.length = widget.quiz.numofQuestions;
     selectionString.length = widget.quiz.numofQuestions;
     answersString.length = widget.quiz.numofQuestions;
     questionNameString.length = widget.quiz.numofQuestions;
+
+    for (int i = 0; i < selectionString.length; i++) {
+      if (selectionString[i] == null) {
+        selectionString[i] = 'No answer selected';
+      }
+    }
+
+    // for (int i = 0; i < answersString.length; i++) {
+    //   if (answersString[i] == null) {
+    //     answersString[i] = widget.quiz.questions[i].correctAnswer.toString();
+    //   }
+    // }
+    // for (int i = 0; i < questionNameString.length; i++) {
+    //   if (questionNameString[i] == null) {
+    //     questionNameString[i] = widget.quiz.questions[i].text;
+    //   }
+    // }
+
+    print(answersString.toString());
+    print(selectionString.toString());
+    print(questionNameString.toString());
 
     return StickyHeader(
         header: Container(
@@ -66,6 +80,9 @@ class _TakeQuizState extends State<TakeQuiz> {
           child: StickyHeaderForQuiz(
             quiz: widget.quiz,
             score: totalScore,
+            selectionList: selectionString,
+            correctList: answersString,
+            questionName: questionNameString,
           ),
         ),
         content: Column(
@@ -81,17 +98,12 @@ class _TakeQuizState extends State<TakeQuiz> {
 
               child: QuestionList(
                 quiz: widget.quiz,
-                submit: (scoreFromList,
-                    selectionFromList,
-                    answersFromList,
-                    selectionsFromListString,
-                    answersFromListString,
-                    questionNameList) {
+                submit: (scoreFromList, selectionsFromListString,
+                    answersFromListString, questionNameList) {
                   setState(() {
                     // get the score
                     totalScore = scoreFromList;
-                    selection = selectionFromList;
-                    answers = answersFromList;
+
                     selectionString = selectionsFromListString;
                     answersString = answersFromListString;
                     questionNameString = questionNameList;
@@ -116,8 +128,6 @@ class _TakeQuizState extends State<TakeQuiz> {
                           builder: (context) => Results(
                                 quiz: widget.quiz,
                                 score: totalScore,
-                                selectionList: selection,
-                                correctList: answers,
                                 selectionListString: selectionString,
                                 correctListString: answersString,
                                 questionName: questionNameString,
