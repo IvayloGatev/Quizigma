@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizigma/controllers/home_controller.dart';
@@ -48,7 +49,7 @@ class Home extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: Text("Create a Quiz", style: TextStyle(fontSize: 15)),
+                child: Text("Create a Quiz", style: TextStyle(fontSize: 20)),
                 color: Colors.deepPurple,
                 textColor: Colors.white,
                 onPressed: () async {
@@ -69,7 +70,7 @@ class Home extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child:
-                    Text("Quiz's Categories", style: TextStyle(fontSize: 15)),
+                    Text("Quiz's Categories", style: TextStyle(fontSize: 20)),
                 color: Colors.deepPurple,
                 textColor: Colors.white,
                 onPressed: () async {
@@ -92,7 +93,9 @@ class Home extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: Text("Join a Quiz using the ID",
-                    style: TextStyle(fontSize: 15)),
+                    style: TextStyle(fontSize: 20),
+                      textAlign: TextAlign.center
+                    ),
                 color: Colors.deepPurple,
                 textColor: Colors.white,
                 onPressed: () async {
