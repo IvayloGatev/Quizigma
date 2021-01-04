@@ -54,29 +54,38 @@ class _LoadQuizState extends State<LoadQuiz> {
     // counter1 = counter(widget.quiz.numofQuestions);
     return Column(
       children: <Widget>[
-        // Container(
-        //   color: Colors.yellow,
-        //   width: width,
-        //   height: 100,
-        //   child: Column(
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     mainAxisAlignment: MainAxisAlignment.start,
-        //     children: <Widget>[
-        //       Text(
-        //         'Checking answers for Quiz:',
-        //         style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic),
-        //       ),
-        //       Text(
-        //         '${widget.quiz.name}',
-        //         style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic),
-        //       ),
-        //       Text(
-        //         '${widget.quiz.category}',
-        //         style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic),
-        //       ),
-        //     ],
-        //   ),
-        // ),
+        Container(
+          color: Colors.deepPurple[100],
+          width: width,
+          height: 100,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Checking answers for Quiz:',
+                style: TextStyle(
+                    fontSize: 22,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.black45),
+              ),
+              Text(
+                '${widget.quiz.name}',
+                style: TextStyle(
+                    fontSize: 22,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.black45),
+              ),
+              Text(
+                '${widget.quiz.category}',
+                style: TextStyle(
+                    fontSize: 22,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.black45),
+              ),
+            ],
+          ),
+        ),
         Column(
             children: List<Widget>.generate(
           widget.quiz.numofQuestions,
@@ -143,22 +152,54 @@ class _LoadQuizState extends State<LoadQuiz> {
         )),
         SizedBox(height: 10),
         Container(
-          width: width,
-          height: 50,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(30))),
-          margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
-          child: RaisedButton(
-            onPressed: () {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => Home()));
-            },
-            child: Text('Done'),
-            color: Colors.purple,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            RaisedButton(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              onPressed: () {
+                // checkAnswers([0, 0, 0, 0], widget.quiz);
+                //      print('pushed button $totalScore');
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Home()));
+                // how to get radio button values and check for final score
+                // pass score when timer hits 0?
+              },
+              child: Text('Home',
+                  style: TextStyle(
+                    color: Colors.white,
+                  )),
+              color: Colors.deepPurple,
             ),
-          ),
+            RaisedButton(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              onPressed: () {
+                // checkAnswers([0, 0, 0, 0], widget.quiz);
+                //      print('pushed button $totalScore');
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => JoinQuestions(
+                              quiz: widget.quiz,
+                              quizId: widget.quiz.id,
+                            )));
+                // how to get radio button values and check for final score
+                // pass score when timer hits 0?
+              },
+              child: Text('Retake Quiz',
+                  style: TextStyle(
+                    color: Colors.white,
+                  )),
+              color: Colors.deepPurple,
+            ),
+          ]),
         ),
       ],
     );
