@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizigma/controllers/home_controller.dart';
@@ -36,75 +35,80 @@ class Home extends StatelessWidget {
               )
             ]),
         body: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <
-              Widget>[
-            SizedBox(width: 15),
-            Container(
-              width: 200,
-              child: RaisedButton(
-                //height: 70.00,
-                //minWidth: 100.00,
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0, vertical: 20.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Text("Create a Quiz", style: TextStyle(fontSize: 20)),
-                color: Colors.deepPurple,
-                textColor: Colors.white,
-                onPressed: () async {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => QuizCreator()));
-                },
-              ),
-            ),
-            SizedBox(height: 20),
-            Container(
-              width: 200,
-              child: RaisedButton(
-                //height: 70.00,
-                //minWidth: 100.00,
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0, vertical: 20.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child:
-                    Text("Quiz's Categories", style: TextStyle(fontSize: 20)),
-                color: Colors.deepPurple,
-                textColor: Colors.white,
-                onPressed: () async {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CategoriesScreen()));
-                },
-              ),
-            ),
-            SizedBox(height: 20),
-            Container(
-              width: 200,
-              child: RaisedButton(
-                //height: 70.00,
-                //minWidth: 100.00,
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0, vertical: 20.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Text("Join a Quiz using the ID",
-                    style: TextStyle(fontSize: 20),
-                      textAlign: TextAlign.center
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(width: 15),
+                Container(
+                  width: 200,
+                  child: RaisedButton(
+                    //height: 70.00,
+                    //minWidth: 100.00,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
-                color: Colors.deepPurple,
-                textColor: Colors.white,
-                onPressed: () async {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => QuizID()));
-                },
-              ),
-            ),
-          ]),
+                    child:
+                        Text("Create a Quiz", style: TextStyle(fontSize: 20)),
+                    color: Colors.deepPurple,
+                    textColor: Colors.white,
+                    onPressed: () async {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => QuizCreator(
+                                    category: 'Other',
+                                  )));
+                    },
+                  ),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  width: 200,
+                  child: RaisedButton(
+                    //height: 70.00,
+                    //minWidth: 100.00,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Text("Quiz's Categories",
+                        style: TextStyle(fontSize: 20)),
+                    color: Colors.deepPurple,
+                    textColor: Colors.white,
+                    onPressed: () async {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CategoriesScreen()));
+                    },
+                  ),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  width: 200,
+                  child: RaisedButton(
+                    //height: 70.00,
+                    //minWidth: 100.00,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Text("Join a Quiz using the ID",
+                        style: TextStyle(fontSize: 20),
+                        textAlign: TextAlign.center),
+                    color: Colors.deepPurple,
+                    textColor: Colors.white,
+                    onPressed: () async {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => QuizID()));
+                    },
+                  ),
+                ),
+              ]),
         ));
   }
 }

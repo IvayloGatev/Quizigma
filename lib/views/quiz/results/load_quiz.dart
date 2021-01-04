@@ -54,7 +54,7 @@ class _LoadQuizState extends State<LoadQuiz> {
     // selection.length = widget.quiz.numofQuestions;
     // answers.length = widget.quiz.numofQuestions;
     List<int> counter1;
-    counter1 = counter(100000);
+    counter1 = counter(widget.quiz.numofQuestions);
     return Column(
       children: <Widget>[
         Container(

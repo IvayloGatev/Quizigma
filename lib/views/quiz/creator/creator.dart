@@ -8,6 +8,8 @@ import 'package:quizigma/views/quiz/creator/question_list.dart';
 
 class QuizCreator extends StatefulWidget {
   @override
+  final String category;
+  QuizCreator({this.category});
   _QuizCreatorState createState() => _QuizCreatorState();
 }
 
@@ -28,7 +30,7 @@ class _QuizCreatorState extends State<QuizCreator> {
     'testing'
   ];
 
-  String category = 'Other';
+  String category;
   int dropdownValue = 30;
   int _counter = 30;
   List<QuestionTextEditor> editors = List<QuestionTextEditor>();
@@ -111,7 +113,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                         child: DropdownButtonFormField<String>(
-                          value: category,
+                          value: widget.category,
                           icon: Icon(Icons.arrow_downward),
                           iconSize: 16,
                           elevation: 16,
@@ -248,9 +250,10 @@ class _QuizCreatorState extends State<QuizCreator> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    child: Text('Create Quiz',
-                    style: TextStyle(fontSize: 15),                  
-),
+                    child: Text(
+                      'Create Quiz',
+                      style: TextStyle(fontSize: 15),
+                    ),
                     textColor: Colors.white,
                     color: Colors.deepPurple,
                   ),
