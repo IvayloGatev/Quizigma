@@ -14,9 +14,10 @@ class QuizTile extends StatelessWidget {
     return FlatButton(
       padding: EdgeInsets.only(top: 8.0),
       child: Card(
+          
           margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
           child: ListTile(
-            title: Text('ID: ${quiz.id}' + ' ' + 'Quiz name: ${quiz.name}'),
+            title: Text( ' ''${quiz.name}' + ' \n ' + 'ID: ${quiz.id}', style: TextStyle(color: Colors.black),),
             subtitle: Text('number of Questions: ${quiz.numofQuestions}' +
                 ' ' +
                 'time to complete: ${quiz.timeInSeconds}'),

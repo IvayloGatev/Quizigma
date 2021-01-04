@@ -30,10 +30,18 @@ class _QuizListState extends State<QuizList> {
         ? Center(child: CircularProgressIndicator())
         : quizes.length == 0
             ? Container(
+              alignment: Alignment.center,
+              color: Colors.white,
                 child: Column(
-                  children: [
-                    Text('No quizzes in this category', style: TextStyle(color: Colors.white),),
+
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    
+                    Text('No quizzes in this category!', style: TextStyle(color: Colors.deepPurple, fontSize: 20),),
+                    SizedBox(height: 15),
                     RaisedButton(
+                      color: Colors.deepPurple,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16.0, vertical: 20.0),
                       shape: RoundedRectangleBorder(
@@ -46,9 +54,11 @@ class _QuizListState extends State<QuizList> {
                                 builder: (context) =>
                                     QuizCreator(category: title)));
                       },
-                      child: Text('Add a quiz to this category'),
+                      child: Text('Add a quiz to this category', style: TextStyle(color: Colors.white),),
                     ),
+                    SizedBox(height: 15),
                     RaisedButton(
+                      color: Colors.deepPurple,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16.0, vertical: 20.0),
                       shape: RoundedRectangleBorder(

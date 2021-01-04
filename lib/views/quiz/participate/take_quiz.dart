@@ -136,7 +136,8 @@ class _TakeQuizState extends State<TakeQuiz> {
                   // pass score when timer hits 0?
                 },
                 child: Text('Submit'),
-                color: Colors.white,
+                color: Colors.yellow,
+                
               ),
             )
           ],
