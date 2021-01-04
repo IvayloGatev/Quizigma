@@ -15,13 +15,8 @@ import 'package:quizigma/views/quiz/results/results.dart';
 class QuestionList extends StatefulWidget {
   final Quiz quiz;
 
-  final Function(
-      int score,
-      List<int> selection,
-      List<int> answers,
-      List<String> selectedString,
-      List<String> correctString,
-      List<String> questionName) submit;
+  final Function(int score, List<String> selectedString,
+      List<String> correctString, List<String> questionName) submit;
   QuestionList({this.quiz, this.submit});
 
   _QuestionListState createState() => _QuestionListState();
@@ -41,8 +36,8 @@ class _QuestionListState extends State<QuestionList> {
 // compare array values, give score if they match
   int calculateScore(List<int> selections, List<int> answers) {
     int score = 0;
-    //print(answers.toString());
-    //print(selections.toString());
+    // print(answers.toString());
+    // print(selections.toString());
 
     for (int i = 0; i < answers.length; i++) {
       if (selections[i] == answers[i]) {
@@ -53,14 +48,19 @@ class _QuestionListState extends State<QuestionList> {
   }
 
   Widget build(BuildContext context) {
-    // set the length of correct answers, other array is set in "radio_buttons"
+    // set the length of arrays
     correctAnswers.length = widget.quiz.numofQuestions;
     selectedAnswers.length = widget.quiz.numofQuestions;
     questionName.length = widget.quiz.numofQuestions;
     selectedString.length = widget.quiz.numofQuestions;
     correctString.length = widget.quiz.numofQuestions;
 
+    // print('questions ${questionName.toString()}');
+    // print('selections ${selectedString.toString()}');
+    // print('correct ${correctAnswers.toString()}');
+
     final questions = Provider.of<List<Question>>(context);
+
     return questions == null
         ? Center(child: CircularProgressIndicator())
         : ListView.builder(
@@ -69,11 +69,12 @@ class _QuestionListState extends State<QuestionList> {
             itemCount: questions.length,
             itemBuilder: (context, index) {
               // fill correct answer array
+
               correctAnswers[index] = questions[index].correctAnswer;
               questionName[index] = questions[index].text;
+
               correctString[index] =
                   questions[index].answers[questions[index].correctAnswer];
-              //   print(questions[index].correctAnswer.toString());
 
               return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,12 +96,7 @@ class _QuestionListState extends State<QuestionList> {
 
                             //  print('checkscore $score');
                             // submit score to "take_quiz"
-                            widget.submit(
-                                score,
-                                selectedAnswers,
-                                correctAnswers,
-                                selectedString,
-                                correctString,
+                            widget.submit(score, selectedString, correctString,
                                 questionName);
                           });
                         },

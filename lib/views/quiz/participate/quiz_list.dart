@@ -25,6 +25,7 @@ class _QuizListState extends State<QuizList> {
     final quizes = Provider.of<List<Quiz>>(context)
         .where((quiz) => quiz.category == title)
         .toList();
+    Future.delayed(Duration(milliseconds: 300));
     return quizes == null
         ? Center(child: CircularProgressIndicator())
         : quizes.length == 0

@@ -27,7 +27,8 @@ class _QuizCreatorState extends State<QuizCreator> {
     'Politics',
     'Nature',
     'Computer',
-    'testing'
+    'testingCategorydiff',
+    'testingSmallQuiz'
   ];
 
   String category;
