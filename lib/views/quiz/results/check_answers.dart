@@ -20,6 +20,7 @@ class CheckAnswersPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('Answers'),
+          backgroundColor: Colors.deepPurple,
         ),
         body: SingleChildScrollView(
           child: LoadQuiz(

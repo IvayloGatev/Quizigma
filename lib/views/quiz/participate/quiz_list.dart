@@ -31,8 +31,13 @@ class _QuizListState extends State<QuizList> {
             ? Container(
                 child: Column(
                   children: [
-                    Text('No quizzes in this category'),
+                    Text('No quizzes in this category', style: TextStyle(color: Colors.white),),
                     RaisedButton(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 20.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -43,11 +48,16 @@ class _QuizListState extends State<QuizList> {
                       child: Text('Add a quiz to this category'),
                     ),
                     RaisedButton(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 20.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Home()));
                       },
-                      child: Text('Home'),
+                      child: Text('Home', style: TextStyle(color: Colors.white),),
                     ),
                   ],
                 ),

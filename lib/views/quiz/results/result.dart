@@ -46,7 +46,7 @@ Widget build(BuildContext context) {
 			child: Text( 
 			'Restart Quiz!', 
 			),  
-			textColor: Colors.blue,
+			textColor: Colors.deepPurple,
 			onPressed: resetHandler, 
 		), 
 		], 

@@ -58,7 +58,7 @@ class _LoadQuizState extends State<LoadQuiz> {
     return Column(
       children: <Widget>[
         Container(
-          color: Colors.yellow,
+          color: Colors.deepPurple[100],
           width: width,
           height: 100,
           child: Column(
@@ -67,15 +67,15 @@ class _LoadQuizState extends State<LoadQuiz> {
             children: <Widget>[
               Text(
                 'Checking answers for Quiz:',
-                style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic),
+                style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic, color: Colors.black45),
               ),
               Text(
                 '${widget.quiz.name}',
-                style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic),
+                style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic, color: Colors.black45),
               ),
               Text(
                 '${widget.quiz.category}',
-                style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic),
+                style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic, color: Colors.black45),
               ),
             ],
           ),
@@ -105,6 +105,11 @@ class _LoadQuizState extends State<LoadQuiz> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             RaisedButton(
+              padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 20.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
               onPressed: () {
                 // checkAnswers([0, 0, 0, 0], widget.quiz);
                 //      print('pushed button $totalScore');
@@ -113,10 +118,15 @@ class _LoadQuizState extends State<LoadQuiz> {
                 // how to get radio button values and check for final score
                 // pass score when timer hits 0?
               },
-              child: Text('Home'),
-              color: Colors.purple,
+              child: Text('Home', style: TextStyle(color: Colors.white,)),
+              color: Colors.deepPurple,
             ),
             RaisedButton(
+              padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 20.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
               onPressed: () {
                 // checkAnswers([0, 0, 0, 0], widget.quiz);
                 //      print('pushed button $totalScore');
@@ -130,8 +140,8 @@ class _LoadQuizState extends State<LoadQuiz> {
                 // how to get radio button values and check for final score
                 // pass score when timer hits 0?
               },
-              child: Text('Retake Quiz'),
-              color: Colors.purple,
+              child: Text('Retake Quiz', style: TextStyle(color: Colors.white,)),
+              color: Colors.deepPurple,
             ),
           ],
         )),
