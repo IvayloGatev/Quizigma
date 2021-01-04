@@ -11,7 +11,7 @@ Widget build(BuildContext context) {
 	return Container( 
 	width: double.infinity, 
 	child: RaisedButton( 
-		color: Colors.purple, 
+		color: Colors.deepPurple, 
 		textColor: Colors.white, 
 		child: Text(answerText), 
 		onPressed: selectHandler, 

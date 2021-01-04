@@ -17,7 +17,11 @@ class CheckAnswersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+<<<<<<< HEAD
           title: Text('Check Answers'),
+=======
+          title: Text('Answers'),
+>>>>>>> 0c6826c19060040f74896188ff87052509e3fc62
           backgroundColor: Colors.deepPurple,
         ),
         body: SingleChildScrollView(
