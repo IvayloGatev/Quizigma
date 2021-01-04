@@ -41,12 +41,12 @@ class _RadioSetState extends State<RadioSet> {
                   onChanged: (val) {
                     _handleRadioValueChange(val);
                     selection = groupValue;
-                    print(selection);
+                    //print(selection);
                     widget.selectedAnswers[j - 1] = selection;
 
                     widget.selectedAnswersString[j - 1] =
                         widget.question.answers[selection];
-                    print(widget.question.answers[selection]);
+                    //print(widget.question.answers[selection]);
 
                     // unclear how to add correct radio selection to whch part of the array
                     // only works if quiz has 1 question

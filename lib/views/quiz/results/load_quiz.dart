@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/question.dart';
+import 'package:quizigma/views/quiz/participate/join_questions.dart';
 import 'package:quizigma/views/quiz/participate/question_timer.dart';
 import 'package:quizigma/views/quiz/participate/radio_buttons.dart';
 import 'package:quizigma/views/quiz/participate/sticky_header.dart';
@@ -12,6 +13,7 @@ import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/participate/questions_list.dart';
 import 'package:quizigma/views/quiz/participate/sticky_header.dart';
 import 'package:sticky_headers/sticky_headers.dart';
+import 'package:quizigma/views/home/home.dart';
 
 class LoadQuiz extends StatefulWidget {
   final Quiz quiz;
@@ -96,6 +98,42 @@ class _LoadQuizState extends State<LoadQuiz> {
                     ' Correct answer: ' +
                     '${widget.correctListString[i]}')),
           ),
+        )),
+        SizedBox(height: 10),
+        Container(
+            child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            RaisedButton(
+              onPressed: () {
+                // checkAnswers([0, 0, 0, 0], widget.quiz);
+                //      print('pushed button $totalScore');
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Home()));
+                // how to get radio button values and check for final score
+                // pass score when timer hits 0?
+              },
+              child: Text('Home'),
+              color: Colors.purple,
+            ),
+            RaisedButton(
+              onPressed: () {
+                // checkAnswers([0, 0, 0, 0], widget.quiz);
+                //      print('pushed button $totalScore');
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => JoinQuestions(
+                              quiz: widget.quiz,
+                              quizId: widget.quiz.id,
+                            )));
+                // how to get radio button values and check for final score
+                // pass score when timer hits 0?
+              },
+              child: Text('Retake Quiz'),
+              color: Colors.purple,
+            ),
+          ],
         )),
       ],
     );
