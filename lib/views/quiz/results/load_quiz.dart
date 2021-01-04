@@ -103,8 +103,7 @@ class _LoadQuizState extends State<LoadQuiz> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      Text(
-                                          'Question 1: ${widget.questionNameString[i]}?',
+                                      Text('${widget.questionNameString[i]}?',
                                           style: GoogleFonts.cabin(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w700)),
