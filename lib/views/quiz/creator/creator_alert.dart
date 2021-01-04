@@ -25,7 +25,7 @@ class CreatorAlert extends StatelessWidget {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-
+                  
               SizedBox(
                 height:350,
                 child:Flexible(
@@ -37,7 +37,7 @@ class CreatorAlert extends StatelessWidget {
                 )
                 )
               ),
-                          
+               Image.asset('assets\images\Quiz-id.jpg'),            
               Container(
                 width:200,
 
