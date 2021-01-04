@@ -3,10 +3,16 @@ import 'package:quizigma/models/question.dart';
 
 class RadioSet extends StatefulWidget {
   final Question question;
-  final Function(List<int> selections) buttonSelected;
+  final Function(List<int> selections, List<String> selectedStrings)
+      buttonSelected;
   final List<int> selectedAnswers;
+  final List<String> selectedAnswersString;
 
-  RadioSet({this.question, this.buttonSelected, this.selectedAnswers});
+  RadioSet(
+      {this.question,
+      this.buttonSelected,
+      this.selectedAnswers,
+      this.selectedAnswersString});
 
   @override
   _RadioSetState createState() => _RadioSetState();
@@ -20,8 +26,6 @@ class _RadioSetState extends State<RadioSet> {
 
   @override
   Widget build(BuildContext context) {
-    //List<int> selections = new List(widget.numberOfQuestions);
-
     // trying to get an identifier for each card to update the array of selected answers at proper spot
     int j = widget.question.id;
 
@@ -37,7 +41,13 @@ class _RadioSetState extends State<RadioSet> {
                   onChanged: (val) {
                     _handleRadioValueChange(val);
                     selection = groupValue;
+                    print(selection);
                     widget.selectedAnswers[j - 1] = selection;
+
+                    widget.selectedAnswersString[j - 1] =
+                        widget.question.answers[selection];
+                    print(widget.question.answers[selection]);
+
                     // unclear how to add correct radio selection to whch part of the array
                     // only works if quiz has 1 question
                     // switch (j) {
@@ -51,7 +61,8 @@ class _RadioSetState extends State<RadioSet> {
                     //     selections[0] = 10;
                     // }
                     // sending the data to the questions list screen
-                    widget.buttonSelected(widget.selectedAnswers);
+                    widget.buttonSelected(
+                        widget.selectedAnswers, widget.selectedAnswersString);
                   },
                   activeColor: Colors.green,
                 ),

@@ -14,7 +14,14 @@ import 'package:quizigma/views/quiz/results/results.dart';
 
 class QuestionList extends StatefulWidget {
   final Quiz quiz;
-  final Function(int score) submit;
+
+  final Function(
+      int score,
+      List<int> selection,
+      List<int> answers,
+      List<String> selectedString,
+      List<String> correctString,
+      List<String> questionName) submit;
   QuestionList({this.quiz, this.submit});
 
   _QuestionListState createState() => _QuestionListState();
@@ -25,21 +32,19 @@ class _QuestionListState extends State<QuestionList> {
   Question question;
   int score = 0;
 
-  // idea: get an array of the selected answers from radio buttons
-  //       compare them to the array of the correct answers  from quiz
   List<int> selectedAnswers = List<int>();
   List<int> correctAnswers = List<int>();
+  List<String> questionName = List<String>();
+  List<String> selectedString = List<String>();
+  List<String> correctString = List<String>();
 
 // compare array values, give score if they match
   int calculateScore(List<int> selections, List<int> answers) {
     int score = 0;
-    print(answers.toString());
-    print(selections.toString());
+    //print(answers.toString());
+    //print(selections.toString());
 
     for (int i = 0; i < answers.length; i++) {
-      // if (answers[i] == null) {
-      //   answers[i] = -1;
-      // }
       if (selections[i] == answers[i]) {
         score++;
       }
@@ -51,6 +56,9 @@ class _QuestionListState extends State<QuestionList> {
     // set the length of correct answers, other array is set in "radio_buttons"
     correctAnswers.length = widget.quiz.numofQuestions;
     selectedAnswers.length = widget.quiz.numofQuestions;
+    questionName.length = widget.quiz.numofQuestions;
+    selectedString.length = widget.quiz.numofQuestions;
+    correctString.length = widget.quiz.numofQuestions;
 
     final questions = Provider.of<List<Question>>(context);
     return questions == null
@@ -62,6 +70,11 @@ class _QuestionListState extends State<QuestionList> {
             itemBuilder: (context, index) {
               // fill correct answer array
               correctAnswers[index] = questions[index].correctAnswer;
+              questionName[index] = questions[index].text;
+              correctString[index] =
+                  questions[index].answers[questions[index].correctAnswer];
+              //   print(questions[index].correctAnswer.toString());
+
               return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -70,20 +83,29 @@ class _QuestionListState extends State<QuestionList> {
                     Column(children: [
                       RadioSet(
                         question: questions[index],
-                        buttonSelected: (selectedListFromRadio) {
+                        buttonSelected:
+                            (selectedListFromRadio, selectedStringList) {
                           setState(() {
                             // get the selected answer array
 
                             selectedAnswers = selectedListFromRadio;
+                            selectedString = selectedStringList;
                             score =
                                 calculateScore(selectedAnswers, correctAnswers);
 
-                            print('checkscore $score');
+                            //  print('checkscore $score');
                             // submit score to "take_quiz"
-                            widget.submit(score);
+                            widget.submit(
+                                score,
+                                selectedAnswers,
+                                correctAnswers,
+                                selectedString,
+                                correctString,
+                                questionName);
                           });
                         },
                         selectedAnswers: selectedAnswers,
+                        selectedAnswersString: selectedString,
                       )
                     ]),
                     SizedBox(height: 10),

@@ -1,57 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:quizigma/views/quiz/participate/join_questions.dart';
+import 'package:quizigma/views/quiz/participate/questions_list.dart';
+import 'package:quizigma/models/quiz.dart';
+import 'package:quizigma/views/quiz/participate/take_quiz.dart';
+import 'package:quizigma/views/quiz/results/load_quiz.dart';
 
 class CheckAnswersPage extends StatelessWidget {
+  final List<int> selections;
+  final List<int> correct;
+  final Quiz quiz;
+  final List<String> selectionString;
+  final List<String> correctString;
+  final List<String> questionNameString;
+  CheckAnswersPage(this.selections, this.correct, this.quiz,
+      this.selectionString, this.correctString, this.questionNameString);
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Check Answers'),
-        backgroundColor: Colors.deepPurple,
-        elevation: 0,
-      ),
-      body: Stack(
-        children: <Widget>[],
-      ),
-    );
-  }
-
-  bool correct;
-  Widget _buildItem(BuildContext context, int index) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              'Question here ',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.0),
-            ),
-            SizedBox(height: 5.0),
-            Text(
-              'user picked answer here',
-              style: TextStyle(
-                  color: correct ? Colors.green : Colors.red,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 5.0),
-            correct
-                ? Container()
-                : Text.rich(
-                    TextSpan(children: [
-                      TextSpan(text: "Answer: "),
-                      TextSpan(
-                          text: 'correct answer here',
-                          style: TextStyle(fontWeight: FontWeight.w500))
-                    ]),
-                    style: TextStyle(fontSize: 16.0),
-                  )
-          ],
+        appBar: AppBar(
+          title: Text('Answers'),
         ),
-      ),
-    );
+        body: SingleChildScrollView(
+          child: LoadQuiz(
+              quiz: quiz,
+              selectionList: selections,
+              correctList: correct,
+              selectedListString: selectionString,
+              correctListString: correctString,
+              questionNameString: questionNameString),
+        ));
   }
 }
