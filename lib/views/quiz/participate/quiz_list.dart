@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'quiz_tile.dart';
 
@@ -20,18 +19,19 @@ class _QuizListState extends State<QuizList> {
 
   @override
   Widget build(BuildContext context) {
-    final quizes = Provider.of<List<Quiz>>(context);
+    final quizes = Provider.of<List<Quiz>>(context)
+        .where((quiz) => quiz.category == title)
+        .toList();
     return quizes == null
         ? Center(child: CircularProgressIndicator())
-        : ListView.builder(
-            itemCount: quizes.length,
-            itemBuilder: (context, index) {
-              if (quizes[index].category == title) {
-                return QuizTile(
-                  quiz: quizes[index],
-                );
-              } else
-                return Container();
-            });
+        : quizes.length == 0
+            ? Text("No quizzes in this category")
+            : ListView.builder(
+                itemCount: quizes.length,
+                itemBuilder: (context, index) {
+                  return QuizTile(
+                    quiz: quizes[index],
+                  );
+                });
   }
 }
