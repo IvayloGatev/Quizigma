@@ -79,32 +79,42 @@ class _QuestionListState extends State<QuestionList> {
               return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    QuestionTile(question: questions[index]),
-                    SizedBox(height: 2),
-                    Column(children: [
-                      RadioSet(
-                        question: questions[index],
-                        buttonSelected:
-                            (selectedListFromRadio, selectedStringList) {
-                          setState(() {
-                            // get the selected answer array
+                    Container(
+                        margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 6.0),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                          color: Colors.deepPurple,
+                          width: 2,
+                        )),
+                        child: Column(
+                          children: [
+                            QuestionTile(question: questions[index]),
+                            SizedBox(height: 2),
+                            Column(children: [
+                              RadioSet(
+                                question: questions[index],
+                                buttonSelected: (selectedListFromRadio,
+                                    selectedStringList) {
+                                  setState(() {
+                                    // get the selected answer array
 
-                            selectedAnswers = selectedListFromRadio;
-                            selectedString = selectedStringList;
-                            score =
-                                calculateScore(selectedAnswers, correctAnswers);
+                                    selectedAnswers = selectedListFromRadio;
+                                    selectedString = selectedStringList;
+                                    score = calculateScore(
+                                        selectedAnswers, correctAnswers);
 
-                            //  print('checkscore $score');
-                            // submit score to "take_quiz"
-                            widget.submit(score, selectedString, correctString,
-                                questionName);
-                          });
-                        },
-                        selectedAnswers: selectedAnswers,
-                        selectedAnswersString: selectedString,
-                      )
-                    ]),
-                    SizedBox(height: 10),
+                                    //  print('checkscore $score');
+                                    // submit score to "take_quiz"
+                                    widget.submit(score, selectedString,
+                                        correctString, questionName);
+                                  });
+                                },
+                                selectedAnswers: selectedAnswers,
+                                selectedAnswersString: selectedString,
+                              )
+                            ]),
+                          ],
+                        )),
                   ]);
             },
           );

@@ -40,6 +40,7 @@ class Results extends StatelessWidget {
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
+            //color: Colors.yellow[200],
             gradient: LinearGradient(
                 colors: [Colors.deepPurple[50], Colors.white],
                 begin: Alignment.topCenter,

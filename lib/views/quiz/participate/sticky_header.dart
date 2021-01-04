@@ -6,15 +6,11 @@ import 'package:quizigma/models/quiz.dart';
 class StickyHeaderForQuiz extends StatefulWidget {
   final Quiz quiz;
   final int score;
-  final List<String> selectionList;
-  final List<String> correctList;
-  final List<String> questionName;
-  StickyHeaderForQuiz(
-      {this.quiz,
-      this.score,
-      this.selectionList,
-      this.correctList,
-      this.questionName});
+
+  StickyHeaderForQuiz({
+    this.quiz,
+    this.score,
+  });
 
   _StickyHeaderForQuizState createState() => _StickyHeaderForQuizState();
 }
@@ -39,21 +35,11 @@ class _StickyHeaderForQuizState extends State<StickyHeaderForQuiz> {
             ),
           ],
         ),
-        // Card(
-        //     margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
-        //     child: ListTile(
-        //       title: Text('${widget.quiz.name}'),
-        //       subtitle: Text('${widget.quiz.category}'),
-        //       tileColor: Colors.white,
-        //     )),
         Spacer(),
         QuestionTimer(
           quizTime: widget.quiz.timeInSeconds,
           quiz: widget.quiz,
           score: widget.score,
-          selectionList: widget.selectionList,
-          correctList: widget.correctList,
-          questionName: widget.questionName,
         ),
       ],
     );

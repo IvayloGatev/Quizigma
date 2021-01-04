@@ -37,7 +37,7 @@ class FirestoreDatabase implements IDatabase {
       String name = snapshot.data()['name'];
       DateTime startDate = snapshot.data()['startDate'].toDate();
       DateTime endDate = snapshot.data()['endDate'].toDate();
-      List<Question> questions = await _getQuestions(quizId);
+      List<Question> questions = await getQuestions(quizId);
       int timeInSeconds = snapshot.data()['timeInSeconds'];
       int numofQuestions = snapshot.data()['numofQuestions'];
       quiz = Quiz(
@@ -69,7 +69,7 @@ class FirestoreDatabase implements IDatabase {
     });
   }
 
-  Future<List<Question>> _getQuestions(String quizId) async {
+  Future<List<Question>> getQuestions(String quizId) async {
     final CollectionReference questionsCollection =
         firestore.collection('Quizes').doc(quizId).collection('Questions');
     List<Question> questions = List<Question>();

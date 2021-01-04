@@ -9,7 +9,7 @@ class QuestionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Card(
-      margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
+      // margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
       child: ListTile(
         title: Text(
           question.id.toString() + '. ' + question.text + '?',

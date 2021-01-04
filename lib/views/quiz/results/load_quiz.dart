@@ -14,6 +14,7 @@ import 'package:quizigma/views/quiz/participate/questions_list.dart';
 import 'package:quizigma/views/quiz/participate/sticky_header.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:quizigma/views/home/home.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoadQuiz extends StatefulWidget {
   final Quiz quiz;
@@ -33,173 +34,147 @@ class LoadQuiz extends StatefulWidget {
 
 class _LoadQuizState extends State<LoadQuiz> {
   @override
-  int totalScore = 0;
-  // List<int> selection = new List<int>();
-  // List<int> answers = new List<int>();
 
-  List<int> counter(int x) {
-    List<int> counter = new List<int>(x);
-    for (int i = 0; i < counter.length; i++) {
-      counter[i] = i + 1;
-    }
-    return counter;
-  }
+  // List<int> counter(int x) {
+  //   List<int> counter = new List<int>(x);
+  //   for (int i = 0; i < counter.length; i++) {
+  //     counter[i] = i + 1;
+  //   }
+  //   return counter;
+  // }
 
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    // selection.length = widget.quiz.numofQuestions;
-    // answers.length = widget.quiz.numofQuestions;
-    // List<int> counter1;
-    // counter1 = counter(widget.quiz.numofQuestions);
+
     return Column(
       children: <Widget>[
-        Container(
-          color: Colors.deepPurple[100],
-          width: width,
-          height: 100,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'Checking answers for Quiz:',
-                style: TextStyle(
-                    fontSize: 22,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.black45),
-              ),
-              Text(
-                '${widget.quiz.name}',
-                style: TextStyle(
-                    fontSize: 22,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.black45),
-              ),
-              Text(
-                '${widget.quiz.category}',
-                style: TextStyle(
-                    fontSize: 22,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.black45),
-              ),
-            ],
-          ),
+        Column(
+          children: [
+            Container(
+                width: width,
+                margin: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+                decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    // border: Border.all(color: Colors.deepPurple),
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10))),
+                child: Container(
+                  margin: EdgeInsets.only(left: 10.0, top: 10),
+                  alignment: Alignment.center,
+                  child: Text(
+                    '${widget.quiz.name}',
+                    style: GoogleFonts.cabin(
+                        fontSize: 22, fontWeight: FontWeight.w700),
+                  ),
+                ))
+          ],
         ),
         Column(
             children: List<Widget>.generate(
-          widget.quiz.numofQuestions,
-          (int i) => Card(
-              margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        '${widget.questionNameString[i]}?',
-                        style: TextStyle(
-                          fontSize: 18,
+                widget.quiz.numofQuestions,
+                (int i) => Column(
+                      children: [
+                        SizedBox(height: 10), // space between the answer tiles
+                        Container(
+                          margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.rectangle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: (widget.selectedListString[i] ==
+                                        widget.correctListString[i])
+                                    ? Colors.green[800]
+                                    : Colors.red[600],
+                                blurRadius: 4.0,
+                                spreadRadius: 2.0,
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Container(
+                              margin: EdgeInsets.all(10.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                          'Question 1: ${widget.questionNameString[i]}?',
+                                          style: GoogleFonts.cabin(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w700)),
+                                    ],
+                                  ),
+                                  SizedBox(height: 5),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        '${widget.selectedListString[i]}',
+                                        style: GoogleFonts.cabin(
+                                            color: (widget.selectedListString[
+                                                        i] ==
+                                                    widget.correctListString[i])
+                                                ? Colors.green[800]
+                                                : Colors.red[600],
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 5),
+                                  Row(
+                                    children: [
+                                      (widget.selectedListString[i] ==
+                                              widget.correctListString[i])
+                                          ? Container()
+                                          : Row(
+                                              children: [
+                                                Text('Answer: ',
+                                                    style: GoogleFonts.cabin(
+                                                      fontSize: 16,
+                                                      color: Colors.black
+                                                          .withOpacity(0.7),
+                                                    )),
+                                                Text(
+                                                    '${widget.correctListString[i]}',
+                                                    style: TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w700)),
+                                              ],
+                                            )
+                                    ],
+                                  )
+                                ],
+                              )),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        '${widget.selectedListString[i]}',
-                        style: TextStyle(
-                            color: (widget.selectedListString[i] ==
-                                    widget.correctListString[i])
-                                ? Colors.green
-                                : Colors.red,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      (widget.selectedListString[i] ==
-                              widget.correctListString[i])
-                          ? Text('')
-                          : Row(
-                              children: [
-                                Text('Answer: ',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                    )),
-                                Text('${widget.correctListString[i]}',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                    )),
-                              ],
-                            )
-                    ],
-                  )
-                ],
-              )),
-        )),
-        SizedBox(height: 10),
+                      ],
+                    ))),
+        SizedBox(
+          height: 0,
+        ),
         Container(
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-            RaisedButton(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              onPressed: () {
-                // checkAnswers([0, 0, 0, 0], widget.quiz);
-                //      print('pushed button $totalScore');
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => Home()));
-                // how to get radio button values and check for final score
-                // pass score when timer hits 0?
-              },
-              child: Text('Home',
-                  style: TextStyle(
-                    color: Colors.white,
-                  )),
-              color: Colors.deepPurple,
+          width: width,
+          margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 6.0),
+          child: RaisedButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
             ),
-            RaisedButton(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              onPressed: () {
-                // checkAnswers([0, 0, 0, 0], widget.quiz);
-                //      print('pushed button $totalScore');
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => JoinQuestions(
-                              quiz: widget.quiz,
-                              quizId: widget.quiz.id,
-                            )));
-                // how to get radio button values and check for final score
-                // pass score when timer hits 0?
-              },
-              child: Text('Retake Quiz',
-                  style: TextStyle(
-                    color: Colors.white,
-                  )),
-              color: Colors.deepPurple,
-            ),
-          ]),
+            onPressed: () {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => Home()));
+            },
+            child: Text('Done',
+                style: TextStyle(
+                  color: Colors.white,
+                )),
+            color: Colors.deepPurple,
+          ),
         ),
       ],
     );

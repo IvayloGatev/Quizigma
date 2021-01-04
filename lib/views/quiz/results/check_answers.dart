@@ -15,17 +15,27 @@ class CheckAnswersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
           title: Text('Check Answers'),
           backgroundColor: Colors.deepPurple,
         ),
         body: SingleChildScrollView(
-          child: LoadQuiz(
-              quiz: quiz,
-              selectedListString: selectionString,
-              correctListString: correctString,
-              questionNameString: questionNameString),
-        ));
+            child: Column(
+          children: <Widget>[
+            Container(
+              width: width,
+              height: height,
+              // color: Colors.yellow[200],
+              child: LoadQuiz(
+                  quiz: quiz,
+                  selectedListString: selectionString,
+                  correctListString: correctString,
+                  questionNameString: questionNameString),
+            )
+          ],
+        )));
   }
 }

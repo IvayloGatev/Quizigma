@@ -5,22 +5,24 @@ import 'package:quizigma/models/quiz.dart';
 import 'categories_screen.dart';
 import 'package:quizigma/views/quiz/results/results.dart';
 import 'dart:async';
+import 'package:quizigma/services/firestore_database.dart';
 
 class QuestionTimer extends StatefulWidget {
   final int quizTime;
   final int score;
-  final List<String> selectionList;
-  final List<String> correctList;
-  final List<String> questionName;
+  // final List<String> selectionList;
+  // final List<String> correctList;
+  // final List<String> questionName;
   final Quiz quiz;
 
-  QuestionTimer(
-      {this.quizTime,
-      this.quiz,
-      this.score,
-      this.selectionList,
-      this.correctList,
-      this.questionName});
+  QuestionTimer({
+    this.quizTime,
+    this.quiz,
+    this.score,
+    //this.selectionList,
+    //this.correctList,
+    //this.questionName
+  });
 
   @override
   _QuestionTimerState createState() => _QuestionTimerState();
@@ -29,53 +31,30 @@ class QuestionTimer extends StatefulWidget {
 const TWO_PI = 3.14 * 2;
 
 class _QuestionTimerState extends State<QuestionTimer> {
-  //Question question = new Question(1321, 'name', ['1', '2'], 1, 5);
-
   int _counter;
   Timer _timer;
+  List<Question> questions = new List<Question>();
+  int totalScore = 0;
+  List<String> selectionString = new List<String>();
+  List<String> answersString = new List<String>();
+  List<String> questionNameString = new List<String>();
 
-  // Widget build(BuildContext context) {
-  //   // return Scaffold(
-  //   //   appBar: AppBar(
-  //   //     title: Text("Example timer"),
-  //   //     backgroundColor: Colors.pink,
-  //   //   ),
-  //   //   body: Container(
-  //   //     padding: EdgeInsets.all(16),
-  //   //     alignment: Alignment.topRight,
-  //   //     child:
-  //   return Column(
-  //     // mainAxisAlignment: MainAxisAlignment.center,
-  //     crossAxisAlignment: CrossAxisAlignment.center,
-  //     children: <Widget>[
-  //       (widget.quizTime > 0)
-  //           ? Text("Time left")
-  //           : Text(
-  //               "Time is out",
-  //               style: TextStyle(
-  //                 color: Colors.red,
-  //               ),
-  //             ),
-  //       Text(
-  //         '$_counter',
-  //         style: TextStyle(
-  //           fontSize: 32,
-  //         ),
-  //       ),
-  //       RaisedButton(
-  //         onPressed: () => _startTimer(_counter),
-  //         child: Text("Start timer"),
-  //       ),
-  //     ],
-  //   );
-  //   //   ),
-  //   // );
-  // }
+  getQuestions(String id) async {
+    FirestoreDatabase firestoreDatabase = FirestoreDatabase();
+    List<Question> val = await firestoreDatabase.getQuestions(id);
+    setState(() {
+      questions = val;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     int seconds = widget.quizTime;
+    selectionString.length = widget.quiz.numofQuestions;
+    answersString.length = widget.quiz.numofQuestions;
+    questionNameString.length = widget.quiz.numofQuestions;
     final size = 75.0;
+
     return Container(
       alignment: Alignment.topRight,
       padding: EdgeInsets.all(16),
@@ -157,17 +136,40 @@ class _QuestionTimerState extends State<QuestionTimer> {
         } else {
           _timer.cancel();
 
-          _timer = Timer(const Duration(seconds: 1), () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Results(
-                          quiz: widget.quiz,
-                          score: widget.score,
-                          selectionListString: widget.selectionList,
-                          correctListString: widget.correctList,
-                          questionName: widget.questionName,
-                        )));
+          _timer = new Timer(const Duration(seconds: 1), () {
+            getQuestions(widget.quiz.id);
+
+            Future.delayed(const Duration(milliseconds: 300), () {
+              for (int i = 0; i < selectionString.length; i++) {
+                if (selectionString[i] == null) {
+                  selectionString[i] = 'No answer selected';
+                }
+              }
+              for (int i = 0; i < answersString.length; i++) {
+                if (answersString[i] == null) {
+                  answersString[i] =
+                      questions[i].answers[questions[i].correctAnswer];
+                }
+              }
+              for (int i = 0; i < questionNameString.length; i++) {
+                if (questionNameString[i] == null) {
+                  questionNameString[i] = questions[i].text;
+                }
+              }
+              print(selectionString.toString());
+              print(answersString.toString());
+              print(questionNameString.toString());
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Results(
+                            quiz: widget.quiz,
+                            score: widget.score,
+                            selectionListString: selectionString,
+                            correctListString: answersString,
+                            questionName: questionNameString,
+                          )));
+            });
           });
         }
       });

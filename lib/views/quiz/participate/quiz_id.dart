@@ -55,7 +55,9 @@ class _MyFormState extends State<MyForm> {
 
   getQuiz(Quiz quiz, String id) async {
     quiz = await _quizController.getQuiz(id);
-    quizToJoin = quiz;
+    setState(() {
+      quizToJoin = quiz;
+    });
   }
 
   @override
@@ -91,6 +93,8 @@ class _MyFormState extends State<MyForm> {
                         },
                         onChanged: (String v) {
                           quizId = v;
+
+                          getQuiz(quizToJoin, quizId);
                         },
                       ),
                     ),

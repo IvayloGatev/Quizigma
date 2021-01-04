@@ -33,7 +33,7 @@ class _RadioSetState extends State<RadioSet> {
       children: List<Widget>.generate(
           widget.question.answers.length,
           (int i) => Card(
-                margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
+                // margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
                 child: RadioListTile<int>(
                   title: Text(widget.question.answers[i]),
                   value: i,
