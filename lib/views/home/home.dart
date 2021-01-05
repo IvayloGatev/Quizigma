@@ -170,70 +170,7 @@ class Home extends StatelessWidget {
                     },
                   ),
                 ),
-                SizedBox(height: 20),
-                Container(
-                  width: 200,
-                  child: RaisedButton(
-                    //height: 70.00,
-                    //minWidth: 100.00,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 20.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Text("Test answer page",
-                        style: GoogleFonts.cabin(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20),
-                        textAlign: TextAlign.center),
-                    color: Colors.deepPurple,
-                    textColor: Colors.white,
-                    onPressed: () async {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CheckAnswersPage(
-                                  quiz,
-                                  selectionString,
-                                  correctString,
-                                  questionNameString)));
-                    },
-                  ),
-                ),
-                SizedBox(height: 20),
-                Container(
-                  width: 200,
-                  child: RaisedButton(
-                    //height: 70.00,
-                    //minWidth: 100.00,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 20.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Text("Test Score page",
-                        style: GoogleFonts.cabin(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20),
-                        textAlign: TextAlign.center),
-                    color: Colors.deepPurple,
-                    textColor: Colors.white,
-                    onPressed: () async {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Results(
-                                    quiz: quiz,
-                                    score: score,
-                                    selectionListString: selectionString,
-                                    correctListString: correctString,
-                                    questionName: questionNameString,
-                                  )));
-                    },
-                  ),
-                ),
+               
               ]),
         ));
   }
