@@ -29,16 +29,16 @@ class CreatorAlert extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
               SizedBox(
-                  height: 350,
+                  height: 150,
                   child: Flexible(
                       child: Text(
-                    subject + ':' + quizId,
+                    subject + ': \n' + quizId,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.cabin(
                         color: Colors.black,
                         fontWeight: FontWeight.w700,
-                        fontSize: 32),
+                        fontSize: 42),
                   ))),
               Image.asset('assets\images\Quiz-id.jpg'),
               Container(
