@@ -11,19 +11,18 @@ import 'package:quizigma/services/firestore_database.dart';
 class QuestionTimer extends StatefulWidget {
   final int quizTime;
   final int score;
-  // final List<String> selectionList;
-  // final List<String> correctList;
-  // final List<String> questionName;
+  final List<String> selectionList;
+  final List<String> correctList;
+  final List<String> questionName;
   final Quiz quiz;
 
-  QuestionTimer({
-    this.quizTime,
-    this.quiz,
-    this.score,
-    //this.selectionList,
-    //this.correctList,
-    //this.questionName
-  });
+  QuestionTimer(
+      {this.quizTime,
+      this.quiz,
+      this.score,
+      this.selectionList,
+      this.correctList,
+      this.questionName});
 
   @override
   _QuestionTimerState createState() => _QuestionTimerState();
@@ -54,6 +53,11 @@ class _QuestionTimerState extends State<QuestionTimer> {
     selectionString.length = widget.quiz.numofQuestions;
     answersString.length = widget.quiz.numofQuestions;
     questionNameString.length = widget.quiz.numofQuestions;
+
+    selectionString = widget.selectionList;
+    answersString = widget.correctList;
+    questionNameString = widget.questionName;
+
     final size = 75.0;
 
     return Container(
@@ -126,6 +130,10 @@ class _QuestionTimerState extends State<QuestionTimer> {
 
   void _startTimer(int timeInSeconds) {
     _counter = timeInSeconds;
+    print(selectionString.toString());
+    print(selectionString.toString());
+    print(answersString.toString());
+    print(questionNameString.toString());
 
     if (_timer != null) {
       _timer.cancel();
@@ -189,6 +197,17 @@ class _QuestionTimerState extends State<QuestionTimer> {
     print('init');
 
     int seconds = widget.quizTime;
+    // List<String> selectionString = new List<String>();
+    // List<String> answersString = new List<String>();
+    // List<String> questionNameString = new List<String>();
+
+    // selectionString.length = widget.quiz.numofQuestions;
+    // answersString.length = widget.quiz.numofQuestions;
+    // questionNameString.length = widget.quiz.numofQuestions;
+
+    // selectionString = widget.selectionList;
+    // answersString = widget.correctList;
+    // questionNameString = widget.questionName;
 
     _startTimer(seconds);
   }

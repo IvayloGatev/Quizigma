@@ -7,17 +7,33 @@ import 'package:google_fonts/google_fonts.dart';
 class StickyHeaderForQuiz extends StatefulWidget {
   final Quiz quiz;
   final int score;
+  final List<String> selectionList;
+  final List<String> correctList;
+  final List<String> questionName;
 
-  StickyHeaderForQuiz({
-    this.quiz,
-    this.score,
-  });
+  StickyHeaderForQuiz(
+      {this.quiz,
+      this.score,
+      this.selectionList,
+      this.correctList,
+      this.questionName});
 
   _StickyHeaderForQuizState createState() => _StickyHeaderForQuizState();
 }
 
 class _StickyHeaderForQuizState extends State<StickyHeaderForQuiz> {
+  List<String> selectionString = new List<String>();
+  List<String> answersString = new List<String>();
+  List<String> questionNameString = new List<String>();
+
   Widget build(BuildContext context) {
+    selectionString.length = widget.quiz.numofQuestions;
+    answersString.length = widget.quiz.numofQuestions;
+    questionNameString.length = widget.quiz.numofQuestions;
+
+    selectionString = widget.selectionList;
+    answersString = widget.correctList;
+    questionNameString = widget.questionName;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,13 +50,6 @@ class _StickyHeaderForQuizState extends State<StickyHeaderForQuiz> {
                     fontWeight: FontWeight.w700,
                     color: Colors.white),
               ),
-              // Text(
-              //   '${widget.quiz.name}',
-              //   style: GoogleFonts.cabin(
-              //       fontSize: 18,
-              //       fontWeight: FontWeight.w700,
-              //       color: Colors.white),
-              // ),
             ],
           ),
         ),
@@ -50,6 +59,9 @@ class _StickyHeaderForQuizState extends State<StickyHeaderForQuiz> {
           quizTime: widget.quiz.timeInSeconds,
           quiz: widget.quiz,
           score: widget.score,
+          selectionList: selectionString,
+          correctList: answersString,
+          questionName: questionNameString,
         ),
       ],
     );

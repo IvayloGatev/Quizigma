@@ -68,6 +68,9 @@ class _TakeQuizState extends State<TakeQuiz> {
           child: StickyHeaderForQuiz(
             quiz: widget.quiz,
             score: totalScore,
+            selectionList: selectionString,
+            correctList: answersString,
+            questionName: questionNameString,
           ),
         ),
         content: Column(
