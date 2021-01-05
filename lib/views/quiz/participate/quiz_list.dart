@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:quizigma/models/category_item.dart';
 import 'package:quizigma/models/quiz.dart';
@@ -22,6 +23,9 @@ class _QuizListState extends State<QuizList> {
 
   @override
   Widget build(BuildContext context) {
+    double height = 50;
+    double width = MediaQuery.of(context).size.width;
+    ;
     final quizes = Provider.of<List<Quiz>>(context)
         .where((quiz) => quiz.category == title)
         .toList();
@@ -30,45 +34,72 @@ class _QuizListState extends State<QuizList> {
         ? Center(child: CircularProgressIndicator())
         : quizes.length == 0
             ? Container(
-              alignment: Alignment.center,
-              color: Colors.white,
+                alignment: Alignment.center,
+                color: Colors.white,
                 child: Column(
-
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    
-                    Text('No quizzes in this category!', style: TextStyle(color: Colors.deepPurple, fontSize: 20),),
-                    SizedBox(height: 15),
-                    RaisedButton(
-                      color: Colors.deepPurple,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0, vertical: 20.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    QuizCreator(category: title)));
-                      },
-                      child: Text('Add a quiz to this category', style: TextStyle(color: Colors.white),),
+                    Text(
+                      'No quizzes in this category!',
+                      style: GoogleFonts.cabin(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 22),
                     ),
                     SizedBox(height: 15),
-                    RaisedButton(
-                      color: Colors.deepPurple,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0, vertical: 20.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                    Container(
+                      width: width,
+                      margin: EdgeInsets.fromLTRB(75.0, 0.0, 75.0, 0.0),
+                      child: RaisedButton(
+                        color: Colors.deepPurple,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      QuizCreator(category: title)));
+                        },
+                        child: Text(
+                          'Create a quiz for this category',
+                          style: GoogleFonts.cabin(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18),
+                        ),
                       ),
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Home()));
-                      },
-                      child: Text('Home', style: TextStyle(color: Colors.white),),
+                    ),
+                    SizedBox(height: 15),
+                    Container(
+                      width: width,
+                      margin: EdgeInsets.fromLTRB(75.0, 0.0, 75.0, 0.0),
+                      child: RaisedButton(
+                        color: Colors.deepPurple,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      QuizCreator(category: title)));
+                        },
+                        child: Text(
+                          'Home',
+                          style: GoogleFonts.cabin(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18),
+                        ),
+                      ),
                     ),
                   ],
                 ),

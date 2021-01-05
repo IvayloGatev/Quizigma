@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/question.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RadioSet extends StatefulWidget {
   final Question question;
@@ -21,6 +22,7 @@ class RadioSet extends StatefulWidget {
 class _RadioSetState extends State<RadioSet> {
   int groupValue = -1;
   int selection;
+  bool selected = false;
 
   //int correctAnswer;
 
@@ -35,8 +37,19 @@ class _RadioSetState extends State<RadioSet> {
           (int i) => Card(
                 // margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
                 child: RadioListTile<int>(
-                  title: Text(widget.question.answers[i]),
+                  title: Text(widget.question.answers[i],
+                      style: (groupValue == i)
+                          ? GoogleFonts.cabin(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                            )
+                          : GoogleFonts.cabin(
+                              color: Colors.grey,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            )),
                   value: i,
+                  controlAffinity: ListTileControlAffinity.trailing,
                   groupValue: groupValue,
                   onChanged: (val) {
                     _handleRadioValueChange(val);
@@ -50,7 +63,8 @@ class _RadioSetState extends State<RadioSet> {
                     widget.buttonSelected(
                         widget.selectedAnswers, widget.selectedAnswersString);
                   },
-                  activeColor: Colors.green,
+                  activeColor: Colors.deepPurple,
+                  // selected: true,
                 ),
               )),
     );
@@ -59,6 +73,7 @@ class _RadioSetState extends State<RadioSet> {
   void _handleRadioValueChange(int value) {
     setState(() {
       groupValue = value;
+      selected = true;
     });
   }
 }

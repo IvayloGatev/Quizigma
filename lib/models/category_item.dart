@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/views/quiz/participate/join_quiz.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CategoryItem extends StatelessWidget {
   final String title;
@@ -10,8 +11,14 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      padding: const EdgeInsets.all(15),
-      child: Text(title),
+      padding: const EdgeInsets.all(10),
+      child: Center(
+        child: Text(title,
+            style: GoogleFonts.cabin(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontSize: 18)),
+      ),
       color: color,
       shape: new RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),

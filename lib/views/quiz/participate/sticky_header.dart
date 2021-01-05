@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizigma/views/quiz/participate/question_timer.dart';
 import 'package:quizigma/models/quiz.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StickyHeaderForQuiz extends StatefulWidget {
   final Quiz quiz;
@@ -21,21 +22,30 @@ class _StickyHeaderForQuizState extends State<StickyHeaderForQuiz> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              '${widget.quiz.name}',
-              style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic),
-            ),
-            Text(
-              '${widget.quiz.category}',
-              style: TextStyle(fontSize: 22, fontStyle: FontStyle.italic),
-            ),
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                '${widget.quiz.category}' '\n' '${widget.quiz.name}',
+                style: GoogleFonts.cabin(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white),
+              ),
+              // Text(
+              //   '${widget.quiz.name}',
+              //   style: GoogleFonts.cabin(
+              //       fontSize: 18,
+              //       fontWeight: FontWeight.w700,
+              //       color: Colors.white),
+              // ),
+            ],
+          ),
         ),
-        Spacer(),
+
+        //Spacer(),
         QuestionTimer(
           quizTime: widget.quiz.timeInSeconds,
           quiz: widget.quiz,

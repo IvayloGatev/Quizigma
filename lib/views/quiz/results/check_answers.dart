@@ -4,6 +4,7 @@ import 'package:quizigma/views/quiz/participate/questions_list.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/participate/take_quiz.dart';
 import 'package:quizigma/views/quiz/results/load_quiz.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CheckAnswersPage extends StatelessWidget {
   final Quiz quiz;
@@ -19,7 +20,9 @@ class CheckAnswersPage extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
-          title: Text('Check Answers'),
+          title: Text('Check Answers',
+              style: GoogleFonts.cabin(
+                  color: Colors.white, fontWeight: FontWeight.w700)),
           backgroundColor: Colors.deepPurple,
         ),
         body: SingleChildScrollView(

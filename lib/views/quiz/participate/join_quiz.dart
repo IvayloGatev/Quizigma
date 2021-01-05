@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/participate/quiz_list.dart';
 import 'package:quizigma/views/quiz/participate/join_questions.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class JoinQuiz extends StatelessWidget {
   final String title;
@@ -16,9 +17,10 @@ class JoinQuiz extends StatelessWidget {
       child: StreamProvider<List<Quiz>>.value(
         value: QuizController().database.quizes,
         child: Scaffold(
-          backgroundColor: Colors.purple[50],
           appBar: AppBar(
-            title: Text('Quizzes'),
+            title: Text('$title',
+                style: GoogleFonts.cabin(
+                    color: Colors.white, fontWeight: FontWeight.w700)),
             backgroundColor: Colors.deepPurple,
             elevation: 0.0,
           ),

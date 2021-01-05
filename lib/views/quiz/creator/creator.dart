@@ -5,9 +5,9 @@ import 'package:quizigma/models/question_text_editor.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/creator/creator_alert.dart';
 import 'package:quizigma/views/quiz/creator/question_list.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuizCreator extends StatefulWidget {
-  @override
   final String category;
   QuizCreator({this.category});
   _QuizCreatorState createState() => _QuizCreatorState();
@@ -28,7 +28,7 @@ class _QuizCreatorState extends State<QuizCreator> {
     'Nature',
     'Computer',
     'testingCategorydiff',
-    'testingSmallQuiz'
+    'testingSmallQuiz',
   ];
 
   String category;
@@ -73,7 +73,9 @@ class _QuizCreatorState extends State<QuizCreator> {
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
           backgroundColor: Colors.deepPurple,
-          title: Text('Create a quiz'),
+          title: Text('Create a quiz',
+              style: GoogleFonts.cabin(
+                  color: Colors.white, fontWeight: FontWeight.w700)),
           automaticallyImplyLeading: true,
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
@@ -94,13 +96,18 @@ class _QuizCreatorState extends State<QuizCreator> {
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                         child: TextFormField(
+                          style: GoogleFonts.cabin(
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black.withOpacity(0.7)),
                           controller: nameEditingController,
                           decoration: InputDecoration(
                               hintText: 'Enter quiz name',
+                              hintStyle: GoogleFonts.cabin(
+                                  fontWeight: FontWeight.w700),
                               focusedBorder: UnderlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: Colors.purple))),
-                          cursorColor: Colors.purple,
+                                      BorderSide(color: Colors.deepPurple))),
+                          cursorColor: Colors.deepPurple,
                           validator: (v) {
                             if (v.trim().isEmpty)
                               return 'Please enter something';
@@ -120,9 +127,8 @@ class _QuizCreatorState extends State<QuizCreator> {
                           elevation: 16,
                           decoration: InputDecoration(
                             labelText: 'Select category',
-                            labelStyle: TextStyle(
-                              fontSize: 22,
-                            ),
+                            labelStyle: GoogleFonts.cabin(
+                                fontWeight: FontWeight.w700, fontSize: 22),
                           ),
                           onChanged: (String value) {
                             setState(() {
@@ -132,7 +138,12 @@ class _QuizCreatorState extends State<QuizCreator> {
                           items: categories.map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
-                              child: Text(value),
+                              child: Text(
+                                value,
+                                style: GoogleFonts.cabin(
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black.withOpacity(0.7)),
+                              ),
                             );
                           }).toList(),
                         ),
@@ -148,10 +159,10 @@ class _QuizCreatorState extends State<QuizCreator> {
                               children: [
                                 Text(
                                   'Select time per question',
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.black.withOpacity(0.6),
-                                  ),
+                                  style: GoogleFonts.cabin(
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.black.withOpacity(0.6),
+                                      fontSize: 17),
                                 ),
                                 Spacer(),
                                 InkWell(
@@ -204,10 +215,13 @@ class _QuizCreatorState extends State<QuizCreator> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
-                                Text('$_counter',
-                                    style: TextStyle(
+                                Text(
+                                  '$_counter',
+                                  style: GoogleFonts.cabin(
+                                      fontWeight: FontWeight.w700,
                                       fontSize: 16,
-                                    ))
+                                      color: Colors.black.withOpacity(0.7)),
+                                )
                               ],
                             ),
                             SizedBox(
@@ -222,6 +236,8 @@ class _QuizCreatorState extends State<QuizCreator> {
                 QuestionList(editors: editors),
                 SizedBox(height: 15),
                 Container(
+                  margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 6.0),
+                  width: MediaQuery.of(context).size.width,
                   child: RaisedButton(
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
@@ -247,15 +263,17 @@ class _QuizCreatorState extends State<QuizCreator> {
                       }
                     },
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 20.0),
+                        horizontal: 16.0, vertical: 10.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     child: Text(
                       'Create Quiz',
-                      style: TextStyle(fontSize: 15),
+                      style: GoogleFonts.cabin(
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                          fontSize: 18),
                     ),
-                    textColor: Colors.white,
                     color: Colors.deepPurple,
                   ),
                 )

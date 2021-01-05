@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quizigma/controllers/home_controller.dart';
 import 'package:quizigma/services/app_localization.dart';
 import 'package:quizigma/views/quiz/creator/creator.dart';
@@ -16,7 +19,7 @@ class Home extends StatelessWidget {
   //Question question = Question(1, 'Question', ['1', '2'], 0);
   Quiz quiz = Quiz(
       'Literature',
-      'QuizName',
+      'Randomly long name to see how long text is really shown because, honestly  i dont know what it will look like, how about',
       [
         Question(
             1,
@@ -31,16 +34,18 @@ class Home extends StatelessWidget {
       ],
       30,
       5);
+
   List<String> selectionString = ['q1Answer 1', 'q2Answer 2'];
   List<String> correctString = ['Correct Answer', 'q2Answer 2'];
   List<String> questionNameString = [
     'Randomly long question1 to see how long text is really shown because, honestly  i dont know what it will look like, how about',
     'Randomly long question2 to see how long text is really shown because, honestly  i dont know what it will look like, how about'
   ];
+
   int score = 1;
   Quiz quizForUI = Quiz(
-      'Biology',
-      'Human Body',
+      'Extremely long randomly selected category to see what happens',
+      'Extremely long randomly selected name to see what happens',
       [
         Question(1, 'What is the name of the biggest human bone',
             ['Femur', 'Frontal bone', 'Humerus', 'Trapezium'], 0),
@@ -53,18 +58,23 @@ class Home extends StatelessWidget {
       3);
   @override
   Widget build(BuildContext context) {
+    selectionString.length = 2;
+    correctString.length = 2;
+    questionNameString.length = 2;
     return Scaffold(
         //backgroundColor: Colors.purple[50],
         appBar: AppBar(
-            title: Text(AppLocalizations.of(context).translate('home_title') +
-                'Quizigma'),
+            title: Text(
+              AppLocalizations.of(context).translate('home_title') + 'Quizigma',
+              style: GoogleFonts.cabin(
+                  color: Colors.white, fontWeight: FontWeight.w700),
+            ),
             backgroundColor: Colors.deepPurple,
             elevation: 0.0,
             actions: <Widget>[
               FlatButton.icon(
                 icon: Icon(Icons.person),
                 //color: Colors.white,
-
                 label: Text(
                   AppLocalizations.of(context).translate('logout_label'),
                 ),
@@ -88,8 +98,13 @@ class Home extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    child:
-                        Text("Create a Quiz", style: TextStyle(fontSize: 20)),
+                    child: Text(
+                      "Create a Quiz",
+                      style: GoogleFonts.cabin(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20),
+                    ),
                     color: Colors.deepPurple,
                     textColor: Colors.white,
                     onPressed: () async {
@@ -113,8 +128,13 @@ class Home extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    child: Text("Quiz's Categories",
-                        style: TextStyle(fontSize: 20)),
+                    child: Text(
+                      "Quiz Categories",
+                      style: GoogleFonts.cabin(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20),
+                    ),
                     color: Colors.deepPurple,
                     textColor: Colors.white,
                     onPressed: () async {
@@ -136,8 +156,11 @@ class Home extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    child: Text("Join a Quiz using the ID",
-                        style: TextStyle(fontSize: 20),
+                    child: Text("Join Quiz by ID",
+                        style: GoogleFonts.cabin(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20),
                         textAlign: TextAlign.center),
                     color: Colors.deepPurple,
                     textColor: Colors.white,
@@ -159,7 +182,10 @@ class Home extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     child: Text("Test answer page",
-                        style: TextStyle(fontSize: 20),
+                        style: GoogleFonts.cabin(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20),
                         textAlign: TextAlign.center),
                     color: Colors.deepPurple,
                     textColor: Colors.white,
@@ -187,7 +213,10 @@ class Home extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     child: Text("Test Score page",
-                        style: TextStyle(fontSize: 20),
+                        style: GoogleFonts.cabin(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20),
                         textAlign: TextAlign.center),
                     color: Colors.deepPurple,
                     textColor: Colors.white,
@@ -201,33 +230,6 @@ class Home extends StatelessWidget {
                                     selectionListString: selectionString,
                                     correctListString: correctString,
                                     questionName: questionNameString,
-                                  )));
-                    },
-                  ),
-                ),
-                SizedBox(height: 20),
-                Container(
-                  width: 200,
-                  child: RaisedButton(
-                    //height: 70.00,
-                    //minWidth: 100.00,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 20.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Text("Test Quiz UI",
-                        style: TextStyle(fontSize: 20),
-                        textAlign: TextAlign.center),
-                    color: Colors.deepPurple,
-                    textColor: Colors.white,
-                    onPressed: () async {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => JoinQuestions(
-                                    quiz: quizForUI,
-                                    quizId: '074g0430',
                                   )));
                     },
                   ),

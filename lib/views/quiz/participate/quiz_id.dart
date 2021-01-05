@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/participate/join_questions.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuizID extends StatelessWidget {
   @override
@@ -11,7 +12,9 @@ class QuizID extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.deepPurple,
-          title: Text("Participate in a Quiz"),
+          title: Text("Join a Quiz",
+              style: GoogleFonts.cabin(
+                  color: Colors.white, fontWeight: FontWeight.w700)),
         ),
         body: MyForm());
   }
@@ -74,9 +77,16 @@ class _MyFormState extends State<MyForm> {
                     Padding(
                       padding: const EdgeInsets.only(right: 32.0),
                       child: TextFormField(
+                        style: GoogleFonts.cabin(
+                            fontWeight: FontWeight.w700, fontSize: 20),
                         decoration: InputDecoration(
                             hintText: 'Enter your code here!',
-                            hintStyle: TextStyle(fontSize: 20)),
+                            hintStyle: GoogleFonts.cabin(
+                                fontWeight: FontWeight.w700, fontSize: 20),
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.deepPurple))),
+                        cursorColor: Colors.deepPurple,
                         validator: (String v) {
                           if (v.trim().isEmpty) {
                             return ('Please enter your code!');
@@ -98,41 +108,59 @@ class _MyFormState extends State<MyForm> {
                         },
                       ),
                     ),
+                    SizedBox(height: 10),
                     Padding(
                         padding: const EdgeInsets.only(right: 32.0),
                         child: Column(
                           children: [
-                            RaisedButton(
-                                onPressed: () async {
-                                  Center(child: CircularProgressIndicator());
-                                  _quizController.checkIfDocExists(quizId);
-                                  assignToBool(iDExists, quizId);
-                                  getQuiz(quizToJoin, quizId);
-                                  Future.delayed(
-                                      const Duration(milliseconds: 400), () {
-                                    if (!_formKey.currentState.validate()) {
-                                      return;
-                                    }
-
-                                    _formKey.currentState.save();
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => JoinQuestions(
-                                                quizId: quizId,
-                                                quiz: quizToJoin)));
-                                  });
-                                },
-                                textColor: Colors.white,
-                                padding: const EdgeInsets.all(0.0),
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                    color: Colors.deepPurple,
+                            Container(
+                                width: MediaQuery.of(context).size.width,
+                                //color: Colors.deepPurple,
+                                child: RaisedButton(
+                                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                                  color: Colors.deepPurple,
+                                  child: Text('Join!',
+                                      style: GoogleFonts.cabin(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 20,
+                                          color: Colors.white)),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10),
+                                        topRight: Radius.circular(10),
+                                        bottomLeft: Radius.circular(10),
+                                        bottomRight: Radius.circular(10)),
                                   ),
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: const Text('   Join!   ',
-                                      style: TextStyle(fontSize: 20)),
+                                  onPressed: () async {
+                                    Center(child: CircularProgressIndicator());
+                                    _quizController.checkIfDocExists(quizId);
+                                    assignToBool(iDExists, quizId);
+                                    getQuiz(quizToJoin, quizId);
+                                    Future.delayed(
+                                        const Duration(milliseconds: 400), () {
+                                      if (!_formKey.currentState.validate()) {
+                                        return;
+                                      }
+
+                                      _formKey.currentState.save();
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  JoinQuestions(
+                                                      quizId: quizId,
+                                                      quiz: quizToJoin)));
+                                    });
+                                  },
+                                  //  textColor: Colors.white,
+                                  // padding: const EdgeInsets.all(0.0),
+                                  // child: Container(
+                                  //   decoration: const BoxDecoration(
+                                  //     color: Colors.deepPurple,
+                                  //   ),
+                                  //   padding: const EdgeInsets.all(10.0),
                                 )),
+                            //)
                           ],
                         )),
                     SizedBox(

@@ -11,6 +11,7 @@ import 'package:quizigma/views/home/register/or_divider.dart';
 import 'package:quizigma/views/home/register/social_icon.dart';
 import 'package:quizigma/views/home/login/email_field_validator.dart';
 import 'password_field_validator.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatefulWidget {
   final Function setStatus;
@@ -53,7 +54,10 @@ class _BodyState extends State<Body> {
             children: <Widget>[
               Text(
                 "SIGNUP",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: GoogleFonts.cabin(
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black,
+                    fontSize: 18),
               ),
               SizedBox(height: size.height * 0.03),
               SvgPicture.asset(
@@ -128,10 +132,10 @@ class _BodyState extends State<Body> {
             Expanded(
               child: Text(
                 error,
-                style: TextStyle(
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: GoogleFonts.cabin(
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black,
+                    fontSize: 14),
                 textAlign: TextAlign.center,
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/category_item.dart';
 import 'package:quizigma/models/dummy_data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CategoriesScreen extends StatelessWidget {
   @override
@@ -9,7 +10,9 @@ class CategoriesScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
         shadowColor: Colors.black,
-        title: const Text('Categories'),
+        title: Text('Categories',
+            style: GoogleFonts.cabin(
+                color: Colors.white, fontWeight: FontWeight.w700)),
       ),
       body: GridView(
         primary: false,

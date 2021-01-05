@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:quizigma/models/quiz.dart';
@@ -70,22 +71,21 @@ class _QuestionTimerState extends State<QuestionTimer> {
                 ShaderMask(
                   shaderCallback: (rect) {
                     return SweepGradient(
-                        startAngle: 0.0,
-                        endAngle: TWO_PI,
-                        stops: [value, value],
-                        // 0.0 , 0.5 , 0.5 , 1.0
-                        center: Alignment.center,
-                        colors: [
-                          Colors.purple[600],
-                          Colors.grey.withAlpha(55)
-                        ]).createShader(rect);
+                            startAngle: 0.0,
+                            endAngle: TWO_PI,
+                            stops: [value, value],
+                            // 0.0 , 0.5 , 0.5 , 1.0
+                            center: Alignment.center,
+                            colors: [Colors.white, Colors.white24])
+                        .createShader(rect);
                   },
                   child: Container(
                     width: size,
                     height: size,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        // color: Colors.yellow,
+
+                        //color: Colors.yellow[200],
                         image: DecorationImage(
                             image: Image.asset("assets/images/radial_scale.png")
                                 .image)),
@@ -93,24 +93,25 @@ class _QuestionTimerState extends State<QuestionTimer> {
                 ),
                 Center(
                   child: Container(
-                    width: size - 15,
-                    height: size - 15,
+                    width: size - 20,
+                    height: size - 20,
                     decoration: BoxDecoration(
-                        color: Colors.white, shape: BoxShape.circle),
+                        color: Colors.deepPurple,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(color: Colors.white, blurRadius: 2)
+                        ]),
                     child: Center(
                         child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        (_counter < 10)
-                            ? Text(
-                                '$_counter',
-                                style:
-                                    TextStyle(fontSize: 28, color: Colors.red),
-                              )
-                            : Text(
-                                '$_counter',
-                                style: TextStyle(fontSize: 28),
-                              ),
+                        Text(
+                          '$_counter',
+                          style: GoogleFonts.cabin(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 28,
+                              color: Colors.white),
+                        ),
                       ],
                     )),
                   ),

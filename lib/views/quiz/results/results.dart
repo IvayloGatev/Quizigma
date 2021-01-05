@@ -5,6 +5,7 @@ import 'package:quizigma/models/question.dart';
 import 'package:quizigma/views/quiz/participate/join_questions.dart';
 import 'package:quizigma/views/quiz/results/check_answers.dart';
 import 'package:quizigma/views/home/home.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Results extends StatelessWidget {
   final Quiz quiz;
@@ -32,7 +33,9 @@ class Results extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Quiz Results'),
+        title: Text('Quiz Results',
+            style: GoogleFonts.cabin(
+                color: Colors.white, fontWeight: FontWeight.w700)),
         elevation: 0,
         backgroundColor: Colors.deepPurple,
       ),
@@ -54,9 +57,16 @@ class Results extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0)),
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16.0),
-                  title: Text("Total Questions", style: titleStyle),
+                  title: Text("Total Questions",
+                      style: GoogleFonts.cabin(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18)),
                   trailing: Text(quiz.numofQuestions.toString(),
-                      style: trailingStyle),
+                      style: GoogleFonts.cabin(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18)),
                 ),
               ),
               SizedBox(height: 10.0),
@@ -65,11 +75,18 @@ class Results extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0)),
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16.0),
-                  title: Text("Score", style: titleStyle),
+                  title: Text("Score",
+                      style: GoogleFonts.cabin(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18)),
                   trailing: Text(
                       ((score / quiz.numofQuestions) * 100).toStringAsFixed(2) +
                           "%",
-                      style: trailingStyle),
+                      style: GoogleFonts.cabin(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18)),
                 ),
               ),
               SizedBox(height: 10.0),
@@ -78,8 +95,16 @@ class Results extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0)),
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16.0),
-                  title: Text("Correct Answers", style: titleStyle),
-                  trailing: Text(score.toString(), style: trailingStyle),
+                  title: Text("Correct Answers",
+                      style: GoogleFonts.cabin(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18)),
+                  trailing: Text(score.toString(),
+                      style: GoogleFonts.cabin(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20)),
                 ),
               ),
               SizedBox(height: 10.0),
@@ -88,9 +113,16 @@ class Results extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0)),
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16.0),
-                  title: Text("Incorrect Answers", style: titleStyle),
+                  title: Text("Incorrect Answers",
+                      style: GoogleFonts.cabin(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18)),
                   trailing: Text((quiz.numofQuestions - score).toString(),
-                      style: trailingStyle),
+                      style: GoogleFonts.cabin(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18)),
                 ),
               ),
               SizedBox(height: 20.0),
@@ -99,13 +131,16 @@ class Results extends StatelessWidget {
                 children: <Widget>[
                   RaisedButton(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 20.0),
+                        horizontal: 35.0, vertical: 20.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     color: Colors.deepPurple,
-                    child: Text("Home"),
-                    textColor: Colors.white,
+                    child: Text("Home",
+                        style: GoogleFonts.cabin(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16)),
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (_) => Home()));
@@ -113,13 +148,16 @@ class Results extends StatelessWidget {
                   ),
                   RaisedButton(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 20.0),
+                        horizontal: 20.0, vertical: 20.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     color: Colors.deepPurple,
-                    child: Text("Check Answers"),
-                    textColor: Colors.white,
+                    child: Text("Check Answers",
+                        style: GoogleFonts.cabin(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16)),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (_) => CheckAnswersPage(
@@ -136,8 +174,11 @@ class Results extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       color: Colors.deepPurple,
-                      child: Text("Retake Quiz"),
-                      textColor: Colors.white,
+                      child: Text("Retake Quiz",
+                          style: GoogleFonts.cabin(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16)),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (_) => JoinQuestions(

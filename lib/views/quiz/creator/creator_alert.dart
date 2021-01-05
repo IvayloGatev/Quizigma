@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quizigma/views/home/home.dart';
+
 import 'package:quizigma/views/quiz/participate/join_questions.dart';
 import 'package:quizigma/views/quiz/participate/quiz_id.dart';
 import 'package:quizigma/views/quiz/participate/take_quiz.dart';
@@ -18,36 +20,40 @@ class CreatorAlert extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.deepPurple,
           shadowColor: Colors.black,
-          title: const Text('Create a quiz'),
+          title: Text('Create a quiz',
+              style: GoogleFonts.cabin(
+                  color: Colors.white, fontWeight: FontWeight.w700)),
         ),
         body: Center(
-          
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  
               SizedBox(
-                height:350,
-                child:Flexible(
-                child: Text(
-                subject + ' :' + quizId,
-                textAlign: TextAlign.center ,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize:35),
-                )
-                )
-              ),
-               Image.asset('assets\images\Quiz-id.jpg'),            
+                  height: 350,
+                  child: Flexible(
+                      child: Text(
+                    subject + ':' + quizId,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.cabin(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 32),
+                  ))),
+              Image.asset('assets\images\Quiz-id.jpg'),
               Container(
-                width:200,
-
+                width: 200,
                 child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-                  child: Text('Share your code',
-                  style: TextStyle(fontSize: 20),                  
-),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Text(
+                    'Share your code',
+                    style: GoogleFonts.cabin(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20),
+                  ),
                   textColor: Colors.white,
                   color: Colors.deepPurple,
                   onPressed: () {
@@ -59,43 +65,49 @@ class CreatorAlert extends StatelessWidget {
                   },
                 ),
               ),
-                                                
-             
               Container(
-              width:200,
-              child:RaisedButton(
-                shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-                  child: Text('Return home',
-                  style: TextStyle(fontSize: 20),
-                  ),
-                  textColor: Colors.white,
-                  color: Colors.deepPurple,
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Home()));
-                  })),
+                  width: 200,
+                  child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Text(
+                        'Home',
+                        style: GoogleFonts.cabin(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20),
+                      ),
+                      textColor: Colors.white,
+                      color: Colors.deepPurple,
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Home()));
+                      })),
               Container(
-                width:200,
-                child:RaisedButton(
-                  shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-                  child: Text('Take quiz',
-                  style: TextStyle(fontSize: 20),
-                  ),
-                  //style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),                  
-                  textColor: Colors.white,
-                  color: Colors.deepPurple,
-                  onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              JoinQuestions(quizId: quiz.id, quiz: quiz)));
-                },
-              ))
+                  width: 200,
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Text(
+                      'Take quiz',
+                      style: GoogleFonts.cabin(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20),
+                    ),
+                    //style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    textColor: Colors.white,
+                    color: Colors.deepPurple,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  JoinQuestions(quizId: quiz.id, quiz: quiz)));
+                    },
+                  ))
             ])));
 
     // return AlertDialog(

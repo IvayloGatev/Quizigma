@@ -62,7 +62,7 @@ class _LoadQuizState extends State<LoadQuiz> {
                         bottomRight: Radius.circular(10))),
                 child: Container(
                   margin: EdgeInsets.only(left: 10.0, top: 10),
-                  alignment: Alignment.center,
+                  alignment: Alignment.centerLeft,
                   child: Text(
                     '${widget.quiz.name}',
                     style: GoogleFonts.cabin(
@@ -135,14 +135,14 @@ class _LoadQuizState extends State<LoadQuiz> {
                                               children: [
                                                 Text('Answer: ',
                                                     style: GoogleFonts.cabin(
-                                                      fontSize: 16,
+                                                      fontSize: 18,
                                                       color: Colors.black
                                                           .withOpacity(0.7),
                                                     )),
                                                 Text(
                                                     '${widget.correctListString[i]}',
-                                                    style: TextStyle(
-                                                        fontSize: 16,
+                                                    style: GoogleFonts.cabin(
+                                                        fontSize: 18,
                                                         fontWeight:
                                                             FontWeight.w700)),
                                               ],
@@ -155,10 +155,11 @@ class _LoadQuizState extends State<LoadQuiz> {
                       ],
                     ))),
         SizedBox(
-          height: 0,
+          height: 5,
         ),
         Container(
           width: width,
+          height: 40,
           margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 6.0),
           child: RaisedButton(
             shape: RoundedRectangleBorder(
@@ -169,9 +170,10 @@ class _LoadQuizState extends State<LoadQuiz> {
                   context, MaterialPageRoute(builder: (context) => Home()));
             },
             child: Text('Done',
-                style: TextStyle(
-                  color: Colors.white,
-                )),
+                style: GoogleFonts.cabin(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white)),
             color: Colors.deepPurple,
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/question.dart';
@@ -48,12 +49,21 @@ class _TakeQuizState extends State<TakeQuiz> {
     double height = MediaQuery.of(context).size.height;
     return StickyHeader(
         header: Container(
+          width: width,
+          // this or
+          //margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 6.0),
+
+          // this
+          margin: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 6.0),
+
+          // height: 100,
           decoration: BoxDecoration(
-              color: Colors.yellow,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              )),
+            color: Colors.deepPurple,
+            // borderRadius: BorderRadius.only(
+            //   bottomLeft: Radius.circular(40),
+            //   bottomRight: Radius.circular(40),
+            // )
+          ),
           padding: EdgeInsets.only(left: 10),
           child: StickyHeaderForQuiz(
             quiz: widget.quiz,
@@ -63,7 +73,6 @@ class _TakeQuizState extends State<TakeQuiz> {
         content: Column(
           children: [
             Container(
-              color: Colors.white,
               child: QuestionList(
                 quiz: widget.quiz,
                 submit: (scoreFromList, selectionsFromListString,
@@ -83,7 +92,11 @@ class _TakeQuizState extends State<TakeQuiz> {
               margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 6.0),
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                      bottomLeft: Radius.circular(40),
+                      bottomRight: Radius.circular(40)),
                 ),
                 onPressed: () {
                   for (int i = 0; i < selectionString.length; i++) {
@@ -121,8 +134,14 @@ class _TakeQuizState extends State<TakeQuiz> {
                   // how to get radio button values and check for final score
                   // pass score when timer hits 0?
                 },
-                child: Text('Submit'),
-                color: Colors.yellow,
+                child: Text(
+                  'Submit',
+                  style: GoogleFonts.cabin(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700),
+                ),
+                color: Colors.deepPurple,
               ),
             )
           ],

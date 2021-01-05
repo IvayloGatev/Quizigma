@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AnswerTile extends StatefulWidget {
   final TextEditingController answerEditingController;
@@ -27,13 +28,20 @@ class _AnswerTileState extends State<AnswerTile> {
         // child:
         TextFormField(
       controller: _answerEditingController,
+      style: GoogleFonts.cabin(
+        fontWeight: FontWeight.w700,
+        color: Colors.black.withOpacity(0.7),
+      ),
       decoration: InputDecoration(
         hintText: 'Enter an answer and select correct one',
-        hintStyle: TextStyle(fontSize: 15),
-        focusedBorder:
-            UnderlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
+        hintStyle: GoogleFonts.cabin(
+          fontWeight: FontWeight.w700,
+          color: Colors.black.withOpacity(0.7),
+        ),
+        focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.deepPurple)),
       ),
-      cursorColor: Colors.purple,
+      cursorColor: Colors.deepPurple,
       validator: (v) {
         if (v.trim().isEmpty) return 'Please enter an answer';
         return null;

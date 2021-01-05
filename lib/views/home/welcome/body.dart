@@ -6,6 +6,7 @@ import 'package:quizigma/shared/constants.dart';
 import 'package:quizigma/views/home/welcome/background.dart';
 import 'package:quizigma/views/home/login/login.dart';
 import '../register/register.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -38,7 +39,10 @@ class _BodyState extends State<Body> {
             Text(
               AppLocalizations.of(context).translate('welcome_title') +
                   "Quizigma",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: GoogleFonts.cabin(
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black,
+                  fontSize: 22),
             ),
             SizedBox(height: size.height * 0.05),
             SvgPicture.asset(

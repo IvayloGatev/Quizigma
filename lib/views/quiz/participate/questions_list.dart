@@ -82,6 +82,7 @@ class _QuestionListState extends State<QuestionList> {
                     Container(
                         margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 6.0),
                         decoration: BoxDecoration(
+                            //  borderRadius: BorderRadius.all(Radius.circular(10)),
                             border: Border.all(
                           color: Colors.deepPurple,
                           width: 2,
