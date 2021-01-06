@@ -16,51 +16,9 @@ import 'package:quizigma/models/question.dart';
 
 class Home extends StatelessWidget {
   final _controller = HomeController();
-  //Question question = Question(1, 'Question', ['1', '2'], 0);
-  Quiz quiz = Quiz(
-      'Literature',
-      'Randomly long name to see how long text is really shown because, honestly  i dont know what it will look like, how about',
-      [
-        Question(
-            1,
-            'Randomly long question1 to see how long text is really shown because, honestly  i dont know what it will look like, how about',
-            ['q1Answer 1', 'q1Answer 2'],
-            0),
-        Question(
-            2,
-            'Randomly long question2 to see how long text is really shown because, honestly  i dont know what it will look like, how about',
-            ['q2Answer 1', 'q2Answer 2'],
-            0)
-      ],
-      30,
-      5);
 
-  List<String> selectionString = ['q1Answer 1', 'q2Answer 2'];
-  List<String> correctString = ['Correct Answer', 'q2Answer 2'];
-  List<String> questionNameString = [
-    'Randomly long question1 to see how long text is really shown because, honestly  i dont know what it will look like, how about',
-    'Randomly long question2 to see how long text is really shown because, honestly  i dont know what it will look like, how about'
-  ];
-
-  int score = 1;
-  Quiz quizForUI = Quiz(
-      'Extremely long randomly selected category to see what happens',
-      'Extremely long randomly selected name to see what happens',
-      [
-        Question(1, 'What is the name of the biggest human bone',
-            ['Femur', 'Frontal bone', 'Humerus', 'Trapezium'], 0),
-        Question(2, 'Which is the strongest Human muscle',
-            ['Tongue', 'Heart', 'Masseter', 'Soleus'], 2),
-        Question(3, 'How many bones an adult Human has',
-            ['187', '234', '206', '199'], 2)
-      ],
-      25,
-      3);
   @override
   Widget build(BuildContext context) {
-    selectionString.length = 2;
-    correctString.length = 2;
-    questionNameString.length = 2;
     return Scaffold(
         //backgroundColor: Colors.purple[50],
         appBar: AppBar(
@@ -170,7 +128,6 @@ class Home extends StatelessWidget {
                     },
                   ),
                 ),
-               
               ]),
         ));
   }
