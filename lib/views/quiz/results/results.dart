@@ -131,7 +131,7 @@ class Results extends StatelessWidget {
                 children: <Widget>[
                   RaisedButton(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 35.0, vertical: 20.0),
+                        horizontal: 20.0, vertical: 20.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
