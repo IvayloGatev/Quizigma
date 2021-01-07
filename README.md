@@ -5,7 +5,7 @@ Quizigma is a project developed by the students of Computer Science from the Tec
 <img src="images/logo.png" width="200" >
 
 Register an account screen.
-<img src="images/register_screen.jpg" width="200">
+<img src="images/register_screen.jpg" width="150">
 
 Login screen.
 <img src="images/login_screen.jpg" width="300">
