@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:quizigma/models/quiz.dart';
-import 'categories_screen.dart';
 import 'package:quizigma/views/quiz/results/results.dart';
 import 'dart:async';
 import 'package:quizigma/services/firestore_database.dart';

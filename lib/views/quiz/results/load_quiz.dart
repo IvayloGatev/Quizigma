@@ -1,18 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:quizigma/controllers/quiz_controller.dart';
-import 'package:quizigma/models/question.dart';
-import 'package:quizigma/views/quiz/participate/join_questions.dart';
-import 'package:quizigma/views/quiz/participate/question_timer.dart';
-import 'package:quizigma/views/quiz/participate/radio_buttons.dart';
-import 'package:quizigma/views/quiz/participate/sticky_header.dart';
-import 'package:quizigma/views/quiz/results/results.dart';
-import 'package:quizigma/views/quiz/participate/questions_tile.dart';
-import 'package:quizigma/services/firestore_database.dart';
 import 'package:quizigma/models/quiz.dart';
-import 'package:quizigma/views/quiz/participate/questions_list.dart';
-import 'package:quizigma/views/quiz/participate/sticky_header.dart';
-import 'package:sticky_headers/sticky_headers.dart';
 import 'package:quizigma/views/home/home.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -45,7 +32,6 @@ class _LoadQuizState extends State<LoadQuiz> {
 
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
 
     return Column(
       children: <Widget>[

@@ -1,16 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/question.dart';
-import 'package:quizigma/views/quiz/participate/question_timer.dart';
 import 'questions_tile.dart';
-import 'package:quizigma/services/firestore_database.dart';
 import 'package:quizigma/models/quiz.dart';
-import 'dart:math';
 import 'radio_buttons.dart';
-import 'package:quizigma/views/quiz/results/results.dart';
 
 class QuestionList extends StatefulWidget {
   final Quiz quiz;

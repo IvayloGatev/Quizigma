@@ -29,7 +29,7 @@ class _QuizCreatorState extends State<QuizCreator> {
     'Computer',
   ];
 
-  String category;
+  String category = 'Other';
   int dropdownValue = 30;
   int _counter = 30;
   List<QuestionTextEditor> editors = List<QuestionTextEditor>();
@@ -241,7 +241,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                       if (_formKey.currentState.validate()) {
                         String name = nameEditingController.text;
                         List<Question> questions = List<Question>();
-                        int value = _counter;
+                        int timePerQuestion = _counter;
                         for (var editor in editors) {
                           String questionText =
                               editor.questionTextController.text;
@@ -255,7 +255,11 @@ class _QuizCreatorState extends State<QuizCreator> {
                         }
 
                         Quiz quiz = Quiz(
-                            category, name, questions, value, questions.length);
+                            category,
+                            name,
+                            questions,
+                            timePerQuestion * questions.length,
+                            questions.length);
                         _controller.addQuiz(quiz);
                         _showCreatorAlert(quiz);
                       }

@@ -3,8 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quizigma/views/home/home.dart';
 
 import 'package:quizigma/views/quiz/participate/join_questions.dart';
-import 'package:quizigma/views/quiz/participate/quiz_id.dart';
-import 'package:quizigma/views/quiz/participate/take_quiz.dart';
 import 'package:share/share.dart';
 import 'package:quizigma/models/quiz.dart';
 

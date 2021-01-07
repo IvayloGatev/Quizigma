@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/quiz.dart';
@@ -30,7 +29,6 @@ class _MyFormState extends State<MyForm> {
 
   final _formKey = GlobalKey<FormState>();
   TextEditingController _nameController;
-  static List<String> answersList = [null];
   bool iDExists = false;
   Future<String> id;
   String quizId;
@@ -141,7 +139,7 @@ class _MyFormState extends State<MyForm> {
                                       if (!_formKey.currentState.validate()) {
                                         return;
                                       }
-
+                                      print(quizToJoin.timeInSeconds);
                                       _formKey.currentState.save();
                                       Navigator.push(
                                           context,
@@ -152,15 +150,7 @@ class _MyFormState extends State<MyForm> {
                                                       quiz: quizToJoin)));
                                     });
                                   },
-                                  //  textColor: Colors.white,
-                                  // padding: const EdgeInsets.all(0.0),
-                                  // child: Container(
-                                  //   decoration: const BoxDecoration(
-                                  //     color: Colors.deepPurple,
-                                  //   ),
-                                  //   padding: const EdgeInsets.all(10.0),
                                 )),
-                            //)
                           ],
                         )),
                     SizedBox(
