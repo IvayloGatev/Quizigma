@@ -2,10 +2,10 @@
 
 Quizigma is a project developed by the students of Computer Science from the Technische Hochschule Ulm during the Winter Semester of 2020/2021. It is a quiz game that allows users to create its own quizes written entirely on Dart/Flutter.
 
-<img src="images/logo.png" width="300" >
+<img src="images/logo.png" width="200" >
 
 Register an account screen.
-<img src="images/register_screen.jpg" width="300">
+<img src="images/register_screen.jpg" width="200">
 
 Login screen.
 <img src="images/login_screen.jpg" width="300">
