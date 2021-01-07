@@ -6,7 +6,7 @@ Quizigma is a project developed by the students of Computer Science from the Tec
 <img src="images/logo.png" width="200" >
 </p>
 
-<p float="left">
+<p float="center">
   <img src="images/register_screen.jpg" width="180" />
   <img src="images/login_screen.jpg" width="180"" /> 
   <img src="images/main_screen.jpg" width="180" />
