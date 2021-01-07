@@ -8,14 +8,14 @@ Quizigma is a project developed by the students of Computer Science from the Tec
 
 <p float="left">
   <img src="images/register_screen.jpg" width="180" />
-  <img src="images/login_screen.jpg" width="150"" /> 
-  <img src="images/main_screen.jpg" width="150" />
-  <img src="images/categories_screen.jpg" width="150 />
-  <img src="images/creating_a_quiz_screen.jpg" width="150" />
-  <img src="images/check_answers_screen.jpg" width="150" />
-  <img src="images/quiz_created_id_screen.jpg" width="150" />
-  <img src="images/quiz_list_screen.jpg" width="150" />
-  <img src="images/quiz_screen.jpg" width="150" />
+  <img src="images/login_screen.jpg" width="180"" /> 
+  <img src="images/main_screen.jpg" width="180" />
+  <img src="images/categories_screen.jpg" width="180 />
+  <img src="images/creating_a_quiz_screen.jpg" width="180" />
+  <img src="images/check_answers_screen.jpg" width="180" />
+  <img src="images/quiz_created_id_screen.jpg" width="180" />
+  <img src="images/quiz_list_screen.jpg" width="180" />
+  <img src="images/quiz_screen.jpg" width="180" />
 </p>
 
 Register an account screen.
