@@ -13,37 +13,8 @@ Quizigma is a project developed by the students of Computer Science from the Tec
   <img src="images/categories_screen.jpg" width="180 />
   <img src="images/creating_a_quiz_screen.jpg" width="180" />
   <img src="images/check_answers_screen.jpg" width="180" />
-</p>
-
-<p float="center">
   <img src="images/quiz_created_id_screen.jpg" width="180" />
   <img src="images/quiz_list_screen.jpg" width="180" />
   <img src="images/quiz_screen.jpg" width="180" />
 </p>
-
-Register an account screen.
-
-
-Login screen.
-
-
-Home screen.
-
-
-Categories screen.
-
-Creating a quiz.
-
-
-Checking which answer is correct.
-
-
-Id of the created to quiz to be shared with other players.
-
-
-List of quizes inside a category.
-
-
-Quiz player screen.
-
 
