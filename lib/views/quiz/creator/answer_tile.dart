@@ -22,11 +22,7 @@ class _AnswerTileState extends State<AnswerTile> {
 
   @override
   Widget build(BuildContext context) {
-    return
-        //Padding(
-        // padding: const EdgeInsets.only(right: 1.0),
-        // child:
-        TextFormField(
+    return TextFormField(
       controller: _answerEditingController,
       style: GoogleFonts.cabin(
         fontWeight: FontWeight.w700,
@@ -42,11 +38,11 @@ class _AnswerTileState extends State<AnswerTile> {
             borderSide: BorderSide(color: Colors.deepPurple)),
       ),
       cursorColor: Colors.deepPurple,
+      // Check if an answer has been written.
       validator: (v) {
         if (v.trim().isEmpty) return 'Please enter an answer';
         return null;
       },
     );
-    // );
   }
 }

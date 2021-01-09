@@ -6,6 +6,7 @@ import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/creator/creator_alert.dart';
 import 'package:quizigma/views/quiz/creator/question_list.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quizigma/views/quiz/creator/round_button.dart';
 
 class QuizCreator extends StatefulWidget {
   final String category;
@@ -15,7 +16,9 @@ class QuizCreator extends StatefulWidget {
 
 //Note to backend: You can retrieve the information from answersList of _MyFormState class.
 class _QuizCreatorState extends State<QuizCreator> {
-  List<int> bottom = [0];
+  final _controller = QuizController();
+  final _formKey = GlobalKey<FormState>();
+
   List<String> categories = [
     'Other',
     'Literature',
@@ -28,7 +31,6 @@ class _QuizCreatorState extends State<QuizCreator> {
     'Nature',
     'Computer',
   ];
-
   String category = 'Other';
   int dropdownValue = 30;
   int _counter = 30;
@@ -36,9 +38,7 @@ class _QuizCreatorState extends State<QuizCreator> {
   TextEditingController nameEditingController = TextEditingController();
   List<int> top = [];
 
-  final _controller = QuizController();
-  final _formKey = GlobalKey<FormState>();
-
+// A method, which increments the timer value.
   void _increaseCounter() {
     setState(() {
       if (_counter < 60) {
@@ -47,6 +47,7 @@ class _QuizCreatorState extends State<QuizCreator> {
     });
   }
 
+// A method, which decrements the timer value.
   void _decreaseCounter() {
     setState(() {
       if (_counter > 15) {
@@ -55,6 +56,7 @@ class _QuizCreatorState extends State<QuizCreator> {
     });
   }
 
+// A method, which shows an alert after a quiz is successfully created.
   void _showCreatorAlert(Quiz quiz) {
     showDialog(
         context: context,
@@ -91,6 +93,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                       border: Border.all(color: Colors.deepPurple)),
                   child: Column(
                     children: <Widget>[
+                      // Quiz name text field.
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                         child: TextFormField(
@@ -116,6 +119,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                       SizedBox(
                         height: 10,
                       ),
+                      // Category dropdown menu.
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                         child: DropdownButtonFormField<String>(
@@ -147,6 +151,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                         ),
                       ),
                       SizedBox(height: 10),
+                      // Timer selector.
                       Padding(
                         padding: EdgeInsets.only(left: 10, right: 10),
                         child: Container(
@@ -163,51 +168,29 @@ class _QuizCreatorState extends State<QuizCreator> {
                                       fontSize: 17),
                                 ),
                                 Spacer(),
-                                InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      if (_counter < 61) {
-                                        _increaseCounter();
-                                      }
-                                    });
-                                  },
-                                  child: Container(
-                                    width: 30,
-                                    height: 30,
-                                    decoration: BoxDecoration(
-                                      color: Colors.green,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
+                                RoundButton(
+                                    onTap: () {
+                                      setState(() {
+                                        if (_counter < 61) {
+                                          _increaseCounter();
+                                        }
+                                      });
+                                    },
+                                    color: Colors.green,
+                                    icon: Icons.add),
                                 SizedBox(
                                   width: 10,
                                 ),
-                                InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      if (_counter > 14) {
-                                        _decreaseCounter();
-                                      }
-                                    });
-                                  },
-                                  child: Container(
-                                    width: 30,
-                                    height: 30,
-                                    decoration: BoxDecoration(
-                                      color: Colors.red,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Icon(
-                                      Icons.remove,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
+                                RoundButton(
+                                    onTap: () {
+                                      setState(() {
+                                        if (_counter > 14) {
+                                          _decreaseCounter();
+                                        }
+                                      });
+                                    },
+                                    color: Colors.red,
+                                    icon: Icons.remove),
                               ],
                             ),
                             Row(
@@ -233,6 +216,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                 ),
                 QuestionList(editors: editors),
                 SizedBox(height: 15),
+                // A button, which validates the quiz and adds it to the database
                 Container(
                   margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 6.0),
                   width: MediaQuery.of(context).size.width,

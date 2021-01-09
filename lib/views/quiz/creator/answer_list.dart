@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:quizigma/models/question_text_editor.dart';
 import 'package:quizigma/views/quiz/creator/answer_tile.dart';
+import 'package:quizigma/views/quiz/creator/round_button.dart';
 
 class AnswerList extends StatefulWidget {
   final QuestionTextEditor editor;
@@ -34,6 +35,7 @@ class _AnswerListState extends State<AnswerList> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
+      //Generate the necessary number of answer tiles.
       ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -58,7 +60,8 @@ class _AnswerListState extends State<AnswerList> {
                   ? Container(
                       width: 30,
                     )
-                  : InkWell(
+                  // Remove an answer.
+                  : RoundButton(
                       onTap: () {
                         setState(() {
                           _editor.removeAnswerTextController(i);
@@ -68,19 +71,8 @@ class _AnswerListState extends State<AnswerList> {
                           }
                         });
                       },
-                      child: Container(
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Icon(
-                          Icons.remove,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
+                      color: Colors.red,
+                      icon: Icons.remove)
             ]),
           ]);
         },
@@ -88,7 +80,8 @@ class _AnswerListState extends State<AnswerList> {
       SizedBox(height: 10),
       _answerTiles.length >= Question.maxAnswers
           ? Container()
-          : InkWell(
+          // Add an answer.
+          : RoundButton(
               onTap: () {
                 setState(() {
                   _editor.answerTextControllers.add(TextEditingController());
@@ -99,19 +92,8 @@ class _AnswerListState extends State<AnswerList> {
                   ));
                 });
               },
-              child: Container(
-                width: 30,
-                height: 30,
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Icon(
-                  Icons.add,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+              color: Colors.green,
+              icon: Icons.add),
     ]);
   }
 }
