@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quizigma/views/home/home.dart';
-
-import 'package:quizigma/views/quiz/participate/join_questions.dart';
+import 'package:quizigma/views/quiz/participate/join_quiz.dart';
 import 'package:share/share.dart';
 import 'package:quizigma/models/quiz.dart';
 
@@ -102,7 +101,7 @@ class CreatorAlert extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  JoinQuestions(quizId: quiz.id, quiz: quiz)));
+                                  JoinQuiz(quizId: quiz.id, quiz: quiz)));
                     },
                   ))
             ])));

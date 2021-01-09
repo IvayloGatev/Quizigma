@@ -7,7 +7,7 @@ import 'package:quizigma/controllers/home_controller.dart';
 import 'package:quizigma/services/app_localization.dart';
 import 'package:quizigma/views/quiz/creator/creator.dart';
 import 'package:quizigma/views/quiz/participate/categories_screen.dart';
-import 'package:quizigma/views/quiz/participate/quiz_id.dart';
+import 'package:quizigma/views/quiz/participate/join_quiz_by_id.dart';
 
 class Home extends StatelessWidget {
   final _controller = HomeController();

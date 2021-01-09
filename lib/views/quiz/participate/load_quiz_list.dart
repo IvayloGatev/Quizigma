@@ -3,12 +3,14 @@ import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:provider/provider.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/participate/quiz_list.dart';
-import 'package:quizigma/views/quiz/participate/join_quiz.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class JoinQuiz extends StatelessWidget {
+/* This file is used to show the screen showing the list of
+quizzes for a given category to the user. It is comprised by the body 'QuizList' */
+
+class LoadQuizList extends StatelessWidget {
   final String title;
-  const JoinQuiz({this.title});
+  const LoadQuizList({this.title});
 
   @override
   Widget build(BuildContext context) {

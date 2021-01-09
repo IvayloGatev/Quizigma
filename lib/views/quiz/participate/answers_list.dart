@@ -2,40 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:quizigma/models/question.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class RadioSet extends StatefulWidget {
-  final Question question;
-  final Function(List<int> selections, List<String> selectedStrings)
-      buttonSelected;
-  final List<int> selectedAnswers;
-  final List<String> selectedAnswersString;
+/* This file loads the answers of a question into separate radio list tiles
+ that the user can then select. 2 arrays are then used to store the selection.
+selection will be passed each time the selection is changed. */
 
-  RadioSet(
+class AnswersAsRadioListTiles extends StatefulWidget {
+  final Question question;
+  final Function(List<int> selectedAnswersAsIntList,
+      List<String> selectedAnswerAsStringList) buttonSelected;
+  final List<int> selectedAnswersAsIntList;
+  final List<String> selectedAnswersAsStringList;
+
+  AnswersAsRadioListTiles(
       {this.question,
       this.buttonSelected,
-      this.selectedAnswers,
-      this.selectedAnswersString});
+      this.selectedAnswersAsIntList,
+      this.selectedAnswersAsStringList});
 
   @override
-  _RadioSetState createState() => _RadioSetState();
+  _AnswersAsRadioListTilesState createState() =>
+      _AnswersAsRadioListTilesState();
 }
 
-class _RadioSetState extends State<RadioSet> {
+class _AnswersAsRadioListTilesState extends State<AnswersAsRadioListTiles> {
   int groupValue = -1;
   int selection;
-  bool selected = false;
-
-  //int correctAnswer;
 
   @override
   Widget build(BuildContext context) {
-    // trying to get an identifier for each card to update the array of selected answers at proper spot
+    // Question number identifier used to find correct spot in array to add the selection
     int j = widget.question.id;
 
     return Column(
       children: List<Widget>.generate(
           widget.question.answers.length,
           (int i) => Card(
-                // margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
                 child: RadioListTile<int>(
                   title: Text(widget.question.answers[i],
                       style: (groupValue == i)
@@ -55,25 +56,25 @@ class _RadioSetState extends State<RadioSet> {
                     _handleRadioValueChange(val);
                     selection = groupValue;
 
-                    widget.selectedAnswers[j - 1] = selection;
-
-                    widget.selectedAnswersString[j - 1] =
+                    // Fill arrays with current selection data
+                    widget.selectedAnswersAsIntList[j - 1] = selection;
+                    widget.selectedAnswersAsStringList[j - 1] =
                         widget.question.answers[selection];
 
-                    widget.buttonSelected(
-                        widget.selectedAnswers, widget.selectedAnswersString);
+                    // Send the arrays with the selection data to 'question_list'
+                    widget.buttonSelected(widget.selectedAnswersAsIntList,
+                        widget.selectedAnswersAsStringList);
                   },
                   activeColor: Colors.deepPurple,
-                  // selected: true,
                 ),
               )),
     );
   }
 
+  // Method to highlight selected radio button
   void _handleRadioValueChange(int value) {
     setState(() {
       groupValue = value;
-      selected = true;
     });
   }
 }

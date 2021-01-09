@@ -1,9 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/quiz.dart';
-import 'package:quizigma/views/quiz/participate/join_questions.dart';
+import 'package:quizigma/views/quiz/participate/join_quiz.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+/* This file loads the screen with a textfield and a join button. 
+In the textfield the user is expected to enter a valid Quiz ID
+which will be checked for. If correct the join button will send 
+the user to the quiz they wish to talk */
 
 class QuizID extends StatelessWidget {
   @override
@@ -29,32 +33,25 @@ class _MyFormState extends State<MyForm> {
   final _quizController = QuizController();
 
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _nameController;
-  static List<String> answersList = [null];
-  bool iDExists = false;
+
+  bool idExists = false;
   Future<String> id;
   String quizId;
   Quiz quizToJoin;
 
-  @override
-  void initState() {
-    super.initState();
-    _nameController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    super.dispose();
-  }
+  /* method to check if ID exists and set the variable controlling valdation 
+  'idExists' */
 
   assignToBool(bool val, String id) async {
     val = await _quizController.checkIfDocExists(id);
 
     setState(() {
-      iDExists = val;
+      idExists = val;
     });
   }
+
+  /* method to obtain the quiz via the ID  provided in the textfield from the
+  database to take the desired quiz */
 
   getQuiz(Quiz quiz, String id) async {
     quiz = await _quizController.getQuiz(id);
@@ -88,6 +85,7 @@ class _MyFormState extends State<MyForm> {
                                     BorderSide(color: Colors.deepPurple))),
                         cursorColor: Colors.deepPurple,
                         validator: (String v) {
+                          // Validator to check if the code entered is valid
                           if (v.trim().isEmpty) {
                             return ('Please enter your code!');
                           }
@@ -95,7 +93,7 @@ class _MyFormState extends State<MyForm> {
                             return 'Quiz ID must be at least 8 characters';
                           }
 
-                          if (iDExists == false) {
+                          if (idExists == false) {
                             return 'Wrong ID';
                           }
 
@@ -131,9 +129,11 @@ class _MyFormState extends State<MyForm> {
                                         bottomRight: Radius.circular(10)),
                                   ),
                                   onPressed: () async {
+                                    /* Button press will check if id exists, obtain the quiz 
+                                    and finally load it */
                                     Center(child: CircularProgressIndicator());
                                     _quizController.checkIfDocExists(quizId);
-                                    assignToBool(iDExists, quizId);
+                                    assignToBool(idExists, quizId);
                                     getQuiz(quizToJoin, quizId);
                                     Future.delayed(
                                         const Duration(milliseconds: 400), () {
@@ -145,10 +145,9 @@ class _MyFormState extends State<MyForm> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  JoinQuestions(
-                                                      quizId: quizId,
-                                                      quiz: quizToJoin)));
+                                              builder: (context) => JoinQuiz(
+                                                  quizId: quizId,
+                                                  quiz: quizToJoin)));
                                     });
                                   },
                                 )),

@@ -6,6 +6,12 @@ import 'package:quizigma/views/home/home.dart';
 import 'quiz_tile.dart';
 import 'package:quizigma/views/quiz/creator/creator.dart';
 
+/* This file loads all the quizzes for a given category in a ListView.
+The ListView is a list of buttons called 'QuizTile'.
+Should there be no quizzes for the given category, 2 options are provided:
+1) User can return home
+2) User can create a quiz for the category
+*/
 class QuizList extends StatefulWidget {
   final String title;
   const QuizList({this.title});

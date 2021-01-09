@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizigma/views/quiz/participate/join_quiz.dart';
+import 'package:quizigma/views/quiz/participate/load_quiz_list.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -24,8 +24,10 @@ class CategoryItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       onPressed: () async {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => JoinQuiz(title: title)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => LoadQuizList(title: title)));
       },
     );
   }

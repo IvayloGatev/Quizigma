@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/quiz.dart';
-import 'package:quizigma/views/quiz/participate/join_questions.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quizigma/views/quiz/participate/join_quiz.dart';
 
+/* This file returns a widget, specifically a button that the user can click
+ which will, when clicked bring them to a quiz. The button displays information
+ about the quiz it will route the user to. The infomation is as follows:
+ 1) Name
+ 2) Quiz ID
+ 3) Number of questions
+ 4) Time to complete the quiz in seconds 
+ */
 class QuizTile extends StatelessWidget {
   final Quiz quiz;
   final String quizId;
@@ -42,7 +50,7 @@ class QuizTile extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => JoinQuestions(
+                builder: (context) => JoinQuiz(
                       quizId: quiz.id,
                       quiz: quiz,
                     )));

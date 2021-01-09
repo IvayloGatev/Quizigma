@@ -3,6 +3,10 @@ import 'package:quizigma/models/category_item.dart';
 import 'package:quizigma/models/categories.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/*This file takes data from categories.dart and shows them on screen. 
+The user can choose a category and it will then bring them to a list
+of quizzes for the selected category.*/
+
 class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,9 +21,6 @@ class CategoriesScreen extends StatelessWidget {
       body: GridView(
         primary: false,
         padding: const EdgeInsets.all(20),
-        //crossAxisSpacing: 10,
-        //mainAxisSpacing: 10,
-        //crossAxisCount: 2,
         children: CATEGORIES
             .map(
               (catData) => CategoryItem(

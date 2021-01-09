@@ -1,24 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/quiz.dart';
-import 'package:quizigma/views/quiz/participate/join_questions.dart';
-import 'package:quizigma/views/quiz/results/check_answers.dart';
+import 'package:quizigma/views/quiz/participate/join_quiz.dart';
+import 'package:quizigma/views/quiz/results/load_check_answers.dart';
 import 'package:quizigma/views/home/home.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+/* This file is the results page which appears after the user submits their answers
+or the quiz timer runs out. This page will display a score to the user, alongside how 
+many questions the quiz had and how many they got correct. The score simply reflects the
+% of questions the user got correct. This page has 3 buttons, offering the user 3 options:
+1) Retake the quiz
+2) Check their answers
+3) Return pages, 
+*/
 
 class Results extends StatelessWidget {
   final Quiz quiz;
   final int score;
 
-  final List<String> selectionListString;
-  final List<String> correctListString;
-  final List<String> questionName;
+  final List<String> selectedAnswersAsStringList;
+  final List<String> correctAnswersAsStringList;
+  final List<String> questionTextAsStringList;
 
   Results(
       {this.quiz,
       this.score,
-      this.selectionListString,
-      this.correctListString,
-      this.questionName});
+      this.selectedAnswersAsStringList,
+      this.correctAnswersAsStringList,
+      this.questionTextAsStringList});
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -152,9 +161,9 @@ class Results extends StatelessWidget {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (_) => CheckAnswersPage(
                               quiz,
-                              selectionListString,
-                              correctListString,
-                              questionName)));
+                              selectedAnswersAsStringList,
+                              correctAnswersAsStringList,
+                              questionTextAsStringList)));
                     },
                   ),
                   RaisedButton(
@@ -171,7 +180,7 @@ class Results extends StatelessWidget {
                               fontSize: 16)),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => JoinQuestions(
+                            builder: (_) => JoinQuiz(
                                   quiz: quiz,
                                   quizId: quiz.id,
                                 )));
