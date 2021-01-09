@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/quiz.dart';
-import 'package:quizigma/models/question.dart';
 import 'package:quizigma/views/quiz/participate/join_questions.dart';
 import 'package:quizigma/views/quiz/results/check_answers.dart';
 import 'package:quizigma/views/home/home.dart';
@@ -23,13 +21,6 @@ class Results extends StatelessWidget {
       this.questionName});
 
   Widget build(BuildContext context) {
-    // print(selectionListString.toString());
-    // print(correctListString.toString());
-    // print(questionName.toString());
-    final TextStyle titleStyle = TextStyle(
-        color: Colors.deepPurple, fontSize: 16.0, fontWeight: FontWeight.bold);
-    final TextStyle trailingStyle = TextStyle(
-        color: Colors.purple, fontSize: 20.0, fontWeight: FontWeight.bold);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -43,7 +34,6 @@ class Results extends StatelessWidget {
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
-            //color: Colors.yellow[200],
             gradient: LinearGradient(
                 colors: [Colors.deepPurple[50], Colors.white],
                 begin: Alignment.topCenter,

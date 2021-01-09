@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:quizigma/models/category_item.dart';
 import 'package:quizigma/models/quiz.dart';
+import 'package:quizigma/views/home/home.dart';
 import 'quiz_tile.dart';
 import 'package:quizigma/views/quiz/creator/creator.dart';
-import 'package:quizigma/views/home/home.dart';
 
 class QuizList extends StatefulWidget {
   final String title;
@@ -84,11 +83,8 @@ class _QuizListState extends State<QuizList> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  QuizCreator(category: title)));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Home()));
                     },
                     child: Text(
                       'Home',

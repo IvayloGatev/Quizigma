@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quizigma/models/question_text_editor.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/creator/question_tile.dart';
+import 'package:quizigma/views/quiz/creator/round_button.dart';
 
 class QuestionList extends StatefulWidget {
   final List<QuestionTextEditor> editors;
@@ -55,79 +56,30 @@ class _QuestionListState extends State<QuestionList> {
                               ? Container(
                                   width: 30,
                                 )
-                              : InkWell(
+                              : RoundButton(
                                   onTap: () {
                                     setState(() {
                                       _editors.removeAt(i);
                                       questionTiles.removeAt(i);
                                     });
                                   },
-                                  child: Container(
-                                    width: 30,
-                                    height: 30,
-                                    decoration: BoxDecoration(
-                                      color: Colors.deepPurple,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Icon(
-                                      Icons.remove,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                )
+                                  color: Colors.deepPurple,
+                                  icon: Icons.remove)
                         ]),
                   )
-                  // Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  //   Expanded(child: questionTiles[i]),
-                  //   questionTiles.length <= Quiz.minQuestions
-                  //       ? Container(
-                  //           width: 30,
-                  //         )
-                  //       : InkWell(
-                  //           onTap: () {
-                  //             setState(() {
-                  //               _editors.removeAt(i);
-                  //               questionTiles.removeAt(i);
-                  //             });
-                  //           },
-                  //           child: Container(
-                  //             width: 30,
-                  //             height: 30,
-                  //             decoration: BoxDecoration(
-                  //               color: Colors.purple,
-                  //               borderRadius: BorderRadius.circular(20),
-                  //             ),
-                  //             child: Icon(
-                  //               Icons.remove,
-                  //               color: Colors.white,
-                  //             ),
-                  //           ),
-                  //         )
-                  // ]),
                 ]));
           }),
       SizedBox(height: 15),
-      InkWell(
-        onTap: () {
-          setState(() {
-            _editors.add(QuestionTextEditor());
-            questionTiles.add(QuestionTile(
-                key: ObjectKey(questionTiles.length), editor: _editors.last));
-          });
-        },
-        child: Container(
-          width: 30,
-          height: 30,
-          decoration: BoxDecoration(
-            color: Colors.deepPurple,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Icon(
-            Icons.add,
-            color: Colors.white,
-          ),
-        ),
-      )
+      RoundButton(
+          onTap: () {
+            setState(() {
+              _editors.add(QuestionTextEditor());
+              questionTiles.add(QuestionTile(
+                  key: ObjectKey(questionTiles.length), editor: _editors.last));
+            });
+          },
+          color: Colors.deepPurple,
+          icon: Icons.add)
     ]);
   }
 }

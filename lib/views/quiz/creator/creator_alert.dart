@@ -3,8 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quizigma/views/home/home.dart';
 
 import 'package:quizigma/views/quiz/participate/join_questions.dart';
-import 'package:quizigma/views/quiz/participate/quiz_id.dart';
-import 'package:quizigma/views/quiz/participate/take_quiz.dart';
 import 'package:share/share.dart';
 import 'package:quizigma/models/quiz.dart';
 
@@ -97,7 +95,6 @@ class CreatorAlert extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                           fontSize: 20),
                     ),
-                    //style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     textColor: Colors.white,
                     color: Colors.deepPurple,
                     onPressed: () {
@@ -109,22 +106,5 @@ class CreatorAlert extends StatelessWidget {
                     },
                   ))
             ])));
-
-    // return AlertDialog(
-    //   title: Text("Quiz Created"),
-    //   content: Text(
-    //     quiz.id,
-    //     style: TextStyle(fontSize: 40, fontStyle: FontStyle.italic),
-    //   ),
-    //   actions: [
-    //     FlatButton(
-    //       child: Text('Ok'),
-    //       onPressed: () {
-    //         Navigator.push(
-    //             context, MaterialPageRoute(builder: (context) => Home()));
-    //       },
-    //     ),
-    //   ],
-    // );
   }
 }

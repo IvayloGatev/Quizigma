@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/category_item.dart';
-import 'package:quizigma/models/dummy_data.dart';
+import 'package:quizigma/models/categories.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -20,7 +20,7 @@ class CategoriesScreen extends StatelessWidget {
         //crossAxisSpacing: 10,
         //mainAxisSpacing: 10,
         //crossAxisCount: 2,
-        children: DUMMY_CATEGORIES
+        children: CATEGORIES
             .map(
               (catData) => CategoryItem(
                 catData.title,

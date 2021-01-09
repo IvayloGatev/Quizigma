@@ -51,7 +51,7 @@ class Quiz {
     _name = name;
     _questions = questions;
     _numofQuestions = questions.length;
-    _timeInSeconds = timeInSeconds * questions.length;
+    _timeInSeconds = timeInSeconds;
   }
 
   String get id {

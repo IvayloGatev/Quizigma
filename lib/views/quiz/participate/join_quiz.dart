@@ -3,7 +3,6 @@ import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:provider/provider.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'package:quizigma/views/quiz/participate/quiz_list.dart';
-import 'package:quizigma/views/quiz/participate/join_questions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class JoinQuiz extends StatelessWidget {

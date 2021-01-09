@@ -1,14 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:quizigma/controllers/quiz_controller.dart';
 import 'package:quizigma/models/question.dart';
-import 'package:quizigma/views/quiz/participate/question_timer.dart';
-import 'package:quizigma/views/quiz/participate/radio_buttons.dart';
 import 'package:quizigma/views/quiz/participate/sticky_header.dart';
 import 'package:quizigma/views/quiz/results/results.dart';
-import 'questions_tile.dart';
 import 'package:quizigma/services/firestore_database.dart';
 import 'package:quizigma/models/quiz.dart';
 import 'questions_list.dart';
@@ -46,7 +40,6 @@ class _TakeQuizState extends State<TakeQuiz> {
     questionNameString.length = widget.quiz.numofQuestions;
 
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return StickyHeader(
         header: Container(
           width: width,
