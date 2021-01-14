@@ -31,7 +31,7 @@ class _QuizCreatorState extends State<QuizCreator> {
     'Nature',
     'Computer',
   ];
-  String category = 'Other';
+  String category;
   int dropdownValue = 30;
   int _counter = 30;
   List<QuestionTextEditor> editors = List<QuestionTextEditor>();
@@ -69,6 +69,16 @@ class _QuizCreatorState extends State<QuizCreator> {
 
   @override
   Widget build(BuildContext context) {
+    /* Check where user clicked create quiz from
+     default set to 'other', otherwise category is
+     from the selected category in categories screen*/
+
+    if (widget.category == null) {
+      category = 'Other';
+    } else {
+      category = widget.category;
+    }
+
     return Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
@@ -176,7 +186,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                                         }
                                       });
                                     },
-                                    color: Colors.green,
+                                    color: Colors.deepPurple,
                                     icon: Icons.add),
                                 SizedBox(
                                   width: 10,
@@ -189,7 +199,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                                         }
                                       });
                                     },
-                                    color: Colors.red,
+                                    color: Colors.deepPurple,
                                     icon: Icons.remove),
                               ],
                             ),
@@ -214,7 +224,9 @@ class _QuizCreatorState extends State<QuizCreator> {
                     ],
                   ),
                 ),
-                QuestionList(editors: editors),
+                QuestionList(
+                  editors: editors,
+                ),
                 SizedBox(height: 15),
                 // A button, which validates the quiz and adds it to the database.
                 Container(
@@ -223,6 +235,7 @@ class _QuizCreatorState extends State<QuizCreator> {
                   child: RaisedButton(
                     onPressed: () {
                       // Validate the form and add the quiz to the database.
+                      print('editorL ${editors.length}');
                       if (_formKey.currentState.validate()) {
                         String name = nameEditingController.text;
                         List<Question> questions = List<Question>();

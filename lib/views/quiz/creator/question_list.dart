@@ -28,7 +28,10 @@ class _QuestionListState extends State<QuestionList> {
       // Initialize the question tiles.
       for (int i = 0; i < Quiz.minQuestions; i++) {
         _editors.add(QuestionTextEditor());
-        questionTiles.add(QuestionTile(key: ObjectKey(i), editor: _editors[i]));
+        questionTiles.add(QuestionTile(
+          key: ObjectKey(i),
+          editor: _editors[i],
+        ));
       }
     });
   }
@@ -78,7 +81,9 @@ class _QuestionListState extends State<QuestionList> {
             setState(() {
               _editors.add(QuestionTextEditor());
               questionTiles.add(QuestionTile(
-                  key: ObjectKey(questionTiles.length), editor: _editors.last));
+                key: ObjectKey(questionTiles.length),
+                editor: _editors.last,
+              ));
             });
           },
           color: Colors.deepPurple,

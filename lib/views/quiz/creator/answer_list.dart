@@ -49,7 +49,7 @@ class _AnswerListState extends State<AnswerList> {
             Row(children: [
               Radio(
                   groupValue: _editor.correctAnswer,
-                  activeColor: Colors.green,
+                  activeColor: Colors.deepPurple,
                   value: i,
                   onChanged: (int value) {
                     setState(() {
@@ -67,12 +67,13 @@ class _AnswerListState extends State<AnswerList> {
                         setState(() {
                           _editor.removeAnswerTextController(i);
                           _answerTiles.removeAt(i);
+
                           if (_editor.correctAnswer >= _answerTiles.length) {
                             _editor.correctAnswer--;
                           }
                         });
                       },
-                      color: Colors.red,
+                      color: Colors.deepPurple,
                       icon: Icons.remove)
             ]),
           ]);
@@ -93,7 +94,7 @@ class _AnswerListState extends State<AnswerList> {
                   ));
                 });
               },
-              color: Colors.green,
+              color: Colors.deepPurple,
               icon: Icons.add),
     ]);
   }
