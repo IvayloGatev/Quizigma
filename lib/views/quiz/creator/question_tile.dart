@@ -34,6 +34,7 @@ class _QuestionTileState extends State<QuestionTile> {
                   borderSide: BorderSide(color: Colors.deepPurple)),
             ),
             cursorColor: Colors.deepPurple,
+            // Check if the question text field is empty.
             validator: (v) {
               if (v.trim().isEmpty) return 'Please enter the question';
               return null;

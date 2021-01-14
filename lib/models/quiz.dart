@@ -1,6 +1,7 @@
 import 'package:quizigma/models/question.dart';
 import 'package:random_string/random_string.dart';
 
+// A class, which stores information about a quiz.
 class Quiz {
   static final int minQuestions = 1;
 

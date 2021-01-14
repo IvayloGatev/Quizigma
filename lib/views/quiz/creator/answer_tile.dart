@@ -38,7 +38,7 @@ class _AnswerTileState extends State<AnswerTile> {
             borderSide: BorderSide(color: Colors.deepPurple)),
       ),
       cursorColor: Colors.deepPurple,
-      // Check if an answer has been written.
+      // Check if the answer text field is empty.
       validator: (v) {
         if (v.trim().isEmpty) return 'Please enter an answer';
         return null;

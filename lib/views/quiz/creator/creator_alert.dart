@@ -5,6 +5,7 @@ import 'package:quizigma/views/quiz/participate/join_quiz.dart';
 import 'package:share/share.dart';
 import 'package:quizigma/models/quiz.dart';
 
+// A widget, which displays an alert when a quiz is successfully created.
 class CreatorAlert extends StatelessWidget {
   final Quiz quiz;
   CreatorAlert({this.quiz});

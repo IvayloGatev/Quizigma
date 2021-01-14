@@ -216,12 +216,13 @@ class _QuizCreatorState extends State<QuizCreator> {
                 ),
                 QuestionList(editors: editors),
                 SizedBox(height: 15),
-                // A button, which validates the quiz and adds it to the database
+                // A button, which validates the quiz and adds it to the database.
                 Container(
                   margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 6.0),
                   width: MediaQuery.of(context).size.width,
                   child: RaisedButton(
                     onPressed: () {
+                      // Validate the form and add the quiz to the database.
                       if (_formKey.currentState.validate()) {
                         String name = nameEditingController.text;
                         List<Question> questions = List<Question>();

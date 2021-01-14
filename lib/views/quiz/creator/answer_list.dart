@@ -24,6 +24,7 @@ class _AnswerListState extends State<AnswerList> {
     _editor = widget.editor;
     _answerTiles = List<AnswerTile>();
 
+    // Initialize the answer tiles.
     for (int i = 0; i < Question.minAnswers; i++) {
       _answerTiles.add(AnswerTile(
         key: ObjectKey(i),
@@ -35,7 +36,7 @@ class _AnswerListState extends State<AnswerList> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      //Generate the necessary number of answer tiles.
+      //Display the coresponding number of answer tiles.
       ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,

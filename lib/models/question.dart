@@ -1,3 +1,4 @@
+// A class, which stores information about the quiz questions.
 class Question {
   static final int minAnswers = 2;
   static final int maxAnswers = 5;
@@ -7,11 +8,6 @@ class Question {
   List<String> _answers;
   int _correctAnswer;
 
-  // Question.namedconstructor(int id, String text, List<String> answers) {
-  //   _id = id;
-  //   _text = text;
-  //   _answers = answers;
-  // }
   Question.namedconstructor(
       int id, String text, List<String> answers, int correctAnswer) {
     _id = id;
@@ -29,9 +25,6 @@ class Question {
     if (answers.length < minAnswers && answers.length > maxAnswers) {
       throw new Exception();
     }
-    //if (!_answers.containsKey(_correctAnswer)) {
-    //throw new Exception();
-    //}
 
     _id = id;
     _text = text;

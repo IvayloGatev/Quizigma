@@ -25,6 +25,7 @@ class _QuestionListState extends State<QuestionList> {
       questionTiles = List<QuestionTile>();
       _editors = widget.editors;
 
+      // Initialize the question tiles.
       for (int i = 0; i < Quiz.minQuestions; i++) {
         _editors.add(QuestionTextEditor());
         questionTiles.add(QuestionTile(key: ObjectKey(i), editor: _editors[i]));
@@ -56,6 +57,7 @@ class _QuestionListState extends State<QuestionList> {
                               ? Container(
                                   width: 30,
                                 )
+                              // Remove a question.
                               : RoundButton(
                                   onTap: () {
                                     setState(() {
@@ -70,6 +72,7 @@ class _QuestionListState extends State<QuestionList> {
                 ]));
           }),
       SizedBox(height: 15),
+      // Add a question.
       RoundButton(
           onTap: () {
             setState(() {

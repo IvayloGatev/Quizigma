@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quizigma/models/question.dart';
 
+/* A class, which is responsible for saving the data from the text fields
+  of the quiz creator. */
 class QuestionTextEditor {
   TextEditingController _questionTextController;
   List<TextEditingController> _answerTextControllers;

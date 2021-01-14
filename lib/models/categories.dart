@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'category.dart';
 
+// A list of all categories.
 const CATEGORIES = const [
   Category(
     id: 'c1',
