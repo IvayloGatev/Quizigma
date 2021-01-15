@@ -3,7 +3,7 @@ import 'package:random_string/random_string.dart';
 
 // A class, which stores information about a quiz.
 class Quiz {
-  static final int minQuestions = 1;
+  static final int minQuestions = 2;
 
   String _id;
   String _category;
